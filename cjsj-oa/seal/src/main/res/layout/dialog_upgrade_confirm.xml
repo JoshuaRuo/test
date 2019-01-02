@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/fragment_bg_color"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/dialog_upgrade_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/mine_text_style_5"
+        android:layout_margin="5dp"
+        android:text="版本V1.0.2"/>
+
+    <TextView
+        android:id="@+id/dialog_upgrade_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        style="@style/mine_text_style_5"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/button_4_shape_corner"
+        android:text="更新内容"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <Button
+            android:id="@+id/dialog_upgrade_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_shape_corner"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/dialog_upgrade_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/button_1_shape_corner"
+            android:layout_toLeftOf="@id/dialog_upgrade_confirm"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+</LinearLayout>

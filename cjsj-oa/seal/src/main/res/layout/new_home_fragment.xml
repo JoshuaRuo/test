@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gty_page_bgcolor"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/new_swipe_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <!--<cn.bingoogolapple.refreshlayout.BGARefreshLayout-->
+        <!--android:id="@+id/home_modulename_refresh"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--&gt;-->
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/new_home_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <cn.cjsj.im.ui.widget.gridviewpager.GridViewPager
+                        android:id="@+id/home_new_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingBottom="15dp"
+                        android:layout_marginVertical="5dp"
+                        android:paddingTop="45dp" />
+
+                    <cn.cjsj.im.ui.widget.CirclePageIndicator
+                        android:id="@+id/home_new_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="3dp"
+                        android:padding="3dp"
+                        android:visibility="gone"
+                        app:fillColor="@color/white"
+                        app:pageColor="#50ffffff"
+                        app:strokeWidth="0dp" />
+
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="5dp">
+
+
+
+                    <me.bakumon.library.view.BulletinView
+                        android:id="@+id/bulletin_view_sale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="50dp"
+                        app:bulletinInterval="2000" />
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/home_right_icon" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/home_todo_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/today_working_string"
+                        android:textColor="@color/main_title_color_code"
+                        android:textSize="@dimen/font_size_16sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="112dp"
+                            android:layout_height="158dp"
+                            android:layout_weight="1"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="13dp"
+                            android:layout_marginLeft="15dp"
+                            >
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="135dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/today_todo_linesbg"
+                                android:gravity="center"
+                                android:layout_gravity="bottom">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="上班考勤"
+                                    android:textColor="@color/main_title_color_code"
+                                    android:layout_marginTop="35dp"
+                                    android:textSize="@dimen/font_size_16sp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="08:30"
+                                    android:textColor="@color/color_66"
+                                    android:layout_marginTop="5dp"
+                                    android:textSize="@dimen/font_size_14sp"/>
+
+                                <TextView
+                                    android:id="@+id/home_checkin_status"
+                                    android:layout_width="75dp"
+                                    android:layout_height="30dp"
+                                    android:layout_toLeftOf="@+id/home_dailypaper_right"
+                                    android:background="@drawable/home_doto_done"
+                                    android:text="已完成"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginBottom="13dp"
+                                    android:textSize="@dimen/font_size_14sp"/>
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/today_todo_icon"
+                                android:layout_gravity="top|center_horizontal"/>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="112dp"
+                            android:layout_height="158dp"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="13dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="135dp"
+                                android:layout_gravity="bottom"
+                                android:background="@drawable/today_todo_linesbg"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="35dp"
+                                    android:text="写日志"
+                                    android:textColor="@color/main_title_color_code"
+                                    android:textSize="@dimen/font_size_16sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="17:00"
+                                    android:textColor="@color/color_66"
+                                    android:textSize="@dimen/font_size_14sp" />
+
+                                <TextView
+                                    android:id="@+id/home_dailypaper_status"
+                                    android:layout_width="75dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_toLeftOf="@+id/home_dailypaper_right"
+                                    android:background="@drawable/home_doto_done"
+                                    android:gravity="center"
+                                    android:text="已完成"
+                                    android:textColor="@color/white"
+                                    android:layout_marginBottom="13dp"
+                                    android:textSize="@dimen/font_size_14sp" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|center_horizontal"
+                                android:src="@drawable/home_daily_icon" />
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="112dp"
+                            android:layout_height="158dp"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginBottom="13dp"
+                            android:layout_marginRight="15dp"
+                            >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="135dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/today_todo_linesbg"
+                                android:gravity="center"
+                                android:layout_gravity="bottom">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="下班考勤"
+                                    android:textColor="@color/main_title_color_code"
+                                    android:layout_marginTop="35dp"
+                                    android:textSize="@dimen/font_size_16sp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="17:30"
+                                    android:textColor="@color/color_66"
+                                    android:layout_marginTop="5dp"
+                                    android:textSize="@dimen/font_size_14sp"/>
+
+                                <TextView
+                                    android:id="@+id/home_checkout_status"
+                                    android:layout_width="75dp"
+                                    android:layout_height="30dp"
+                                    android:layout_toLeftOf="@+id/home_dailypaper_right"
+                                    android:background="@drawable/home_todo_none"
+                                    android:text="去完成"
+                                    android:gravity="center"
+                                    android:textColor="@color/color_2293ff"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginBottom="13dp"
+                                    android:textSize="@dimen/font_size_14sp"/>
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/today_todo_icon"
+                                android:layout_gravity="top|center_horizontal"/>
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <RelativeLayout
+                    android:id="@+id/home_go_agenda_more"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/bg_white">
+
+
+                    <TextView
+                        android:id="@+id/backlog_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:text="@string/home_backlog_text"
+                        android:textColor="@color/text_black_color"
+                        android:textSize="@dimen/font_size_16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/home_backlog_count_tv"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/backlog_title_tv"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:visibility="invisible"
+                        android:background="@drawable/notification_icon_bg"
+                        android:textSize="@dimen/font_size_12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawableRight="@drawable/home_right_icon"
+                        android:padding="10dp"
+                        android:text="@string/home_check_more_text"
+                        android:textColor="@color/color_999999"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/text_size_14" />
+
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/color_E5E8F3" />
+
+                <LinearLayout
+                    android:id="@+id/home_backlog_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+
+                    <TextView
+                        android:id="@+id/home_backlog_default_tv_bg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:text="你暂时还没有待办的事项~"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/font_size_14sp"
+                        android:visibility="gone"
+                        android:layout_marginBottom="20dp"/>
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/home_go_myRequest_more"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/bg_white">
+
+
+                    <TextView
+                        android:id="@+id/myRequest_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:text="@string/home_myrequest_text"
+                        android:textColor="@color/text_black_color"
+                        android:textSize="@dimen/font_size_16sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawableRight="@drawable/home_right_icon"
+                        android:padding="10dp"
+                        android:text="@string/home_check_more_text"
+                        android:textColor="@color/color_999999"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/text_size_14" />
+
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/color_E5E8F3" />
+
+                <LinearLayout
+                    android:id="@+id/home_myRequest_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+
+                    <TextView
+                        android:id="@+id/home_myRequest_default_tv_bg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:text="你还没有申请的事项~"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/font_size_14sp"
+                        android:visibility="gone"
+                        android:layout_marginBottom="20dp"/>
+
+
+                </LinearLayout>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="66dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/slogan"
+                        android:scaleType="fitXY"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <!--</cn.bingoogolapple.refreshlayout.BGARefreshLayout>-->
+    <RelativeLayout
+        android:id="@+id/home_new_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <TextView
+            android:id="@+id/home_t_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="21℃"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_20sp" />
+
+        <TextView
+            android:id="@+id/home_air_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/home_t_num"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/font_size_10sp"
+            android:gravity="left"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/home_new_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_18sp" />
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/home_new_message"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:src="@drawable/news_white_icon" />
+
+            <TextView
+                android:id="@+id/home_notification_icon_tv"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_gravity="center|top"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/notification_icon_bg"
+                android:visibility="invisible"
+                android:gravity="center" />
+        </FrameLayout>
+
+        <View
+            android:id="@+id/main_base_newline_view"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+</FrameLayout>

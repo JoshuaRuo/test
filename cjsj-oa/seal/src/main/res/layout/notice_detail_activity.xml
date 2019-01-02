@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/seal_bg">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/notice_detail_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_404040"
+                android:textSize="@dimen/font_size_18sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/notice_detail_creator_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/color_858585"
+                    android:drawableLeft="@drawable/creator_name_icon"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/font_size_14sp" />
+                <TextView
+                    android:id="@+id/notice_detail_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/create_time_icon"
+                    android:drawablePadding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/color_858585"
+                    android:textSize="@dimen/font_size_14sp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/notice_detail_text_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:padding="5dp"
+                android:textColor="@color/color_66"
+                android:lineSpacingExtra="20dp"
+                android:lineSpacingMultiplier="0.5"
+                android:textSize="@dimen/font_size_16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

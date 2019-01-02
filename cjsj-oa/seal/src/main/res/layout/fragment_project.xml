@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <!--<EditText-->
+        <!--android:id="@+id/project_search_et"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/project_search_bg"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:drawableLeft="@drawable/sealtalk_search"-->
+        <!--android:clickable="false"-->
+        <!--android:focusable="false"-->
+        <!--android:drawablePadding="3dp"-->
+        <!--android:padding="5dp"/>-->
+    <cn.cjsj.im.ui.widget.DrawableCenterTextView
+        android:id="@+id/project_search_bt"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:background="@drawable/project_search_bg"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+       android:drawableLeft="@drawable/gty_search"
+        android:text="@string/please_enter_search_value"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:textColor="@color/color_999999"
+        android:visibility="gone"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/color_E5E8F3" />
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/project_manager_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/project_manager_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+</LinearLayout>

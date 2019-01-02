@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/statistics_holder_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/statistics_holder_left_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="出勤天数"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_16sp" />
+
+
+        <ImageView
+            android:id="@+id/statistics_holder_right_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/gty_right_icon" />
+
+
+        <TextView
+            android:id="@+id/statistics_holder_days_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/statistics_holder_right_icon"
+            android:text="22天"
+            android:textColor="@color/color_66"
+            android:textSize="@dimen/font_size_14sp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

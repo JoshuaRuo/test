@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/start_user_profile"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_list_item_bg"
+        android:clickable="true"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <cn.cjsj.im.server.widget.SelectableRoundedImageView
+            android:id="@+id/mine_header"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:scaleType="centerCrop"
+            app:sriv_left_bottom_corner_radius="3dip"
+            app:sriv_left_top_corner_radius="3dip"
+            app:sriv_right_bottom_corner_radius="3dip"
+            app:sriv_right_top_corner_radius="3dip" />
+
+        <TextView
+            android:id="@+id/mine_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/seal_mine_fragment_user_portrait"
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/new_start_user_profile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_border_152"
+        android:orientation="vertical"
+        android:background="@drawable/bg_mine"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:circleimageview="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/mine_simpleDraweeView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            circleimageview:civ_border_color="@color/color_67B5FF"
+            circleimageview:civ_border_overlay="false"
+            circleimageview:civ_border_width="4dp"
+            android:src="@drawable/mine_head_default_img"
+
+            />
+
+      <TextView
+          android:id="@+id/mine_user_name_tv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/font_size_20sp"
+          android:textColor="@color/white"
+          android:textStyle="bold"
+          android:layout_marginTop="4dp"
+          />
+        <TextView
+            android:id="@+id/mine_department_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_14sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="1.5dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        
+        <LinearLayout
+            android:id="@+id/performance_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/mine_performance_total_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_22sp"
+                android:textColor="@color/text_black_color"
+                android:ems="4"
+                android:gravity="center"
+                android:text="0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_14sp"
+                android:textColor="@color/color_999999"
+                android:layout_marginTop="5dp"
+                android:text="我的绩效"/>
+
+        </LinearLayout>
+
+
+        <VideoView
+            android:layout_width="1px"
+            android:layout_height="50dp"
+            android:background="@color/color_E5E8F3"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/mine_integral_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mine_integral_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/text_black_color"
+                android:textSize="@dimen/font_size_22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="我的积分"
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/font_size_14sp" />
+        </LinearLayout>
+
+
+        <VideoView
+            android:layout_width="1px"
+            android:layout_height="50dp"
+            android:background="@color/color_E5E8F3"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/mine_dailyPaper_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mine_dailyPaper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/text_black_color"
+                android:textSize="@dimen/font_size_22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="本月日志"
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/font_size_14sp" />
+        </LinearLayout>
+
+        <VideoView
+            android:layout_width="1px"
+            android:layout_height="50dp"
+            android:background="@color/color_E5E8F3"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/mine_check_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mine_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/text_black_color"
+                android:textSize="@dimen/font_size_22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="本月出勤"
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/font_size_14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/gray_bg" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/mine_setting"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:background="@drawable/btn_list_item_bg"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawableLeft="@drawable/mine_set"
+            android:drawablePadding="14sp"
+            android:text="@string/mine_setting"
+            android:textColor="@color/text_tips_color"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/gray_bg" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/problems_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:background="@drawable/btn_list_item_bg"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawableLeft="@drawable/problems_icon"
+            android:drawablePadding="14sp"
+            android:text="@string/problems_string"
+            android:textColor="@color/text_tips_color"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_marginLeft="14dp"
+            android:background="@color/color_E5E8F3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/suggest_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:background="@drawable/btn_list_item_bg"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawableLeft="@drawable/feedback_icon"
+            android:drawablePadding="14sp"
+            android:text="@string/feedback_string"
+            android:textColor="@color/text_tips_color"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_marginLeft="14dp"
+            android:background="@color/color_E5E8F3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gty_about_us_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:background="@drawable/btn_list_item_bg"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawableLeft="@drawable/gty_about_us_icon"
+            android:drawablePadding="14sp"
+            android:text="@string/gty_about_us_string"
+            android:textColor="@color/text_tips_color"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/location_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="#fff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_marginLeft="14dp"
+            android:background="@color/color_E5E8F3" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/location_test"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:background="@drawable/btn_list_item_bg"
+        android:visibility="gone"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawablePadding="14sp"
+            android:text="定位测试"
+            android:textColor="@color/text_tips_color"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/clean_cache_button"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_list_item_bg"
+        android:visibility="gone"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/clean_cache_size_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawablePadding="14sp"
+            android:text="@string/clean_cache"
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mine_service"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_list_item_bg"
+        android:visibility="gone"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawableLeft="@drawable/mine_service"
+            android:drawablePadding="14sp"
+            android:text="@string/mine_service"
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mine_xiaoneng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fff">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.25dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:background="#dfdfdd" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45.5dp"
+            android:background="@drawable/btn_list_item_bg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="14dp"
+                android:drawableLeft="@drawable/mine_service"
+                android:drawablePadding="14sp"
+                android:text="@string/main_customer_xn"
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

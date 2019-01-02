@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gty_page_bgcolor">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/gty_page_bgcolor" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/re_attendance_type"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/re_work_att_type_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="迟到打卡"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_14sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/gty_page_bgcolor" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/re_attendance_time"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/re_work_att_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="2018-11-16 08:30"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_14sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/gty_page_bgcolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/re_attendance_reason"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <EditText
+                    android:id="@+id/re_attendance_reeason_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:lineSpacingExtra="5dp"
+                    android:paddingRight="15dp"
+                    android:background="@color/de_transparent"
+                    android:hint="请输入内容(必填)"
+                    android:textColor="@color/color_66"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="@dimen/font_size_14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/gty_page_bgcolor" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/examine_leader"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(点击头像删除)"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/font_size_12sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/re_attendance_examine_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="15dp"
+                android:background="@color/gty_page_bgcolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/cc_to"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(点击头像删除)"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/font_size_12sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/re_attendance_cc_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                </android.support.v7.widget.RecyclerView>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/re_attendance_button"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="15dip"
+                android:layout_marginTop="30dip"
+                android:background="@drawable/rs_select_btn_blue"
+                android:text="@string/feedback_button_submit_string"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="15dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

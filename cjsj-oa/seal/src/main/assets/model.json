@@ -1,0 +1,157 @@
+{
+  "item_class_favorite": [
+    {
+      "name": "公告",
+      "icon": "home_noticegrid_icon",
+      "desc": "",
+      "group": "item_class_administrative",
+      "notification": false
+    },
+    {
+      "name": "日志",
+      "icon": "daily_paper_icon",
+      "desc": "6",
+      "group": "item_class_log",
+      "notification": false
+    },
+    {
+      "name":"任务交办",
+      "icon":"task_icon",
+      "desc":"1",
+      "group":"item_class_administrative",
+      "notification": false
+    },
+    {
+      "name":"申请积分",
+      "icon":"apply_integral_icon",
+      "desc":"jfsqlc:1:10000002581337",
+      "group":"item_class_administrative",
+      "notification": false
+    },
+    {
+      "name": "报销",
+      "icon": "reimbursement_icon",
+      "desc": "cwbx:1:10000002380125",
+      "group": "item_class_financial",
+      "notification": false
+    },
+    {
+      "name": "考勤打卡",
+      "icon": "attendance_icon",
+      "desc": "bksq:1:10000002508861",
+      "group": "item_class_administrative",
+      "notification": false
+    },
+    {
+      "name": "周报",
+      "icon": "weekly_icon",
+      "desc": "2",
+      "group": "item_class_log",
+      "notification": false
+    }
+
+  ],
+  "item_class_log":[
+
+    {
+      "name": "月报",
+      "icon": "monthly_icon",
+      "desc": "3",
+      "group": "item_class_log",
+      "notification": false
+    },
+    {
+      "name": "市场信息",
+      "icon": "market_resource_icon",
+      "desc": "scxx:1:10000002380008",
+      "group": "item_class_log",
+      "notification": false
+    },
+    {
+      "name": "拜访记录",
+      "icon": "visit_history_icon",
+      "desc": "4",
+      "group": "item_class_log",
+      "notification": false
+    }
+
+  ],
+  "item_class_administrative":[
+    {
+      "name": "请假",
+      "icon": "leave_icon",
+      "desc": "qjsq:1:10000002508855",
+      "group": "item_class_administrative",
+      "notification": false
+    },
+    {
+      "name": "出差",
+      "icon": "business_trip_icon",
+      "desc": "ccsq:1:10000002508849",
+      "group": "item_class_administrative",
+      "notification": false
+    },
+
+    {
+      "name": "用印申请",
+      "icon": "my_approval_icon",
+      "desc": "",
+      "group": "item_class_administrative",
+      "notification": false
+    },
+    {
+      "name": "物品申购",
+      "icon": "work_schedule_icon",
+      "desc": "wpsglc:1:10000002910013",
+      "group": "item_class_administrative",
+      "notification": false
+    },
+    {
+      "name": "培训",
+      "icon": "train_icon",
+      "desc": "",
+      "group": "item_class_administrative",
+      "notification": false
+    }
+
+  ],
+  "item_class_financial":[
+    {
+      "name": "借款",
+      "icon": "loan_icon",
+      "desc": "jk:1:10000002380101",
+      "group": "item_class_financial",
+      "notification": false
+    },
+    {
+      "name": "报销事项申请",
+      "icon": "leasing_cloud_icon",
+      "desc": "sxsqlc:1:10000002410602",
+      "group": "item_class_financial",
+      "notification": false
+    },
+    {
+      "name": "外增值税",
+      "icon": "invoice_icon",
+      "desc": "zzsfp:1:10000002820886",
+      "group": "item_class_financial",
+      "notification": false
+    }
+  ],
+  "item_class_other":[
+    {
+      "name": "统计排行",
+      "icon": "statistical_ranking_icon",
+      "desc": "",
+      "group": "item_class_other",
+      "notification": false
+    },
+    {
+      "name": "投票",
+      "icon": "vote_icon",
+      "desc": "",
+      "group": "item_class_other",
+      "notification": false
+    }
+  ]
+}

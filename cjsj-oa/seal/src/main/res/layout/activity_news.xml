@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gty_page_bgcolor">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/news_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:padding="5dp"
+        android:scrollbars="none"
+        >
+
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

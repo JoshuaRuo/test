@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:id="@+id/check_all_layout">
+
+    <View
+        android:id="@+id/check_work_line"
+        android:layout_width="1px"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.7dp"
+        android:background="@color/mine_head_color" />
+
+    <RelativeLayout
+        android:id="@+id/check_work_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp">
+
+        <ImageView
+            android:id="@+id/check_work_progress_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/ongoing"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/txt_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:text="冬季  上班时间   08:30"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_14sp" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/check_work_timestatus_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/check_work_title"
+        android:paddingLeft="39dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+
+        <TextView
+            android:id="@+id/check_work_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_17sp"
+            android:textColor="@color/main_title_color_code"
+            android:textStyle="bold"
+            android:text="打卡时间 08:30"/>
+
+        <TextView
+            android:id="@+id/check_status_normal"
+            android:layout_width="32dp"
+            android:layout_height="18dp"
+            android:textColor="@color/color_2293ff"
+            android:textSize="@dimen/font_size_10sp"
+            android:gravity="center"
+            android:text="正常"
+            android:background="@drawable/check_work_normal_bg"
+            android:layout_marginLeft="15dp"
+            android:padding="3dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/check_status_late"
+            android:layout_width="32dp"
+            android:layout_height="18dp"
+            android:textColor="@color/bg_yellow_color_deep"
+            android:textSize="@dimen/font_size_10sp"
+            android:gravity="center"
+            android:text="迟到"
+            android:background="@drawable/check_work_late_bg"
+            android:layout_marginLeft="15dp"
+            android:visibility="gone"
+            android:padding="3dp"/>
+
+        <TextView
+            android:id="@+id/check_status_early"
+            android:layout_width="32dp"
+            android:layout_height="18dp"
+            android:textColor="@color/bg_yellow_color_deep"
+            android:textSize="@dimen/font_size_10sp"
+            android:gravity="center"
+            android:text="早退"
+            android:background="@drawable/check_work_late_bg"
+            android:layout_marginLeft="15dp"
+            android:visibility="gone"
+            android:padding="3dp"/>
+
+        <TextView
+            android:id="@+id/check_status_lack"
+            android:layout_width="32dp"
+            android:layout_height="18dp"
+            android:textColor="@color/color_fc472b"
+            android:textSize="@dimen/font_size_10sp"
+            android:gravity="center"
+            android:text="缺卡"
+            android:background="@drawable/check_work_error_bg"
+            android:layout_marginLeft="15dp"
+            android:visibility="gone"
+            android:padding="3dp"/>
+
+        <TextView
+            android:id="@+id/check_status_error"
+            android:layout_width="32dp"
+            android:layout_height="18dp"
+            android:textColor="@color/color_fc472b"
+            android:textSize="@dimen/font_size_10sp"
+            android:gravity="center"
+            android:text="旷工"
+            android:background="@drawable/check_work_error_bg"
+            android:layout_marginLeft="15dp"
+            android:visibility="gone"
+            android:padding="3dp"/>
+
+        <TextView
+            android:id="@+id/check_status_outside"
+            android:layout_width="32dp"
+            android:layout_height="18dp"
+            android:textColor="@color/color_00cc05"
+            android:textSize="@dimen/font_size_10sp"
+            android:gravity="center"
+            android:text="外勤"
+            android:background="@drawable/check_work_outsite_bg"
+            android:layout_marginLeft="15dp"
+            android:visibility="gone"
+            android:padding="3dp"/>
+        <TextView
+            android:id="@+id/check_status_leave"
+            android:layout_width="32dp"
+            android:layout_height="18dp"
+            android:textColor="@color/color_00cc05"
+            android:textSize="@dimen/font_size_10sp"
+            android:gravity="center"
+            android:text="请假"
+            android:visibility="gone"
+            android:background="@drawable/check_work_outsite_bg"
+            android:layout_marginLeft="15dp"
+            android:padding="3dp"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/check_status_location_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/check_work_timestatus_layout"
+        android:drawableLeft="@mipmap/gps_icon"
+        android:drawablePadding="6dp"
+        android:text="城南天府大厦"
+        android:textColor="@color/color_66"
+        android:textSize="@dimen/font_size_14sp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/check_onwork_clockout_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_999999"
+        android:textSize="@dimen/font_size_14sp"
+        android:layout_below="@+id/check_status_location_in"
+        android:text="一天工作辛苦了,好好休息"
+        android:layout_marginLeft="15dp"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/check_work_title"
+        android:layout_centerHorizontal="true"/>
+    <LinearLayout
+        android:id="@+id/check_work_button"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_below="@+id/check_work_title"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/check_work_button_normal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp"
+        android:elevation="20dp"
+        android:foregroundTint="#1089f9"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/check_work_button_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/check_work_title"
+            android:gravity="center"
+            android:text="上班打卡"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <TextClock
+            android:id="@+id/check_work_button_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/check_work_title"
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:format12Hour="HH:mm:ss"
+            android:textSize="@dimen/font_size_14sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/check_work_location_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/check_work_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:drawableLeft="@mipmap/check_work_ok_icon"
+        android:drawablePadding="6dp"
+        android:text="已进入考勤范围"
+        android:textColor="@color/color_66"
+        android:textSize="@dimen/font_size_14sp"
+        android:visibility="invisible"/>
+
+
+    <TextView
+        android:id="@+id/check_work_location_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/check_work_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:drawableLeft="@mipmap/warning_icon"
+        android:drawablePadding="6dp"
+        android:text="当前无法获取您的位置,请检查定位"
+        android:textColor="@color/color_66"
+        android:textSize="@dimen/font_size_14sp"
+        android:visibility="invisible"/>
+    <TextView
+        android:id="@+id/check_work_location_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/check_work_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:drawableLeft="@mipmap/gps_icon"
+        android:drawablePadding="6dp"
+        android:text=""
+        android:textColor="@color/color_66"
+        android:textSize="@dimen/font_size_14sp"
+        android:visibility="invisible"/>
+
+
+</RelativeLayout>

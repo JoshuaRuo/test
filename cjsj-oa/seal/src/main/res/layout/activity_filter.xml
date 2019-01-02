@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gty_page_bgcolor"
+    android:orientation="vertical"
+    tools:context="cn.cjsj.im.ui.activity.FilterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/gty_page_bgcolor" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/filter_time_title"
+                    style="@style/FilterTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/screening_time" />
+
+                <CheckedTextView
+                    android:id="@+id/filter_time_all"
+                    style="@style/FilterValue"
+                    android:layout_width="75dp"
+                    android:layout_below="@+id/filter_time_title"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:text="全部"
+
+                    />
+
+                <CheckedTextView
+                    android:id="@+id/filter_time_start"
+                    style="@style/FilterValue"
+                    android:layout_below="@+id/filter_time_title"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/filter_time_all"
+                    android:text="选择时间" />
+
+                <CheckedTextView
+                    android:id="@+id/filter_time_end"
+                    style="@style/FilterValue"
+                    android:layout_below="@+id/filter_time_title"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/filter_time_start"
+                    android:text="选择时间" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/gty_page_bgcolor" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/filter_department_title"
+                    style="@style/FilterTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/screening_department" />
+
+                <cn.cjsj.im.ui.widget.FlowLayout
+                    android:id="@+id/filter_department_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/filter_department_title"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+
+                </cn.cjsj.im.ui.widget.FlowLayout>
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/gty_page_bgcolor" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/filter_status_title"
+                    style="@style/FilterTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/screening_department" />
+
+                <cn.cjsj.im.ui.widget.FlowLayout
+                    android:id="@+id/filter_status_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/filter_status_title"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+
+                </cn.cjsj.im.ui.widget.FlowLayout>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                android:gravity="center">
+
+
+                <Button
+                    android:id="@+id/filter_remake"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/filter_selector_frame_bg_p"
+                    android:text="重置"
+                    android:textColor="@color/color_2293ff"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"/>
+
+
+                <Button
+                    android:id="@+id/filter_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/home_doto_done"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:layout_marginRight="15dp"/>
+            </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

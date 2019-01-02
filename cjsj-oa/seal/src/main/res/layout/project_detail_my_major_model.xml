@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/project_detail_major_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="专业名称:"
+        android:textColor="@color/text_tips_color"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <TextView
+        android:id="@+id/project_detail_major_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/project_detail_major_title"
+        android:text="@string/test_string"
+        android:textColor="@color/main_title_color_code"
+        android:textSize="@dimen/font_size_16sp" />
+
+
+    <TextView
+        android:id="@+id/project_detail_task_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_detail_major_value"
+        android:layout_marginLeft="15dp"
+        android:text="任务时间:"
+        android:textColor="@color/text_tips_color"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <TextView
+        android:id="@+id/project_detail_task_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_detail_major_value"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/project_detail_task_title"
+        android:text="2018-03-12至2019-03-12"
+        android:textColor="@color/main_title_color_code"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <TextView
+        android:id="@+id/project_detail_task_progress_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_detail_task_value"
+        android:layout_marginLeft="15dp"
+        android:text="任务进度:"
+        android:textColor="@color/text_tips_color"
+        android:visibility="gone"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <TextView
+        android:id="@+id/project_detail_task_progress_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_detail_task_value"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/project_detail_task_progress_title"
+        android:text="80%"
+        android:textColor="@color/main_title_color_code"
+        android:visibility="gone"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <TextView
+        android:id="@+id/project_detail_task_status_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_detail_task_progress_value"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:text="任务状态:"
+        android:textColor="@color/text_tips_color"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <TextView
+        android:id="@+id/project_detail_task_status_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_detail_task_progress_value"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/project_detail_task_status_title"
+        android:text="进行中"
+        android:textColor="@color/color_2293ff"
+        android:textSize="@dimen/font_size_16sp" />
+
+
+    <View
+        android:id="@+id/project_detail_model_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/project_detail_task_status_value"
+        android:background="@color/gty_page_bgcolor" />
+</RelativeLayout>

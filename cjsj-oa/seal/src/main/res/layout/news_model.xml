@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/news_time"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/news_item_time_bg"
+        android:textSize="@dimen/font_size_14sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="2018.01.04"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:layout_marginTop="25dp"/>
+
+    <RelativeLayout
+        android:id="@+id/news_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/news_item_bg"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="您有一条周报"
+            android:textColor="@color/color_404040"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <TextView
+            android:id="@+id/news_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/news_title"
+            android:textColor="@color/color_858585"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/font_size_16sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false //以上两句关闭检查PNG图片合法性
+
+    defaultConfig {
+        applicationId "cn.cjsj.im"
+        minSdkVersion 18
+        targetSdkVersion 27
+        versionCode 44
+        versionName "2.0.2"
+
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(output.outputFile.parent, "成交设计云平台" + "Wan1.4.0.apk");
+        }
+    }
+    //defaultConfig.applicationId   2018020918
+    signingConfigs {
+        config {
+            storeFile file("rong.key")
+            storePassword "Amigo123"
+            keyAlias "RongCloud"
+            keyPassword "Amigo123"
+        }
+    }
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    packagingOptions {
+        exclude 'AndroidManifest.xml'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.config //for release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.config //for release
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+
+        abortOnError false
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile(name: 'HMS-SDK-2.4.0.300', ext: 'aar')
+    //    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    compile files('libs/fastjson-1.2.38.jar')
+    compile files('libs/bugly_crash_release_2.1.jar')
+    compile 'com.android.support:appcompat-v7:27.1.1'
+    compile 'com.android.support:support-v4:27.1.1'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.8@aar'
+    compile 'cn.bingoogolapple:bga-banner:2.2.4@aar'
+    compile 'cn.bingoogolapple:bga-adapter:1.1.8@aar'
+    compile 'com.android.support:recyclerview-v7:27.1.1'
+    compile 'com.android.support:design:27.1.1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.youth.banner:banner:1.4.10'
+    compile 'com.facebook.fresco:fresco:0.11.0'
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.github.bumptech.glide:glide:3.5.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'me.leolin:ShortcutBadger:1.1.21@aar'
+    compile 'com.android.support:support-dynamic-animation:27.1.1'
+    compile 'me.bakumon:bulletinview:1.0.0'
+    //轮播公告
+    compile files('libs/FHeWeather_Public_Android_V1.7.jar')
+    compile 'com.github.johnkil.print:print:1.3.1'
+    compile files('libs/jpush-android-3.1.6.jar')
+    compile files('libs/jcore-android-1.2.5.jar')
+    compile files('libs/locSDK_6.13.jar')
+}
+apply plugin: 'com.google.gms.google-services'
+
+repositories {
+    flatDir {
+        dirs 'aars'
+    }
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}

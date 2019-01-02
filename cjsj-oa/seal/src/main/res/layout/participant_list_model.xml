@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/participant_model_name_title"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/project_item_right_notifiicon"
+            android:gravity="center"
+            android:text="测试"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_14sp" />
+
+
+        <TextView
+            android:id="@+id/participant_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/participant_model_name_title"
+            android:text="测试"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <TextView
+            android:id="@+id/participant_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/participant_name_tv"
+            android:text="项目完成度为90%"
+            android:textColor="@color/color_66"
+            android:textSize="@dimen/font_size_14sp" />
+
+        <TextView
+            android:id="@+id/participant_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="进行中"
+            android:textColor="@color/color_2293ff"
+            android:textSize="@dimen/font_size_14sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_E5E8F3" />
+</LinearLayout>

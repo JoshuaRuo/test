@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp">
+
+
+            <LinearLayout
+                android:id="@+id/project_item_left_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_centerHorizontal="true"
+                android:gravity="center|center_horizontal">
+
+                <ImageView
+                    android:id="@+id/project_attention_img"
+                    android:layout_width="23dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/project_focus_n"
+                    />
+                <TextView
+                    android:id="@+id/project_attention_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="关注"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/mine_head_color"
+                    android:textSize="@dimen/font_size_12sp" />
+            </LinearLayout>
+
+
+
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/mine_head_color"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="14dp">
+
+                <TextView
+                    android:id="@+id/project_item_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:ems="8"
+                    android:lines="1"
+                    android:text="sdfsdfs"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_18sp" />
+
+                <TextView
+                    android:id="@+id/project_item_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="14dp"
+                    android:lines="1"
+                    android:text="sdfsdfs"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/font_size_12sp" />
+
+
+                <TextView
+                    android:id="@+id/project_item_right_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/project_item_right_notifiicon"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:visibility="invisible"
+                    android:textSize="@dimen/font_size_12sp" />
+
+
+                <TextView
+                    android:id="@+id/project_item_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="14dp"
+                    android:text="未开始"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/font_size_14sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/color_E5E8F3" />
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <cn.cjsj.im.ui.widget.DrawableCenterTextView
+        android:id="@+id/contact_search_bt"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/project_search_bg"
+        android:drawableLeft="@drawable/gty_search"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="@string/Search"
+        android:textColor="@color/color_999999" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/color_E5E8F3" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="70dp">
+
+                <ImageView
+                    android:id="@+id/contact_list_title_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/organizational_structure" />
+
+                <TextView
+                    android:id="@+id/contact_list_title_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/contact_list_title_left"
+                    android:text="成都市交通规划勘察设计院"
+                    android:textColor="@color/text_black_color"
+                    android:textSize="@dimen/font_size_18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/contact_list_title_name"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/contact_list_title_left"
+                    android:text="组织架构"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/font_size_14sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/color_E5E8F3" />
+
+            <RelativeLayout
+                android:id="@+id/contact_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

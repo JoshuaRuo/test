@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_bg">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gty_about_logo_icon"
+            android:layout_marginTop="20dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_18sp"
+            android:textColor="@color/text_black_color"
+            android:text="@string/app_name"
+            android:layout_marginTop="10dp"/>
+
+
+
+        <TextView
+            android:id="@+id/mine_version_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_14sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/about_us_website"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawablePadding="14sp"
+            android:text="@string/about_us_website_string"
+            android:textColor="@color/text_tips_color"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/about_us_website_link_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:autoLink="all"
+            android:drawablePadding="14sp"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:text="@string/about_us_website_url"
+            android:textColor="@color/color_2293ff"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_marginLeft="14dp"
+            android:background="#dfdfdd" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/about_us_wechat"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawablePadding="14sp"
+            android:text="@string/about_us_wechat_string"
+            android:textColor="@color/text_tips_color"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawablePadding="14sp"
+            android:text="@string/about_us_wechat_value_string"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/color_999999"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_marginLeft="14dp"
+            android:background="#dfdfdd" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/about_us_tax"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawablePadding="14sp"
+            android:text="@string/about_us_tax_num_title_string"
+            android:textColor="@color/text_tips_color"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:drawablePadding="14sp"
+            android:text="@string/about_us_tax_num_value_string"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/color_999999"/>
+
+    </LinearLayout>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="bottom">
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/color_999999"
+          android:textSize="@dimen/font_size_14sp"
+          android:text="@string/cjsj_copyright_num"
+          android:gravity="center"
+          android:layout_marginBottom="10dp"/>
+  </LinearLayout>
+
+</LinearLayout>

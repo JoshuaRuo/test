@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: me.bakumon:bulletinview-1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/847734b56ced5e9be4a46dce38cf66b4fdaaf05d/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/847734b56ced5e9be4a46dce38cf66b4fdaaf05d/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.bakumon/bulletinview/1.0.0/e4d0be3b8400dca4fbe25d144cd29528ba76ccf0/bulletinview-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

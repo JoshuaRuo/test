@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <TextView
+            android:id="@+id/approval_his_model_headimg"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/home_backlog_head_bg"
+            android:gravity="center"
+            android:scaleType="center"
+            android:text="罗洋"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_14sp" />
+
+        <TextView
+            android:id="@+id/approval_his_model_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/approval_his_model_headimg"
+            android:text=""
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_16sp" />
+
+        <TextView
+            android:id="@+id/approval_his_do_what"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/approval_his_model_headimg"
+            android:text=""
+            android:textColor="@color/color_66"
+            android:textSize="@dimen/font_size_14sp" />
+
+        <TextView
+            android:id="@+id/approval_his_to_who"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/approval_his_do_what"
+            android:text=""
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_14sp" />
+
+        <TextView
+            android:id="@+id/approval_his_model_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:text="2018-09-02 08-22"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_12sp" />
+    </RelativeLayout>
+
+<View
+    android:id="@+id/approval_his_model_line"
+    android:layout_width="match_parent"
+    android:layout_height="1px"
+    android:background="@color/color_E5E8F3"
+    android:layout_marginLeft="15dp"/>
+</LinearLayout>

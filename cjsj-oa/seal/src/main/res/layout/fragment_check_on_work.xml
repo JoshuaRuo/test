@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/clock_on_top_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_999999"
+        android:textSize="@dimen/font_size_14sp"
+        android:text="像蜜蜂一样勤劳工作才能享受甜蜜生活"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/check_work_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="0dp"
+        android:scrollbars="none"
+        android:layout_marginTop="30dp"
+        android:visibility="gone">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/check_default_layout_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:src="@drawable/pic_attendance_icon"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="你还未加入到考勤组，请联系管理员！"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_14sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+</LinearLayout>

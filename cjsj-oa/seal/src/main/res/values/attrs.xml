@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SwitchGroup">
+        <attr name="orientation1">
+            <flag name="horizontal" value="0"/>
+            <flag name="vertical" value="1"/>
+        </attr>
+        <attr name="pinned_view1" format="reference" />
+        <attr name="pinned_item1" format="reference" />
+        <attr name="pinned_item_array1" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="PullLayout">
+        <attr name="pull_limit" format="dimension" />
+        <attr name="support_over" format="boolean" />
+        <attr name="hold_adjust_type">
+            <flag name="not_adjust" value="0"/>
+            <flag name="adjust_content" value="1"/>
+            <flag name="elasticity_adjust" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ProgressWheel">
+        <attr name="matProg_progressIndeterminate" format="boolean" />
+        <attr name="matProg_barColor" format="color" />
+        <attr name="matProg_rimColor" format="color" />
+        <attr name="matProg_rimWidth" format="dimension" />
+        <attr name="matProg_spinSpeed" format="float" />
+        <attr name="matProg_barSpinCycleTime" format="integer" />
+        <attr name="matProg_circleRadius" format="dimension" />
+        <attr name="matProg_fillRadius" format="boolean" />
+        <attr name="matProg_barWidth" format="dimension" />
+        <attr name="matProg_linearProgress" format="boolean" />
+    </declare-styleable>
+
+
+    <!--圆形头像-->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+    <!--圆角头像-->
+    <declare-styleable name="SelectableRoundedImageView">
+        <attr name="sriv_left_top_corner_radius" format="dimension" />
+        <attr name="sriv_right_top_corner_radius" format="dimension" />
+        <attr name="sriv_left_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_right_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_border_width" format="dimension" />
+        <attr name="sriv_border_color" format="color" />
+        <attr name="sriv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+    <!-- Defines the custom XML attributes supported for a HorizontalListView -->
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="android:divider" />
+        <attr name="android:requiresFadingEdge" />
+        <attr name="android:fadingEdgeLength" />
+    </declare-styleable>
+
+    <declare-styleable name="SwitchButton">
+        <attr name="kswThumbDrawable" format="reference"/>
+        <attr name="kswThumbColor" format="color|reference"/>
+        <attr name="kswThumbMargin" format="dimension|reference"/>
+        <attr name="kswThumbMarginTop" format="dimension|reference"/>
+        <attr name="kswThumbMarginBottom" format="dimension|reference"/>
+        <attr name="kswThumbMarginLeft" format="dimension|reference"/>
+        <attr name="kswThumbMarginRight" format="dimension|reference"/>
+        <attr name="kswThumbWidth" format="dimension|reference"/>
+        <attr name="kswThumbHeight" format="dimension|reference"/>
+        <attr name="kswThumbRadius" format="dimension|reference"/>
+        <attr name="kswBackRadius" format="dimension|reference"/>
+        <attr name="kswBackDrawable" format="reference"/>
+        <attr name="kswBackColor" format="color|reference"/>
+        <attr name="kswFadeBack" format="boolean"/>
+        <attr name="kswBackMeasureRatio" format="float"/>
+        <attr name="kswAnimationDuration" format="integer"/>
+        <attr name="kswTintColor" format="color|reference"/>
+        <attr name="kswTextOn" format="string"/>
+        <attr name="kswTextOff" format="string"/>
+        <attr name="kswTextMarginH" format="dimension"/>
+    </declare-styleable>
+
+
+    <!--GTY-->
+    <declare-styleable name="GTYCircleImageView">
+        <attr name="outCircleColor" format="color"/>
+        <attr name="outCircleWidth" format="dimension"/>
+    </declare-styleable>
+
+    <!--选择时间-->
+    <declare-styleable name="LoopView">
+        <attr name="view_gravity">
+            <enum name="center" value="17"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="5"/>
+        </attr>
+        <attr name="lineColor" format="color"/>
+        <attr name="topBottomTextColor" format="color"/>
+        <attr name="centerTextColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="canLoop" format="boolean"/>
+        <attr name="initPosition" format="integer"/>
+        <attr name="drawItemCount" format="integer"/>
+        <attr name="lineSpacingMultiplier" format="float"/>
+
+
+
+        <!--set number of item displayed, default is 3-->
+        <attr name="npv_ShowCount" format="reference|integer" />
+        <!--set if show divider, default is true-->
+        <attr name="npv_ShowDivider" format="reference|boolean" />
+        <attr name="npv_DividerColor" format="reference|color" />
+        <attr name="npv_DividerMarginLeft" format="reference|dimension" />
+        <attr name="npv_DividerMarginRight" format="reference|dimension" />
+        <attr name="npv_DividerHeight" format="reference|dimension" />
+        <attr name="npv_TextColorNormal" format="reference|color" />
+        <attr name="npv_TextColorSelected" format="reference|color" />
+        <attr name="npv_TextColorHint" format="reference|color" />
+        <attr name="npv_TextSizeNormal" format="reference|dimension" />
+        <attr name="npv_TextSizeSelected" format="reference|dimension" />
+        <attr name="npv_TextSizeHint" format="reference|dimension" />
+        <attr name="npv_TextArray" format="reference" />
+        <attr name="npv_MinValue" format="reference|integer" />
+        <attr name="npv_MaxValue" format="reference|integer" />
+        <attr name="npv_WrapSelectorWheel" format="reference|boolean" />
+        <attr name="npv_RespondChangeOnDetached" format="reference|boolean" />
+        <attr name="npv_HintText" format="reference|string" />
+        <attr name="npv_EmptyItemHint" format="reference|string" />
+        <attr name="npv_MarginStartOfHint" format="reference|dimension" />
+        <attr name="npv_MarginEndOfHint" format="reference|dimension" />
+        <attr name="npv_ItemPaddingHorizontal" format="reference|dimension" />
+        <attr name="npv_ItemPaddingVertical" format="reference|dimension" />
+        <attr name="npv_RespondChangeInMainThread" format="reference|boolean" />
+        <attr name="npv_TextEllipsize" format="reference|string" />
+
+        <!--just used to measure maxWidth for wrap_content without hint,
+            the string array will never be displayed.
+            you can set this attr if you want to keep the wraped numberpickerview
+            width unchanged when alter the content list-->
+        <attr name="npv_AlternativeTextArrayWithMeasureHint" format="reference" />
+        <attr name="npv_AlternativeTextArrayWithoutMeasureHint" format="reference" />
+        <!--the max length of hint content-->
+        <attr name="npv_AlternativeHint" format="reference|string" />
+    </declare-styleable>
+</resources>

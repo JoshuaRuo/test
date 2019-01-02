@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/seal_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/staff_search_layout_head"
+        android:layout_width="match_parent"
+        android:layout_height="43dip"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/staff_search_btn_left"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_btn_back"
+            android:drawableLeft="@drawable/ac_back_icon"
+            android:paddingLeft="12dp"
+            android:gravity="center_vertical"
+            android:onClick="onHeadLeftButtonClick"
+            android:textColor="@drawable/selector_btn_top" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:background="#0083e0"
+            android:visibility="gone"
+            android:layout_toRightOf="@+id/btn_left"/>
+
+
+        <cn.cjsj.im.server.widget.ClearWriteEditText
+            android:id="@+id/staff_search_et"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/project_search_bg"
+            android:drawableLeft="@drawable/gty_search"
+            android:drawablePadding="5dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/text_black_color"
+            android:hint="@string/Search"
+            android:textColorHint="@color/color_66"
+            android:textSize="@dimen/font_size_14sp"
+            android:maxLines="1"
+            android:layout_toRightOf="@+id/staff_search_btn_left"
+            android:lines="1"
+            android:layout_centerVertical="true"
+            />
+
+
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/base_line_view"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_E5E8F3"/>
+
+
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/staff_search_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/staff_search_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+
+</LinearLayout>

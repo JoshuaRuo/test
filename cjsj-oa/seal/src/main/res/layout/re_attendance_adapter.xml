@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/attendance_adapter_layout"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="15dp"
+    android:gravity="center">
+
+    <FrameLayout
+        android:id="@+id/re_attendance_adapter_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/re_attendance_adapter_headimg"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/home_backlog_head_bg"
+            android:gravity="center"
+            android:scaleType="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_14sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:circleimageview="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/re_attendance_adapter_img"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mine_head_default_img"
+            circleimageview:civ_border_color="@color/de_transparent"
+            circleimageview:civ_border_overlay="false"
+            circleimageview:civ_border_width="0dp"
+
+            />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/re_attendance_adapter_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="名字"
+        android:textSize="@dimen/font_size_14sp"
+        android:textColor="@color/color_66"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

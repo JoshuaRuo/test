@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textSize="12sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/item_image"
+        android:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/mine_msg_mark_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="2"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/item_image"
+            android:background="@drawable/comer_mark"
+            android:visibility="invisible"
+            android:textSize="@dimen/common_border_10"/>
+    </RelativeLayout>
+</LinearLayout>

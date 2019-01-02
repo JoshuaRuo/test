@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/home_new_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <TextView
+            android:id="@+id/home_t_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/home_air_txt"
+            android:text="21℃"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/home_air_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:gravity="left"
+            android:textColor="@color/color_66"
+            android:textSize="@dimen/font_size_10sp" />
+
+        <TextView
+            android:id="@+id/home_new_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="@string/app_name"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp"
+            android:textStyle="bold" />
+
+
+        <View
+            android:id="@+id/main_base_newline_view"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.youth.banner.Banner
+                android:id="@+id/home_203_banner"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/home_203_banner_bg"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="15dp"
+                android:padding="5dp">
+
+
+
+                <me.bakumon.library.view.BulletinView
+                    android:id="@+id/bulletin_view_sale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="50dp"
+                    app:bulletinInterval="2000" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/home_right_icon" />
+
+
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/color_E5E8F3"
+                android:layout_marginLeft="15dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

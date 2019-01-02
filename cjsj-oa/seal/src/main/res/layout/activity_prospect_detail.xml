@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gty_page_bgcolor"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/prospect_detail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="3dp"
+                    android:lines="2"
+                    android:text="@string/test_string"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_18sp" />
+
+
+                <TextView
+                    android:id="@+id/prospect_detail_principal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_title"
+                    android:layout_marginTop="15dp"
+                    android:text="负责人:张三"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/prospect_detail_title"
+                    android:layout_marginTop="15dp"
+                    android:text="进行中"
+                    android:textColor="@color/color_2293ff"
+                    android:textSize="@dimen/font_size_14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/prospect_detail_start_time_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开始时间"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_start_time_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@+id/prospect_detail_start_time_title"
+                    android:text="2018-09-12"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+
+                <TextView
+                    android:id="@+id/prospect_detail_end_time_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_start_time_title"
+                    android:layout_marginTop="5dp"
+                    android:text="完成时间"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_end_time_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_start_time_title"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/prospect_detail_end_time_title"
+                    android:text="2018-09-12"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_total_time_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_end_time_title"
+                    android:layout_marginTop="5dp"
+                    android:text="工期长度"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_total_time_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_end_time_value"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/prospect_detail_total_time_title"
+                    android:text="365天"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/prospect_detail_participant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/btn_list_item_bg"
+                android:drawableRight="@drawable/gty_right_icon"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="15dp"
+                android:text="参与人"
+                android:textColor="@color/main_title_color_code"
+                android:textSize="@dimen/font_size_16sp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:padding="15dp">
+
+
+                <TextView
+                    android:id="@+id/prospect_detail_issubmitfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否提交资料"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_issubmitfile_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/prospect_detail_issubmitfile"
+                    android:text="是"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+
+                <TextView
+                    android:id="@+id/prospect_detail_point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_issubmitfile"
+                    android:layout_marginTop="5dp"
+                    android:text="资料提交节点"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_16sp" />
+
+
+                <TextView
+                    android:id="@+id/prospect_detail_point_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_issubmitfile"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/prospect_detail_point"
+                    android:text="70%"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_submit_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_point_value"
+                    android:layout_marginTop="5dp"
+                    android:text="资料提交节点"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_submit_status_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_point_value"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/prospect_detail_submit_status"
+                    android:text="已提交"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/prospect_detail_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="备注"
+                    android:textColor="@color/color_66"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/prospect_detail_comments_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prospect_detail_comments"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/test_string"
+                    android:textColor="@color/main_title_color_code"
+                    android:textSize="@dimen/font_size_16sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>

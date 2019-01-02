@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white">
+    <ProgressBar
+        android:id="@+id/checking_web_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dip"
+        android:progressDrawable="@drawable/webview_pg_bg"
+        android:visibility="gone"
+        />
+    <WebView
+        android:id="@+id/checking_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        >
+
+
+    </WebView>
+
+    <LinearLayout
+        android:id="@+id/checking_default_layout_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:src="@drawable/pic_attendance_icon"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="你还未加入到考勤组，请联系管理员！"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_14sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

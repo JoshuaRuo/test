@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/testid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/re_his_type_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="旷工补卡"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/re_his_create_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="2018-06-13 11:53"
+            android:textColor="@color/color_999999"
+            android:layout_marginRight="5dp"
+            android:textSize="@dimen/font_size_14sp" />
+
+        <TextView
+            android:id="@+id/re_his_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/re_his_type_name_tv"
+            android:text="2018-06-13 11:53"
+            android:textColor="@color/color_66"
+            android:layout_marginLeft="5dp"
+            android:textSize="@dimen/font_size_14sp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/re_his_status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/re_his_create_time_tv"
+            android:text="已完成"
+            android:textColor="@color/color_04b600"
+            android:textSize="@dimen/font_size_14sp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/re_his_bottom_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_E5E8F3"
+        android:layout_marginLeft="10dp"
+        />
+</LinearLayout>

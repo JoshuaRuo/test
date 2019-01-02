@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <cn.cjsj.im.ui.widget.DrawableCenterTextView
+        android:id="@+id/department_staff_search_bt"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/project_search_bg"
+        android:drawableLeft="@drawable/gty_search"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="@string/Search"
+        android:textColor="@color/color_999999" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/color_E5E8F3" />
+
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/department_staff_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/department_staff_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+</LinearLayout>
