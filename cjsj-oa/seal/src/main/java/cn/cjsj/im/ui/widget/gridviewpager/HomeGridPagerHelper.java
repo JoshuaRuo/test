@@ -20,8 +20,10 @@ import cn.cjsj.im.gty.tools.IOKit;
 
 public class HomeGridPagerHelper {
     public static final String GROUP_FAVORITE = "home_item_group";
+    public static final String GROUP_OTHER = "home_item_other";
     /*分组数据的缓存列表，初始化分组的时候用*/
     private List<MenuItem> favoriteList;
+    private List<MenuItem> otherList;
 
     /**
      * 用于保存本地数据的文件名字
@@ -30,7 +32,7 @@ public class HomeGridPagerHelper {
     /**
      * 是否已经进行过初始化的字段名
      */
-    private static final String PREFERENCE_HAS_EVER_INIT = "has_init181219";
+    private static final String PREFERENCE_HAS_EVER_INIT = "has_init190103";
 
     private int itemCounter = 0;//用于统计共有多少个子item,依次给每个item设置独立的id
 
@@ -42,8 +44,10 @@ public class HomeGridPagerHelper {
             String jsonStr = IOKit.getStringFromAssets(ContextUtil.getContext(), "home.json");//获取到assets目录下的报文
             JSONObject dataJson = JSON.parseObject(jsonStr);//将报文string转换为JSON
             favoriteList = parseJSONList(dataJson, GROUP_FAVORITE);
+            otherList = parseJSONList(dataJson, GROUP_OTHER);
 
             savePreferFavoriteList(favoriteList);
+            savePreferOtherList(otherList);
         }
     }
 
@@ -88,7 +92,7 @@ public class HomeGridPagerHelper {
 //        if(array != null){
         try {
             return array.toJavaList(MenuItem.class);
-        }catch (NullPointerException nullException){
+        } catch (NullPointerException nullException) {
             return null;
         }
 
@@ -106,12 +110,17 @@ public class HomeGridPagerHelper {
         return ContextUtil.getContext().getSharedPreferences(PREFERENCE_MENU_DATA_NAME, Context.MODE_PRIVATE);
     }
 
-      /*----------------------------原始方法-----------------------------------*/
+    /*----------------------------原始方法-----------------------------------*/
 
     /*----------------------------衍生方法-----------------------------------*/
     public static void savePreferFavoriteList(List<MenuItem> list) {
         savePreferMenuListData(GROUP_FAVORITE, list);
     }
+
+    public static void savePreferOtherList(List<MenuItem> list) {
+        savePreferMenuListData(GROUP_OTHER, list);
+    }
+
     /**
      * 将List转换为JsonString保存进SharedPreference
      *
@@ -126,6 +135,10 @@ public class HomeGridPagerHelper {
 
     public static List<MenuItem> getPreferFavoriteList() {
         return getPreferMenuListData(GROUP_FAVORITE);
+    }
+
+    public static List<MenuItem> getPreferOtherList() {
+        return getPreferMenuListData(GROUP_OTHER);
     }
 
     public static boolean hasEverInit() {

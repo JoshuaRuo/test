@@ -31,7 +31,7 @@ public class AboutUsActivity extends BaseActivity{
         setContentView(R.layout.activity_about_us);
         ButterKnife.bind(this);
         setTitle("关于我们");
-        mVersion.setText("V" + getVersion() + ".181219");
+        mVersion.setText("V" + getVersion() + ".190103");
 
 
         NoUnderlineSpan mNoUnderlineSpan = new NoUnderlineSpan();

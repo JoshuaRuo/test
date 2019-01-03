@@ -29,6 +29,7 @@ import java.util.List;
 import cn.cjsj.im.R;
 import cn.cjsj.im.gty.LogUtils;
 import cn.cjsj.im.ui.fragment.ContactAddressFragment;
+import cn.cjsj.im.ui.fragment.HomePage203Fragment;
 import cn.cjsj.im.ui.fragment.MineFragment;
 import cn.cjsj.im.ui.fragment.NewHomeFragment;
 import cn.cjsj.im.ui.fragment.ProjectFragment;
@@ -114,7 +115,8 @@ public class MainActivity extends FragmentActivity implements
         mViewPager = findViewById(R.id.main_viewpager);
 
 
-        mFragment.add(new NewHomeFragment());
+//        mFragment.add(new NewHomeFragment());
+        mFragment.add(new HomePage203Fragment());
         mFragment.add(new ProjectFragment());
         mFragment.add(new ContactAddressFragment());
 //        mFragment.add(new DiscoverFragment());
