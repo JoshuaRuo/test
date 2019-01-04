@@ -75,6 +75,7 @@ public class CheckOnWorkStatisticsFragment extends Fragment {
 
     private int mThisYear = 0;
     private int mThisMonth = 0;
+    private int mToday = 0;
     private String mSelectTimeValue;
 
     private CheckStatisticsResponse mCheckStatisticsResponse;
@@ -406,8 +407,17 @@ public class CheckOnWorkStatisticsFragment extends Fragment {
 //
 //    }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mHandler.sendEmptyMessage(SELECT_VALUE_TIME);
+    }
+
     public void getToday() {
         Calendar now = Calendar.getInstance();
         mThisYear = now.get(Calendar.YEAR);
+        mThisMonth = now.get(Calendar.MONTH) + 1;
+        mToday = now.get(Calendar.DAY_OF_MONTH);
     }
 }

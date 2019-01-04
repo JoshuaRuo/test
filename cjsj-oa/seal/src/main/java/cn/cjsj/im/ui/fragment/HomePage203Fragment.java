@@ -30,6 +30,7 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -39,12 +40,16 @@ import cn.bingoogolapple.androidcommon.adapter.BGAOnRVItemClickListener;
 import cn.cjsj.im.App;
 import cn.cjsj.im.R;
 import cn.cjsj.im.gty.bean.AgendaResponse;
+import cn.cjsj.im.gty.bean.CheckStatisticsResponse;
 import cn.cjsj.im.gty.bean.NoticeAndIntegralBean;
 import cn.cjsj.im.gty.home.entity.MenuItem;
 import cn.cjsj.im.gty.http.HttpMethods;
 import cn.cjsj.im.gty.subscribers.ProgressSubscriber;
 import cn.cjsj.im.gty.subscribers.SubscriberOnNextErrorListener;
 import cn.cjsj.im.model.NoticeDetailBean;
+import cn.cjsj.im.ui.activity.AgendaActivity;
+import cn.cjsj.im.ui.activity.CheckWorkTabActivity;
+import cn.cjsj.im.ui.activity.DailyPaperActivity;
 import cn.cjsj.im.ui.activity.NoticeDetailActivity;
 import cn.cjsj.im.ui.adapter.Home203RvAdapter;
 import cn.cjsj.im.ui.adapter.ImageBannerLoader;
@@ -91,6 +96,33 @@ public class HomePage203Fragment extends Fragment {
     @Bind(R.id.other_use_status_title)
     TextView mOtherUseStatusTitle;
 
+    @Bind(R.id.home_check_status_time_tv)
+    TextView mCheckStatus;
+
+    @Bind(R.id.home_dailypaper_status_time_tv)
+    TextView mDailyPaperStatus;
+
+    @Bind(R.id.home_to_write_dailypaper)
+    RelativeLayout mDaily;
+
+    @Bind(R.id.home_to_check)
+    RelativeLayout mToCheck;
+
+    @Bind(R.id.home_wait_list_tv)
+    TextView mGoAgenda;
+
+    @Bind(R.id.home_wait_list_icon_tv)
+    TextView mAgendaCount;
+
+    @Bind(R.id.home_my_send_list_tv)
+    TextView mGoMyRequest;
+
+    @Bind(R.id.home_my_send_icon_tv)
+    TextView myRequestCount;
+
+    @Bind(R.id.home_my_attendance_icon_tv)
+    TextView mCheckCount;
+
     private int mViewHeight = 343;//组件高度
     private float mDensity;
     private boolean isFold = false;//是否是收起状态
@@ -99,6 +131,9 @@ public class HomePage203Fragment extends Fragment {
     @Bind(R.id.bulletin_view_sale)
     BulletinView mBulletinView;
 
+    @Bind(R.id.home_my_attendance_tv)
+    TextView myCheckTotal;
+
     private Home203RvAdapter mMainAdapter;
     private Home203RvAdapter mOtherAdapter;
 
@@ -106,6 +141,7 @@ public class HomePage203Fragment extends Fragment {
     private SubscriberOnNextErrorListener mGetBackLogSubscriber; //待办
     private SubscriberOnNextErrorListener mGetMyRequestSubscriber; //我的请求
     private SubscriberOnNextErrorListener mCheckTodaySub;//检查考勤
+    private SubscriberOnNextErrorListener mStatisticsSubscriber; //出勤天数
 
     //data
     private List<NoticeDetailBean> mList;//公告
@@ -113,6 +149,12 @@ public class HomePage203Fragment extends Fragment {
     private static final int REFRESH_COMPLETE = 0X110;//刷新
     private List<MenuItem> mFavList;
     private List<MenuItem> mOtherList;
+    private int mThisYear;
+    private int mThisMonth;
+    private int mToday;
+    private AgendaResponse mAgendaResponse; //待办数据
+    private AgendaResponse myRequestResponse; //我的请求数据
+    private CheckStatisticsResponse mCheckStatisticsResponse; //出勤天数数据
 
     private Handler mHandler = new Handler() {
         @Override
@@ -120,9 +162,10 @@ public class HomePage203Fragment extends Fragment {
             switch (msg.what) {
                 case REFRESH_COMPLETE:
                     getnotice(mToken);
-//                    getBackLog(mToken);
-//                    getMyRequest(mToken);
-//                    getCheckToDay(mToken);
+                    getBackLog(mToken);
+                    getMyRequest(mToken);
+                    getCheckToDay(mToken);
+                    getCheckStatistics(mToken, mThisYear + "-" + mThisMonth);
                     break;
                 default:
                     break;
@@ -167,6 +210,7 @@ public class HomePage203Fragment extends Fragment {
 
         mFavList.addAll(HomeGridPagerHelper.getPreferFavoriteList());
         mOtherList.addAll(HomeGridPagerHelper.getPreferOtherList());
+        getToday();
     }
 
     private void initDefaultView() {
@@ -254,7 +298,127 @@ public class HomePage203Fragment extends Fragment {
 
             }
         };
+        //检查考勤
+        mCheckTodaySub = new SubscriberOnNextErrorListener<JSONObject>() {
+            @Override
+            public void onNext(JSONObject jsonObject) {
+                if (jsonObject != null) {
+                    if (jsonObject.getInteger("checkForenoon") == 0) {
+                        mCheckStatus.setText("08:30 未打卡");
+                        RxView.clicks(mToCheck)
+                                .throttleFirst(1, TimeUnit.SECONDS)
+                                .subscribe(new Action1<Void>() {
+                                    @Override
+                                    public void call(Void aVoid) {
+                                        Intent intent = new Intent(getActivity(), CheckWorkTabActivity.class);
+                                        intent.putExtra("actDefId", "bksq:1:10000002508861");
+                                        startActivity(intent);
+                                    }
+                                });
+                    } else if (jsonObject.getInteger("checkForenoon") == 1 && jsonObject.getInteger("checkAfternoon") == 0) {
+                        mCheckStatus.setText("17:30 未打卡");
+                        RxView.clicks(mToCheck)
+                                .throttleFirst(1, TimeUnit.SECONDS)
+                                .subscribe(new Action1<Void>() {
+                                    @Override
+                                    public void call(Void aVoid) {
+                                        Intent intent = new Intent(getActivity(), CheckWorkTabActivity.class);
+                                        intent.putExtra("actDefId", "bksq:1:10000002508861");
+                                        startActivity(intent);
+                                    }
+                                });
+                    } else if (jsonObject.getInteger("checkForenoon") == 1 && jsonObject.getInteger("checkAfternoon") == 1) {
+                        mCheckStatus.setText("今日已完成");
+                    }
+
+                    if (jsonObject.getInteger("havePaper") == 0) {
+                        mDailyPaperStatus.setText(mThisMonth + "月" + mToday + "日日志");
+                        RxView.clicks(mDaily)
+                                .throttleFirst(1, TimeUnit.SECONDS)
+                                .subscribe(new Action1<Void>() {
+                                    @Override
+                                    public void call(Void aVoid) {
+                                        Intent intent = new Intent(getActivity(), DailyPaperActivity.class);
+                                        intent.putExtra("dailyPaperType", 1);
+                                        startActivity(intent);
+                                    }
+                                });
+                    } else {
+                        mDailyPaperStatus.setText("今日已完成");
+                    }
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        };
         getnotice(mToken);
+
+        //待我审批
+        mGetBackLogSubscriber = new SubscriberOnNextErrorListener<AgendaResponse>() {
+            @Override
+            public void onNext(AgendaResponse model) {
+                mAgendaResponse = model;
+                if (mAgendaResponse.getProcessFinishList().size() > 0) {
+                    mAgendaCount.setText(mAgendaResponse.getProcessFinishList().size() + "");
+                    mAgendaCount.setVisibility(View.VISIBLE);
+                } else {
+                    mAgendaCount.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        };
+
+        //我的请求
+        mGetMyRequestSubscriber = new SubscriberOnNextErrorListener<AgendaResponse>() {
+            @Override
+            public void onNext(AgendaResponse model) {
+                myRequestResponse = model;
+                int count = 0;
+                for (int i = 0; i < model.getProcessFinishList().size(); i++) {
+                    if (model.getProcessFinishList().get(i).getStatus() != 2) {
+                        count++;
+                    }
+                }
+                if (count > 0) {
+
+                    myRequestCount.setText(count + "");
+                    myRequestCount.setVisibility(View.VISIBLE);
+                } else {
+                    myRequestCount.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        };
+        //出勤天数
+        mStatisticsSubscriber = new SubscriberOnNextErrorListener<CheckStatisticsResponse>() {
+            @Override
+            public void onNext(CheckStatisticsResponse model) {
+                mCheckStatisticsResponse = model;
+                if (mCheckStatisticsResponse.getCheckInDaysList().size() != 0) {
+
+                    mCheckCount.setText(mCheckStatisticsResponse.getCheckInDaysList().size() + "");
+                    mCheckCount.setVisibility(View.VISIBLE);
+                } else {
+                    mCheckCount.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        };
 
         RxView.clicks(mOftenUseLayout)
                 .throttleFirst(1, TimeUnit.SECONDS)
@@ -289,6 +453,36 @@ public class HomePage203Fragment extends Fragment {
                         }
                     }
                 });
+
+        RxView.clicks(mGoAgenda)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        startActivity(new Intent(getActivity(), AgendaActivity.class));
+                    }
+                });
+        RxView.clicks(mGoMyRequest)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        Intent intent = new Intent(getActivity(), AgendaActivity.class);
+                        intent.putExtra("myRequest", 1);
+                        startActivity(intent);
+                    }
+                });
+        RxView.clicks(myCheckTotal)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        Intent intent = new Intent(getActivity(), CheckWorkTabActivity.class);
+                        intent.putExtra("actDefId", "bksq:1:10000002508861");
+                        intent.putExtra("fromMine", true);
+                        startActivity(intent);
+                    }
+                });
     }
 
     @Override
@@ -316,6 +510,7 @@ public class HomePage203Fragment extends Fragment {
                         });
             }
         });
+        mHandler.sendEmptyMessage(REFRESH_COMPLETE);
     }
 
 
@@ -426,4 +621,20 @@ public class HomePage203Fragment extends Fragment {
 
     }
 
+    /**
+     * 获取出勤天数
+     *
+     * @param token
+     * @param yearMonth
+     */
+    public void getCheckStatistics(String token, String yearMonth) {
+        HttpMethods.getInstance().getCheckStatistics(new ProgressSubscriber<CheckStatisticsResponse>(mStatisticsSubscriber, getActivity(), false), token, yearMonth);
+    }
+
+    public void getToday() {
+        Calendar now = Calendar.getInstance();
+        mThisYear = now.get(Calendar.YEAR);
+        mThisMonth = now.get(Calendar.MONTH) + 1;
+        mToday = now.get(Calendar.DAY_OF_MONTH);
+    }
 }

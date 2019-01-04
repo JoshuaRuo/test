@@ -57,10 +57,10 @@ import rx.schedulers.Schedulers;
  */
 public class HttpMethods {
 
-//                        public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
+                        public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
 //    public static final String BASE_URL = "http://192.168.17.57:8080/"; //本地
 //    public static final String BASE_URL = "http://192.168.17.252:8080/"; // 詹
-    public static final String BASE_URL = "http://192.168.15.140:8082/app/";  //内网测试环境
+//    public static final String BASE_URL = "http://192.168.15.140:8082/app/";  //内网测试环境
 
     private static final int DEFAULT_TIMEOUT = 30;
 
@@ -160,9 +160,10 @@ public class HttpMethods {
      *
      * @param subscriber
      * @param token
+     * @param type 0 待办 1已办结 2所有
      */
     public void getMyRequest(Subscriber<AgendaResponse> subscriber, String token) {
-        Observable observable = connectionService.getMyRequest(App.getInstance().getToken(), 2, 99, 1)
+        Observable observable = connectionService.getMyRequest(App.getInstance().getToken(), 0, 99, 1)
                 .map(new HttpResultFunc<AgendaResponse>());
 
         toSubscribe(observable, subscriber);
