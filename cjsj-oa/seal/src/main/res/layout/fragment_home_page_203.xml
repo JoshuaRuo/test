@@ -353,14 +353,14 @@
             <RelativeLayout
                 android:id="@+id/often_use_layout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="50dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="17dp"
                     android:text="常用"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/main_title_color_code"
                     android:textSize="@dimen/font_size_17sp"
                     android:textStyle="bold" />
@@ -371,7 +371,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="17dp"
+                    android:layout_centerVertical="true"
                     android:text="收起"
                     android:textColor="@color/color_999999"
                     android:textSize="@dimen/font_size_15sp"
@@ -399,13 +399,13 @@
             <RelativeLayout
                 android:id="@+id/other_use_layout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="50dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="17dp"
+                    android:layout_centerVertical="true"
                     android:text="其它"
                     android:textColor="@color/main_title_color_code"
                     android:textSize="@dimen/font_size_17sp"
@@ -417,7 +417,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="17dp"
+                    android:layout_centerVertical="true"
                     android:text="展开"
                     android:textColor="@color/color_999999"
                     android:textSize="@dimen/font_size_15sp"
@@ -433,6 +433,19 @@
                 android:scrollbars="none">
 
             </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:gravity="center"
+                android:background="@color/gty_page_bgcolor">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/slogan"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
