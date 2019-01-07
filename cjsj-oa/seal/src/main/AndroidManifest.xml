@@ -401,6 +401,10 @@
         <activity
             android:name=".ui.activity.ApprovalHistoryActivity"
             android:screenOrientation="portrait" />
+        <!-- 日志日历 -->
+        <activity
+            android:name=".ui.activity.CalendarActivity"
+            android:screenOrientation="portrait" />
 
         <!-- 定位测试 -->
         <activity

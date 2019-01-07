@@ -57,9 +57,9 @@ import rx.schedulers.Schedulers;
  */
 public class HttpMethods {
 
-                        public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
+//                        public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
 //    public static final String BASE_URL = "http://192.168.17.57:8080/"; //本地
-//    public static final String BASE_URL = "http://192.168.17.252:8080/"; // 詹
+    public static final String BASE_URL = "http://192.168.15.198:8082/"; // 詹
 //    public static final String BASE_URL = "http://192.168.15.140:8082/app/";  //内网测试环境
 
     private static final int DEFAULT_TIMEOUT = 30;
@@ -743,6 +743,19 @@ public class HttpMethods {
     public void getMemberList(Subscriber<ProjectDetailResponse> subscriber, String token, long id){
         Observable observable = connectionService.getMemberList(token,id)
                 .map(new HttpResultFunc<ProjectDetailResponse>());
+
+        toSubscribe(observable,subscriber);
+    }
+
+    /**
+     * 获取日志日历
+     * @param subscriber
+     * @param token
+     * @param date
+     */
+    public void getDailyCalendar(Subscriber<List<String>> subscriber,String token,String date){
+        Observable observable = connectionService.getDailyPaperDefault(token,date)
+                .map(new HttpResultFunc<List<String>>());
 
         toSubscribe(observable,subscriber);
     }

@@ -249,4 +249,15 @@
       <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
            <item name="android:button">@drawable/select_people_checkbox_bg</item>
        </style>
+
+    <!--日志日历-->
+    <style name="weekName">
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/main_title_color_code</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>

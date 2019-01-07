@@ -48,6 +48,7 @@ import cn.cjsj.im.gty.subscribers.ProgressSubscriber;
 import cn.cjsj.im.gty.subscribers.SubscriberOnNextErrorListener;
 import cn.cjsj.im.model.NoticeDetailBean;
 import cn.cjsj.im.ui.activity.AgendaActivity;
+import cn.cjsj.im.ui.activity.CalendarActivity;
 import cn.cjsj.im.ui.activity.CheckWorkTabActivity;
 import cn.cjsj.im.ui.activity.DailyPaperActivity;
 import cn.cjsj.im.ui.activity.NoticeDetailActivity;
@@ -122,6 +123,9 @@ public class HomePage203Fragment extends Fragment {
 
     @Bind(R.id.home_my_attendance_icon_tv)
     TextView mCheckCount;
+
+    @Bind(R.id.home_my_dailypager_tv)
+    TextView myLog;
 
     private int mViewHeight = 343;//组件高度
     private float mDensity;
@@ -481,6 +485,15 @@ public class HomePage203Fragment extends Fragment {
                         intent.putExtra("actDefId", "bksq:1:10000002508861");
                         intent.putExtra("fromMine", true);
                         startActivity(intent);
+                    }
+                });
+
+        RxView.clicks(myLog)
+                .throttleFirst(1,TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                   startActivity(new Intent(getActivity(), CalendarActivity.class));
                     }
                 });
     }

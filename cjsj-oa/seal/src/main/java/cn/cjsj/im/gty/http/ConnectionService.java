@@ -233,4 +233,9 @@ public interface ConnectionService {
     //项目成员
     @GET("project/memberList/{id}")
     Observable<HttpResult<ProjectDetailResponse>> getMemberList(@Header("token")String token, @Path("id")long id);
+
+    //日历日报
+    @GET("dailyPaper/checkDailyPaper/{date}")
+    Observable<HttpResult<List<String>>> getDailyPaperDefault(@Header("token")String token,@Path("date") String date);
+
 }
