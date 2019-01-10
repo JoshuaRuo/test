@@ -104,7 +104,7 @@
       "desc": "6",
       "group": "home_item_group",
       "notification": false,
-      "activity": "cn.cjsj.im.ui.activity.DailyPaperActivity"
+      "activity": "cn.cjsj.im.ui.activity.WorkLogClassActivity"
     },
     {
       "name": "投票",

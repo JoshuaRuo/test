@@ -1,6 +1,7 @@
 package cn.cjsj.im.ui.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -54,8 +56,8 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
     private CalendarAdapter calV = null;
     private ViewFlipper flipper = null;
     private GridView gridView = null;
-    private static int jumpMonth = 0; // 每次滑动，增加或减去一个月,默认为0（即显示当前月）
-    private static int jumpYear = 0; // 滑动跨越一年，则增加或者减去一年,默认为0(即当前年)
+    private int jumpMonth = 0; // 每次滑动，增加或减去一个月,默认为0（即显示当前月）
+    private int jumpYear = 0; // 滑动跨越一年，则增加或者减去一年,默认为0(即当前年)
     private int year_c = 0;
     private int month_c = 0;
     private int day_c = 0;
@@ -136,12 +138,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
                     Collections.sort(mList);
 
 
-                    /****test****/
-
-
-
-                    /****test****/
-                    Log.v("LY__test", map.toString());
+                    Log.v("LY__test", mList.toString());
 
 //                    calV = new CalendarAdapter(CalendarActivity.this, mList, getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
 //                    gridView.setAdapter(calV);
@@ -157,7 +154,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
 
             }
         };
-//        getDailyCalendar(mToken, mThisYear + "-" + mThisMonth);
+        getDailyCalendar(mToken, mThisYear + "-" + mThisMonth);
 
     }
 
@@ -187,7 +184,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
         addGridView(); // 添加一个gridView
         jumpMonth++; // 下一个月
 
-        calV = new CalendarAdapter(this, mList, this.getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
+        calV = new CalendarAdapter(this, mList, this.getResources(), jumpMonth, mThisYear, year_c, month_c, day_c);
         gridView.setAdapter(calV);
         addTextToTopTextView(currentMonth); // 移动到下一月后，将当月显示在头标题中
         gvFlag++;
@@ -277,10 +274,17 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
                     // //这一天的阴历
                     String scheduleYear = calV.getShowYear();
                     String scheduleMonth = calV.getShowMonth();
-                    Toast.makeText(CalendarActivity.this, scheduleYear + "-" + scheduleMonth + "-" + scheduleDay, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(CalendarActivity.this, scheduleYear + "-" + scheduleMonth + "-" + scheduleDay, Toast.LENGTH_SHORT).show();
                     // Toast.makeText(CalendarActivity.this, "点击了该条目",
                     // Toast.LENGTH_SHORT).show();
+                    if (mList.contains(Integer.parseInt(scheduleDay))) {
+                        Intent intent = new Intent(CalendarActivity.this, DailyPaperActivity.class);
+                        intent.putExtra("dailyPaperType", 1);
+                        startActivity(intent);
+                    }
                 }
+
+
             }
         });
         gridView.setLayoutParams(params);
@@ -318,21 +322,14 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
         mToday = now.get(Calendar.DAY_OF_MONTH);
     }
 
-    private int getAddMonth(int month) {
-        month = month + 1;
-        if (month == 13) {
-            month = 1;
-            mThisYear = mThisYear + 1;
+    private boolean getContains(int arg) {
+        for (int i = 0; i < mList.size(); i++) {
+            if (mList.get(i) == arg) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        return month;
-    }
-
-    private int getSubtractMonth(int month) {
-        month = month - 1;
-        if (month == 0) {
-            month = 12;
-            mThisYear = mThisYear - 1;
-        }
-        return month;
+        return false;
     }
 }

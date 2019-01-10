@@ -57,6 +57,9 @@ public class TreeViewHolder extends TreeNode.BaseNodeViewHolder<TreeViewHolder.I
             tp.setFakeBoldText(false);
         }
         if (node.getLevel() == 2) {
+            RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) left.getLayoutParams();
+            params1.setMargins(160,0,0,0);
+            left.setLayoutParams(params1);
             left.setImageResource(R.mipmap.contact_level2);
             /**临时结构**/
             itemLayout.setOnClickListener(new View.OnClickListener() {

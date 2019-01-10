@@ -3,6 +3,7 @@ package cn.cjsj.im.ui.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,6 +22,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Adapter;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +45,7 @@ import cn.cjsj.im.R;
 import cn.cjsj.im.gty.bean.AgendaResponse;
 import cn.cjsj.im.gty.bean.CheckStatisticsResponse;
 import cn.cjsj.im.gty.bean.NoticeAndIntegralBean;
+import cn.cjsj.im.gty.bean.OAUserBean;
 import cn.cjsj.im.gty.home.entity.MenuItem;
 import cn.cjsj.im.gty.http.HttpMethods;
 import cn.cjsj.im.gty.subscribers.ProgressSubscriber;
@@ -67,7 +71,7 @@ import rx.functions.Action1;
 /**
  * Created by LuoYang on 2018/12/27 15:40
  */
-public class HomePage203Fragment extends Fragment {
+public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private Typeface mTypeface;
     @Bind(R.id.home_t_num)
@@ -127,6 +131,12 @@ public class HomePage203Fragment extends Fragment {
     @Bind(R.id.home_my_dailypager_tv)
     TextView myLog;
 
+    @Bind(R.id.new_home_swipe_ly)
+    SwipeRefreshLayout mSwipeLayout;
+
+    @Bind(R.id.home_203_scrollview)
+    ScrollView mScrollView;
+
     private int mViewHeight = 343;//组件高度
     private float mDensity;
     private boolean isFold = false;//是否是收起状态
@@ -138,6 +148,9 @@ public class HomePage203Fragment extends Fragment {
     @Bind(R.id.home_my_attendance_tv)
     TextView myCheckTotal;
 
+    @Bind(R.id.home_my_dailypager_icon_tv)
+    TextView mDailyNormalCountTv;
+
     private Home203RvAdapter mMainAdapter;
     private Home203RvAdapter mOtherAdapter;
 
@@ -146,6 +159,7 @@ public class HomePage203Fragment extends Fragment {
     private SubscriberOnNextErrorListener mGetMyRequestSubscriber; //我的请求
     private SubscriberOnNextErrorListener mCheckTodaySub;//检查考勤
     private SubscriberOnNextErrorListener mStatisticsSubscriber; //出勤天数
+    private SubscriberOnNextErrorListener mGetUserInfoSubscriber;//用户信息
 
     //data
     private List<NoticeDetailBean> mList;//公告
@@ -170,6 +184,7 @@ public class HomePage203Fragment extends Fragment {
                     getMyRequest(mToken);
                     getCheckToDay(mToken);
                     getCheckStatistics(mToken, mThisYear + "-" + mThisMonth);
+                    getUserInfo(mToken);
                     break;
                 default:
                     break;
@@ -187,13 +202,6 @@ public class HomePage203Fragment extends Fragment {
         //获取像素密度
         mDensity = getResources().getDisplayMetrics().density;
         //获取布局的高度
-//        int w = View.MeasureSpec.makeMeasureSpec(0,
-//                View.MeasureSpec.UNSPECIFIED);
-//        int h = View.MeasureSpec.makeMeasureSpec(0,
-//                View.MeasureSpec.UNSPECIFIED);
-//        mOftenRv.measure(w, h);
-//        int height = mOftenRv.getMeasuredHeight();
-//        mViewHeight = (int) (mDensity * height + 0.5);
         initData();
         initDefaultView();
         return view;
@@ -218,12 +226,16 @@ public class HomePage203Fragment extends Fragment {
     }
 
     private void initDefaultView() {
+        mSwipeLayout.setOnRefreshListener(this);
+        mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
 
         /***banner*/
         mBanner.setIndicatorGravity(BannerConfig.RIGHT);
         List<Integer> list = new ArrayList<>();
         list.add(R.drawable.home_banner);
         list.add(R.drawable.home_banner1);
+        list.add(R.drawable.home_banner2);
         mBanner.setDelayTime(4000);
         mBanner.setIndicatorGravity(20);
         mBanner.setImages(list).setImageLoader(new ImageBannerLoader())
@@ -295,6 +307,28 @@ public class HomePage203Fragment extends Fragment {
                         startActivity(intent);
                     }
                 });
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        };
+        //获取用户信息(考勤月日志数量getNormalDaily)
+        mGetUserInfoSubscriber = new SubscriberOnNextErrorListener<OAUserBean>() {
+            @Override
+            public void onNext(OAUserBean oaUserBean) {
+               if (oaUserBean.getNormalDaily() != 0){
+                   mDailyNormalCountTv.setVisibility(View.VISIBLE);
+                   mDailyNormalCountTv.setText(oaUserBean.getNormalDaily() + "");
+
+               }else {
+                   mDailyNormalCountTv.setVisibility(View.GONE);
+               }
+
+                if (mSwipeLayout.isRefreshing()) {
+                    mSwipeLayout.setRefreshing(false);
+                }
             }
 
             @Override
@@ -489,13 +523,15 @@ public class HomePage203Fragment extends Fragment {
                 });
 
         RxView.clicks(myLog)
-                .throttleFirst(1,TimeUnit.SECONDS)
+                .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                   startActivity(new Intent(getActivity(), CalendarActivity.class));
+                        startActivity(new Intent(getActivity(), CalendarActivity.class));
                     }
                 });
+
+
     }
 
     @Override
@@ -524,8 +560,26 @@ public class HomePage203Fragment extends Fragment {
             }
         });
         mHandler.sendEmptyMessage(REFRESH_COMPLETE);
+        mScrollView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mScrollView.fullScroll(View.FOCUS_UP);
+            }
+        },1000);
     }
 
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        Log.v("LY__hidden",hidden+"");
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.v("LY__hidden","onAttach");
+    }
 
     private void animateOpen(RecyclerView view) {
         view.setVisibility(View.VISIBLE);
@@ -635,6 +689,15 @@ public class HomePage203Fragment extends Fragment {
     }
 
     /**
+     * 获取用户信息
+     *
+     * @param token
+     */
+    public void getUserInfo(String token) {
+        HttpMethods.getInstance().getUserInfo(new ProgressSubscriber<OAUserBean>(mGetUserInfoSubscriber, getActivity(), false), token);
+    }
+
+    /**
      * 获取出勤天数
      *
      * @param token
@@ -649,5 +712,10 @@ public class HomePage203Fragment extends Fragment {
         mThisYear = now.get(Calendar.YEAR);
         mThisMonth = now.get(Calendar.MONTH) + 1;
         mToday = now.get(Calendar.DAY_OF_MONTH);
+    }
+
+    @Override
+    public void onRefresh() {
+        mHandler.sendEmptyMessage(REFRESH_COMPLETE);
     }
 }

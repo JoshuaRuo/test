@@ -26,24 +26,29 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.cjsj.im.App;
 import cn.cjsj.im.R;
 import cn.cjsj.im.gty.LogUtils;
+import cn.cjsj.im.gty.http.HttpMethods;
+import cn.cjsj.im.gty.subscribers.ProgressSubscriber;
+import cn.cjsj.im.gty.subscribers.SubscriberOnNextErrorListener;
 import cn.cjsj.im.ui.fragment.ContactAddressFragment;
 import cn.cjsj.im.ui.fragment.HomePage203Fragment;
 import cn.cjsj.im.ui.fragment.MineFragment;
 import cn.cjsj.im.ui.fragment.NewHomeFragment;
+import cn.cjsj.im.ui.fragment.News203Fragment;
 import cn.cjsj.im.ui.fragment.ProjectFragment;
 
 @SuppressWarnings("deprecation")
 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
 public class MainActivity extends FragmentActivity implements
         ViewPager.OnPageChangeListener,
-        View.OnClickListener{
+        View.OnClickListener {
 
     public static ViewPager mViewPager;
     private List<Fragment> mFragment = new ArrayList<>();
-    private ImageView  mImageChats, mImageContact, mImageFind, mImageMe, mMineRed;
-    private TextView mTextChats, mTextContact, mTextFind, mTextMe,mFilter;
+    private ImageView mImageChats, mImageContact, mImageFind, mImageMe, mMineRed, mImgNews;
+    private TextView mTextChats, mTextContact, mTextFind, mTextMe, mFilter, mNewsTv;
     private ImageView mSearchImageView;
     private ImageView mNews;
     private TextView mTitle;
@@ -51,24 +56,49 @@ public class MainActivity extends FragmentActivity implements
     private LinearLayout mTopLayout;
     private View mBottomLine;
     private Typeface mTypeface;
+    private TextView mNewsCount;
+    private String mToken;
     /**
      * 会话列表的fragment
      */
     private boolean isDebug;
     private Context mContext;
 
+    private SubscriberOnNextErrorListener mSubscriber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContext = this;
+        mToken = App.getInstance().getToken();
         isDebug = getSharedPreferences("config", MODE_PRIVATE).getBoolean("isDebug", false);
-        mTypeface = Typeface.createFromAsset(getAssets(),"fonts/STSongti-SC-Bold-02.ttf");
+        mTypeface = Typeface.createFromAsset(getAssets(), "fonts/STSongti-SC-Bold-02.ttf");
         initViews();
         changeTextViewColor();
-        changeSelectedTabState(0);
+        changeSelectedTabState(2);
+
         initMainViewPager();
 //        registerHomeKeyReceiver(this);
+        mViewPager.setCurrentItem(2);
+
+        mSubscriber = new SubscriberOnNextErrorListener<Integer>() {
+            @Override
+            public void onNext(Integer arg) {
+                if (arg > 0) {
+                    mNewsCount.setVisibility(View.VISIBLE);
+                    mNewsCount.setText(arg + "");
+                } else {
+                    mNewsCount.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        };
+
     }
 
 
@@ -77,6 +107,7 @@ public class MainActivity extends FragmentActivity implements
         RelativeLayout contactRLayout = (RelativeLayout) findViewById(R.id.seal_contact_list);
         RelativeLayout foundRLayout = (RelativeLayout) findViewById(R.id.seal_find);
         RelativeLayout mineRLayout = (RelativeLayout) findViewById(R.id.seal_me);
+        RelativeLayout newsRLayout = (RelativeLayout) findViewById(R.id.seal_news);
         mImageChats = (ImageView) findViewById(R.id.tab_img_chats);
         mImageContact = (ImageView) findViewById(R.id.tab_img_contact);
         mImageFind = (ImageView) findViewById(R.id.tab_img_find);
@@ -93,11 +124,15 @@ public class MainActivity extends FragmentActivity implements
         mBottomLine = findViewById(R.id.main_base_line_view);
         mTopLayout = findViewById(R.id.main_top_layout);
         mFilter = findViewById(R.id.home_filtrate);
+        mNewsCount = findViewById(R.id.home_wait_list_icon_tv);
+        mNewsTv = findViewById(R.id.home_wait_list_icon_tv);
+        mImgNews = findViewById(R.id.tab_img_news);
 
         chatRLayout.setOnClickListener(this);
         contactRLayout.setOnClickListener(this);
         foundRLayout.setOnClickListener(this);
         mineRLayout.setOnClickListener(this);
+        newsRLayout.setOnClickListener(this);
         mSearchImageView.setOnClickListener(this);
         mFilter.setOnClickListener(this);
         mNews.setOnClickListener(this);
@@ -114,11 +149,11 @@ public class MainActivity extends FragmentActivity implements
     private void initMainViewPager() {
         mViewPager = findViewById(R.id.main_viewpager);
 
-
 //        mFragment.add(new NewHomeFragment());
-        mFragment.add(new HomePage203Fragment());
         mFragment.add(new ProjectFragment());
         mFragment.add(new ContactAddressFragment());
+        mFragment.add(new HomePage203Fragment());
+        mFragment.add(new News203Fragment());
 //        mFragment.add(new DiscoverFragment());
         mFragment.add(new MineFragment());
         FragmentPagerAdapter fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -133,7 +168,7 @@ public class MainActivity extends FragmentActivity implements
             }
         };
         mViewPager.setAdapter(fragmentPagerAdapter);
-        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setOffscreenPageLimit(5);
         mViewPager.setOnPageChangeListener(this);
     }
 
@@ -154,6 +189,7 @@ public class MainActivity extends FragmentActivity implements
     protected void onResume() {
         super.onResume();
         LogUtils.debug("LY__onResume");
+        getNewsUnreadCount(mToken);
     }
 
     @Override
@@ -175,34 +211,24 @@ public class MainActivity extends FragmentActivity implements
     }
 
     private void changeTextViewColor() {
-        mImageChats.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_icon));
-        mImageContact.setBackgroundDrawable(getResources().getDrawable(R.drawable.message_icon));
-        mImageFind.setBackgroundDrawable(getResources().getDrawable(R.drawable.linkman_icon));
+        mImageChats.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_jobs_icon));
+        mImageContact.setBackgroundDrawable(getResources().getDrawable(R.drawable.product_tim_icon));
+        mImageFind.setBackgroundDrawable(getResources().getDrawable(R.drawable.address_books_icon));
         mImageMe.setBackgroundDrawable(getResources().getDrawable(R.drawable.mine_icon));
+        mImgNews.setBackgroundDrawable(getResources().getDrawable(R.drawable.news_icon));
         mTextChats.setTextColor(Color.parseColor("#666666"));
         mTextContact.setTextColor(Color.parseColor("#666666"));
         mTextFind.setTextColor(Color.parseColor("#666666"));
         mTextMe.setTextColor(Color.parseColor("#666666"));
+        mNewsTv.setTextColor(Color.parseColor("#666666"));
     }
 
 
     private void changeSelectedTabState(int position) {
         switch (position) {
             case 0:
-                mTextChats.setTextColor(Color.parseColor("#0099ff"));
-                mImageChats.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_press_icon));
-                mNews.setImageDrawable(getResources().getDrawable(R.drawable.news_icon));
-                mTitle.setTextColor(Color.parseColor("#333333"));
-                mTitle.setText("成交设计");
-                mTitleLayout.setBackgroundColor(getResources().getColor(R.color.white));
-                mBottomLine.setVisibility(View.VISIBLE);
-                mTopLayout.setVisibility(View.GONE);
-                mFilter.setVisibility(View.GONE);
-                mNews.setVisibility(View.VISIBLE);
-                break;
-            case 1:
                 mTextContact.setTextColor(Color.parseColor("#0099ff"));
-                mImageContact.setBackgroundDrawable(getResources().getDrawable(R.drawable.message_press_icon));
+                mImageContact.setBackgroundDrawable(getResources().getDrawable(R.drawable.product_tim_press_icon));
                 mNews.setImageDrawable(getResources().getDrawable(R.drawable.news_icon));
                 mTitle.setTextColor(Color.parseColor("#333333"));
                 mTitle.setText("项目");
@@ -212,9 +238,9 @@ public class MainActivity extends FragmentActivity implements
                 mFilter.setVisibility(View.GONE);
                 mNews.setVisibility(View.GONE);
                 break;
-            case 2:
+            case 1:
                 mTextFind.setTextColor(Color.parseColor("#0099ff"));
-                mImageFind.setBackgroundDrawable(getResources().getDrawable(R.drawable.linkman_press_icon));
+                mImageFind.setBackgroundDrawable(getResources().getDrawable(R.drawable.address_books_press_cion));
                 mNews.setImageDrawable(getResources().getDrawable(R.drawable.news_icon));
                 mTitle.setTextColor(Color.parseColor("#333333"));
                 mTitle.setText("通讯录");
@@ -224,7 +250,27 @@ public class MainActivity extends FragmentActivity implements
                 mFilter.setVisibility(View.GONE);
                 mNews.setVisibility(View.GONE);
                 break;
+            case 2:
+                mTextChats.setTextColor(Color.parseColor("#0099ff"));
+                mImageChats.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_jobs_press_icon));
+                mNews.setImageDrawable(getResources().getDrawable(R.drawable.news_icon));
+                mTitle.setTextColor(Color.parseColor("#333333"));
+                mTitle.setText("成交设计");
+                mTitleLayout.setBackgroundColor(getResources().getColor(R.color.white));
+                mBottomLine.setVisibility(View.VISIBLE);
+                mTopLayout.setVisibility(View.GONE);
+                mFilter.setVisibility(View.GONE);
+                mNews.setVisibility(View.VISIBLE);
+                break;
             case 3:
+                mNewsTv.setTextColor(Color.parseColor("#0099ff"));
+                mImgNews.setBackgroundDrawable(getResources().getDrawable(R.drawable.news_press_icon));
+                mBottomLine.setVisibility(View.VISIBLE);
+                mTopLayout.setVisibility(View.GONE);
+                mFilter.setVisibility(View.GONE);
+                break;
+
+            case 4:
                 mTextMe.setTextColor(Color.parseColor("#0099ff"));
                 mImageMe.setBackgroundDrawable(getResources().getDrawable(R.drawable.mine_press_icon));
                 mNews.setImageDrawable(getResources().getDrawable(R.drawable.news_white_icon));
@@ -232,10 +278,9 @@ public class MainActivity extends FragmentActivity implements
                 mTitle.setTextColor(Color.WHITE);
                 mTitleLayout.setBackground(getResources().getDrawable(R.drawable.bg_nav));
                 mBottomLine.setVisibility(View.GONE);
-                mTopLayout.setVisibility(View.VISIBLE);
+                mTopLayout.setVisibility(View.GONE);
                 mFilter.setVisibility(View.GONE);
-                mNews.setVisibility(View.VISIBLE);
-                break;
+                mNews.setVisibility(View.GONE);
         }
     }
 
@@ -252,54 +297,67 @@ public class MainActivity extends FragmentActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.seal_chat:
-                mViewPager.setCurrentItem(0, false);
-                SpringAnimation  springAnimationHome = new SpringAnimation(mImageChats, DynamicAnimation.Y);
-                springAnimationHome.setStartValue(15f);
-                SpringForce mSpringForce = new SpringForce();
-                mSpringForce.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
-                mSpringForce.setStiffness(SpringForce.STIFFNESS_LOW);
-                mSpringForce.setFinalPosition(mImageChats.getY());
-                springAnimationHome.setSpring(mSpringForce);
-                springAnimationHome.start();
+                mViewPager.setCurrentItem(2, false);
+//                SpringAnimation springAnimationHome = new SpringAnimation(mImageChats, DynamicAnimation.Y);
+//                springAnimationHome.setStartValue(20f);
+//                SpringForce mSpringForce = new SpringForce();
+//                mSpringForce.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
+//                mSpringForce.setStiffness(SpringForce.STIFFNESS_LOW);
+//                mSpringForce.setFinalPosition(mImageChats.getY());
+//                springAnimationHome.setSpring(mSpringForce);
+//                springAnimationHome.start();
                 break;
             case R.id.seal_contact_list:
-                mViewPager.setCurrentItem(1, false);
-                SpringAnimation springAnimationChats = new SpringAnimation(mImageContact, DynamicAnimation.Y);
-                springAnimationChats.setStartValue(15f);
-                SpringForce mSpringForceChats = new SpringForce();
-                mSpringForceChats.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
-                mSpringForceChats.setStiffness(SpringForce.STIFFNESS_LOW);
-                mSpringForceChats.setFinalPosition(mImageContact.getY());
-                springAnimationChats.setSpring(mSpringForceChats);
-                springAnimationChats.start();
+                mViewPager.setCurrentItem(0, false);
+//                SpringAnimation springAnimationChats = new SpringAnimation(mImageContact, DynamicAnimation.Y);
+//                springAnimationChats.setStartValue(15f);
+//                SpringForce mSpringForceChats = new SpringForce();
+//                mSpringForceChats.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
+//                mSpringForceChats.setStiffness(SpringForce.STIFFNESS_LOW);
+//                mSpringForceChats.setFinalPosition(mImageContact.getY());
+//                springAnimationChats.setSpring(mSpringForceChats);
+//                springAnimationChats.start();
                 break;
             case R.id.seal_find:
-                mViewPager.setCurrentItem(2, false);
-                SpringAnimation  springAnimationContact = new SpringAnimation(mImageFind, DynamicAnimation.Y);
-                springAnimationContact.setStartValue(15f);
-                SpringForce mSpringForceContact = new SpringForce();
-                mSpringForceContact.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
-                mSpringForceContact.setStiffness(SpringForce.STIFFNESS_LOW);
-                mSpringForceContact.setFinalPosition(mImageFind.getY());
-                springAnimationContact.setSpring(mSpringForceContact);
-                springAnimationContact.start();
+                mViewPager.setCurrentItem(1, false);
+//                SpringAnimation springAnimationContact = new SpringAnimation(mImageFind, DynamicAnimation.Y);
+//                springAnimationContact.setStartValue(15f);
+//                SpringForce mSpringForceContact = new SpringForce();
+//                mSpringForceContact.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
+//                mSpringForceContact.setStiffness(SpringForce.STIFFNESS_LOW);
+//                mSpringForceContact.setFinalPosition(mImageFind.getY());
+//                springAnimationContact.setSpring(mSpringForceContact);
+//                springAnimationContact.start();
                 break;
             case R.id.seal_me:
+                mViewPager.setCurrentItem(4, false);
+                mMineRed.setVisibility(View.GONE);
+//                SpringAnimation springAnimationMe = new SpringAnimation(mImageMe, DynamicAnimation.Y);
+//                springAnimationMe.setStartValue(15f);
+//                SpringForce mSpringForceMe = new SpringForce();
+//                mSpringForceMe.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
+//                mSpringForceMe.setStiffness(SpringForce.STIFFNESS_LOW);
+//                mSpringForceMe.setFinalPosition(mImageMe.getY());
+//                springAnimationMe.setSpring(mSpringForceMe);
+//                springAnimationMe.start();
+                break;
+
+            case R.id.seal_news:
                 mViewPager.setCurrentItem(3, false);
                 mMineRed.setVisibility(View.GONE);
-                SpringAnimation  springAnimationMe = new SpringAnimation(mImageMe, DynamicAnimation.Y);
-                springAnimationMe.setStartValue(15f);
-                SpringForce mSpringForceMe  = new SpringForce();
-                mSpringForceMe.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
-                mSpringForceMe.setStiffness(SpringForce.STIFFNESS_LOW);
-                mSpringForceMe.setFinalPosition(mImageMe.getY());
-                springAnimationMe.setSpring(mSpringForceMe);
-                springAnimationMe.start();
+//                SpringAnimation springAnimationNews = new SpringAnimation(mImgNews, DynamicAnimation.Y);
+//                springAnimationNews.setStartValue(20f);
+//                SpringForce mSpringForceMeNews = new SpringForce();
+//                mSpringForceMeNews.setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY);
+//                mSpringForceMeNews.setStiffness(SpringForce.STIFFNESS_LOW);
+//                mSpringForceMeNews.setFinalPosition(mImageMe.getY());
+//                springAnimationNews.setSpring(mSpringForceMeNews);
+//                springAnimationNews.start();
                 break;
             case R.id.ac_iv_search:
                 break;
             case R.id.home_message:
-                startActivity(new Intent(MainActivity.this,NewsActivity.class));
+                startActivity(new Intent(MainActivity.this, NewsActivity.class));
                 break;
 
             case R.id.home_filtrate:
@@ -315,8 +373,6 @@ public class MainActivity extends FragmentActivity implements
             mViewPager.setCurrentItem(0, false);
         }
     }
-
-
 
 
     @Override
@@ -353,7 +409,12 @@ public class MainActivity extends FragmentActivity implements
         super.onDestroy();
     }
 
+    /**
+     * 获取消息未读数
+     * @param token
+     */
+    private void getNewsUnreadCount(String token) {
+        HttpMethods.getInstance().getNews203Count(new ProgressSubscriber<Integer>(mSubscriber, this, false), token);
 
-
-
+    }
 }

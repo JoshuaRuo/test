@@ -356,6 +356,7 @@
     <string name="about_us_tax_num_title_string">Tax Number</string>
     <string name="about_us_tax_num_value_string">915101004507567103</string>
     <string name="cjsj_copyright_num">© 1978-2017 成都市交通规划勘察设计院</string>
+    <string name="home_notification_text">News</string>
 
 
     <!--GTY mine-->
@@ -368,7 +369,7 @@
     <string name="update_version_string">Update</string>
 
     <!--oa main-->
-    <string name="home_tag_btn">Home</string>
+    <string name="home_tag_btn">Job</string>
     <string name="talk_tag_btn">Chats</string>
     <string name="project_tag_btn">project</string>
     <string name="address_book_tag_btn">Contacts</string>

@@ -21,65 +21,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/seal_chat"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true">
-
-                <RelativeLayout
-                    android:id="@+id/ll"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/tab_img_chats"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:background="#ffffff"
-                        android:focusable="false"
-                        android:scaleType="centerInside" />
-
-                    <TextView
-                        android:id="@+id/tab_text_chats"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tab_img_chats"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
-                        android:text="@string/home_tag_btn"
-                        android:textColor="@color/color_66"
-                        android:textSize="12sp" />
-
-                </RelativeLayout>
-
-                <!--<cn.cjsj.im.ui.widget.DragPointView-->
-                    <!--android:id="@+id/seal_num"-->
-                    <!--android:layout_width="19dp"-->
-                    <!--android:layout_height="19dp"-->
-                    <!--android:layout_gravity="right"-->
-                    <!--android:layout_marginRight="19dp"-->
-                    <!--android:layout_marginTop="2dp"-->
-                    <!--android:layout_toRightOf="@id/ll"-->
-                    <!--android:textColor="@android:color/white"-->
-                    <!--android:textSize="12sp"-->
-                    <!--android:visibility="invisible" />-->
-
-
-            </FrameLayout>
-
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/seal_contact_list"
@@ -93,37 +34,37 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true">
 
-            <RelativeLayout
-                android:id="@+id/yy"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="2dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:id="@+id/tab_img_contact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/yy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
-                    android:background="#ffffff"
-                    android:focusable="false"
-                    android:scaleType="centerInside" />
-                <!--android:src="@drawable/tab_contact_list"-->
+                    android:layout_marginBottom="2dp"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/tab_text_contact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tab_img_contact"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/project_tag_btn"
-                    android:textColor="@color/color_66"
-                    android:textSize="12sp" />
+                    <ImageView
+                        android:id="@+id/tab_img_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="#ffffff"
+                        android:focusable="false"
+                        android:scaleType="centerInside" />
+                    <!--android:src="@drawable/tab_contact_list"-->
+
+                    <TextView
+                        android:id="@+id/tab_text_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tab_img_contact"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/project_tag_btn"
+                        android:textColor="@color/color_66"
+                        android:textSize="12sp" />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
             </FrameLayout>
         </RelativeLayout>
 
@@ -164,6 +105,122 @@
 
             </RelativeLayout>
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/seal_chat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true">
+
+                <RelativeLayout
+                    android:id="@+id/ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/tab_img_chats"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="#ffffff"
+                        android:focusable="false"
+                        android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/tab_text_chats"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tab_img_chats"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/home_tag_btn"
+                        android:textColor="@color/color_66"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+                <!--<cn.cjsj.im.ui.widget.DragPointView-->
+                <!--android:id="@+id/seal_num"-->
+                <!--android:layout_width="19dp"-->
+                <!--android:layout_height="19dp"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:layout_marginRight="19dp"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:layout_toRightOf="@id/ll"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textSize="12sp"-->
+                <!--android:visibility="invisible" />-->
+
+
+            </FrameLayout>
+
+
+        </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:id="@+id/seal_news"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:id="@+id/tab_layout_news"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+
+                        <ImageView
+                            android:id="@+id/tab_img_news"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#ffffff"
+                            android:focusable="false"/>
+
+                        <TextView
+                            android:id="@+id/home_wait_list_icon_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="4dp"
+                            android:background="@drawable/home_news_icon_bg"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:visibility="gone"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_5sp" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tab_text_news"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tab_layout_news"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/home_notification_text"
+                        android:textColor="@color/color_66"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+
+
+
+
+
 
         <RelativeLayout
             android:id="@+id/seal_me"

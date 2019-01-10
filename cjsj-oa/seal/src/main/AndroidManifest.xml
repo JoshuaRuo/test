@@ -168,10 +168,10 @@
 
         <service android:name=".server.UpdateService" />
 
+        <!--android:theme="@style/SplashTheme"-->
         <activity
             android:name=".ui.activity.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -404,6 +404,14 @@
         <!-- 日志日历 -->
         <activity
             android:name=".ui.activity.CalendarActivity"
+            android:screenOrientation="portrait" />
+        <!-- 工作日志 -->
+        <activity
+            android:name=".ui.activity.WorkLogClassActivity"
+            android:screenOrientation="portrait" />
+        <!-- 消息列表 -->
+        <activity
+            android:name=".ui.activity.NewsList203Activity"
             android:screenOrientation="portrait" />
 
         <!-- 定位测试 -->

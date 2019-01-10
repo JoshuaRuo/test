@@ -19,8 +19,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.cjsj.im.R;
 import cn.cjsj.im.utils.LunarCalendar;
@@ -65,6 +68,8 @@ public class CalendarAdapter extends BaseAdapter {
 
     //日志
     private List<Integer> mList;
+    private Map<Integer, Boolean> map;
+    private int arg = 0;
 
     public CalendarAdapter() {
         Date date = new Date();
@@ -81,6 +86,7 @@ public class CalendarAdapter extends BaseAdapter {
         sc = new SpecialCalendar();
         lc = new LunarCalendar();
         this.res = rs;
+        map = new HashMap<>();
         if (mList != null) {
             mList.clear();
         }
@@ -115,6 +121,23 @@ public class CalendarAdapter extends BaseAdapter {
         currentDay = String.valueOf(day_c); // 得到当前日期是哪天
 
         getCalendar(Integer.parseInt(currentYear), Integer.parseInt(currentMonth));
+
+
+        /****test****/
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Integer.parseInt(currentYear), Integer.parseInt(currentMonth), 0);
+        int t = calendar.get(Calendar.DAY_OF_MONTH);
+        if (mList != null) {
+            if (mList.size() != 0) {
+                for (int j = 1; j < t + 1; j++) {
+                    map.put(j, false);
+                }
+                for (int i = 0; i < mList.size(); i++) {
+                    map.put(mList.get(i), true);
+                }
+            }
+        }
+        /****test****/
 
     }
 
@@ -174,19 +197,20 @@ public class CalendarAdapter extends BaseAdapter {
         noLog.setVisibility(View.GONE);
 
         if (position < daysOfMonth + dayOfWeek && position >= dayOfWeek) {
+            arg++;
+
             // 当前月信息显示
             textView.setTextColor(ContextCompat.getColor(context, R.color.main_title_color_code));// 当月字体设黑
-
             if (mList != null) {
+                if (mList.size() != 0) {
+                    try {
+                        if (map.get(arg)) {
+                            noLog.setVisibility(View.VISIBLE);
+                        } else {
+                            defaultYes.setVisibility(View.VISIBLE);
+                        }
+                    } catch (NullPointerException ex) {
 
-
-                for (int i = 0; i < mList.size(); i++) {
-                    if (mList.get(i) == Integer.parseInt(d)) {
-                        noLog.setVisibility(View.VISIBLE);
-                        defaultYes.setVisibility(View.GONE);
-                    }else {
-                        noLog.setVisibility(View.GONE);
-                        defaultYes.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -203,10 +227,10 @@ public class CalendarAdapter extends BaseAdapter {
             }
         }
 
-//		if (position > currentFlag){
-//			defaultYes.setVisibility(View.GONE);
-//			noLog.setVisibility(View.GONE);
-//		}
+		if (position >= currentFlag && currentFlag != -1){
+			defaultYes.setVisibility(View.GONE);
+			noLog.setVisibility(View.GONE);
+		}
 
         if (currentFlag == position) {
             // 设置当天的背景
@@ -278,6 +302,7 @@ public class CalendarAdapter extends BaseAdapter {
     public void matchScheduleDate(int year, int month, int day) {
 
     }
+
 
     /**
      * 点击每一个item时返回item中的日期

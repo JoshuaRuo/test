@@ -20,7 +20,9 @@ import cn.cjsj.im.gty.bean.GroupDispatchDetailBean;
 import cn.cjsj.im.gty.bean.GroupDispatchResponseBean;
 import cn.cjsj.im.gty.bean.HttpResult;
 import cn.cjsj.im.gty.bean.IntegralBean;
+import cn.cjsj.im.gty.bean.NewsListResponse;
 import cn.cjsj.im.gty.bean.NewsResponse;
+import cn.cjsj.im.gty.bean.NewsStatisticsResponse;
 import cn.cjsj.im.gty.bean.NoticeAndIntegralBean;
 import cn.cjsj.im.gty.bean.NoticeDispatchSupport;
 import cn.cjsj.im.gty.bean.OAUserBean;
@@ -237,5 +239,17 @@ public interface ConnectionService {
     //日历日报
     @GET("dailyPaper/checkDailyPaper/{date}")
     Observable<HttpResult<List<String>>> getDailyPaperDefault(@Header("token")String token,@Path("date") String date);
+
+    //新通知未读条数
+    @GET("message/unreadCount")
+    Observable<HttpResult<Integer>> getNews203Count(@Header("token")String token);
+
+    //获取消息通知外部信息
+    @GET("message/statistics")
+    Observable<HttpResult<List<NewsStatisticsResponse>>> getNewsOutValue(@Header("token")String token);
+
+    //获取通知列表
+    @GET("message/detail/{type}/{pageIndex}/{pageSize}")
+    Observable<HttpResult<NewsListResponse>> getNews203List(@Header("token")String token, @Path("type") int type, @Path("pageIndex")int pageIndex, @Path("pageSize")int pageSize);
 
 }

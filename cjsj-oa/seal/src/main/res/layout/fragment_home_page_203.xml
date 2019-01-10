@@ -54,8 +54,12 @@
             android:layout_height="1px"
             android:layout_alignParentBottom="true" />
     </RelativeLayout>
-
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/new_home_swipe_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ScrollView
+        android:id="@+id/home_203_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
@@ -78,6 +82,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
+                    android:focusable="true"
                     android:background="@drawable/bg_aaaaaa" />
 
                 <View
@@ -153,11 +158,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
                         android:layout_gravity="center|top"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="14dp"
                         android:visibility="gone"
                         android:background="@drawable/notification_icon_bg"
                         android:gravity="center"
-                        android:padding="2dp"
+                        android:padding="1dp"
                         android:text="123"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_size_10sp" />
@@ -185,10 +190,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
                         android:layout_gravity="center|top"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="14dp"
                         android:background="@drawable/notification_icon_bg"
                         android:gravity="center"
-                        android:padding="2dp"
+                        android:padding="1dp"
                         android:visibility="gone"
                         android:text="123"
                         android:textColor="@color/white"
@@ -218,10 +223,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
                         android:layout_gravity="center|top"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="14dp"
                         android:background="@drawable/my_daily_paper_icon_bg"
                         android:gravity="center"
-                        android:padding="2dp"
+                        android:padding="1dp"
                         android:text="1"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_size_10sp" />
@@ -248,10 +253,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
                         android:layout_gravity="center|top"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="14dp"
                         android:background="@drawable/my_daily_paper_icon_bg"
                         android:gravity="center"
-                        android:padding="2dp"
+                        android:padding="1dp"
                         android:visibility="gone"
                         android:text="123"
                         android:textColor="@color/white"
@@ -389,6 +394,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="168dp"
                 android:scrollbars="none"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 >
 
             </android.support.v7.widget.RecyclerView>
@@ -453,6 +460,6 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

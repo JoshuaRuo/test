@@ -225,7 +225,7 @@
     <string name="mine_setting">设置</string>
     <string name="problems_string">常见问题</string>
     <string name="feedback_string">意见反馈</string>
-    <string name="gty_about_us_string">关于我们</string>
+    <string name="gty_about_us_string">关于成交设计</string>
     <string name="account_setting">账号设置</string>
     <string name="exit_login">安全退出</string>
     <string name="clear_cache">清除缓存</string>
@@ -390,6 +390,7 @@
     <string name="about_us_tax_num_value_string">915101004507567103</string>
     <string name="cjsj_copyright_num">© 1978-2017 成都市交通规划勘察设计院</string>
     <string name="update_version_string">版本更新</string>
+    <string name="home_notification_text">通知</string>
 
     <!--我的审批-->
     <string name="from_me_send_approval">我发起的审批</string>
@@ -406,9 +407,9 @@
 
 
     <!--oa main-->
-    <string name="home_tag_btn">首页</string>
+    <string name="home_tag_btn">工作</string>
     <string name="talk_tag_btn">讨论</string>
-    <string name="project_tag_btn">项目</string>
+    <string name="project_tag_btn">项目组</string>
     <string name="address_book_tag_btn">通讯录</string>
     <string name="mine_tag_btn">我的</string>
     <string name="today_working_string">今日工作</string>

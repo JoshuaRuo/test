@@ -13,6 +13,7 @@
 
 
     <!--字体-->
+    <dimen name="font_size_5sp">5sp</dimen>
     <dimen name="font_size_10sp">10sp</dimen>
     <dimen name="font_size_12sp">12sp</dimen>
     <dimen name="font_size_14sp">14sp</dimen>

@@ -16,9 +16,12 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -38,6 +41,7 @@ import cn.cjsj.im.server.network.async.AsyncTaskManager;
 import cn.cjsj.im.server.network.async.OnDataListener;
 import cn.cjsj.im.server.network.http.HttpException;
 import cn.cjsj.im.server.response.VersionResponse;
+import cn.cjsj.im.server.widget.DialogWithYesOrNoUtils;
 import cn.cjsj.im.server.widget.SelectableRoundedImageView;
 import cn.cjsj.im.ui.activity.AboutUsActivity;
 import cn.cjsj.im.ui.activity.AccountSettingActivity;
@@ -47,6 +51,7 @@ import cn.cjsj.im.ui.activity.CheckWorkTabActivity;
 import cn.cjsj.im.ui.activity.DailyPaperActivity;
 import cn.cjsj.im.ui.activity.FeedBackActivity;
 import cn.cjsj.im.ui.activity.LocationTestActivity;
+import cn.cjsj.im.ui.activity.LoginActivity;
 import cn.cjsj.im.ui.activity.MyAccountActivity;
 import cn.cjsj.im.ui.activity.MyPerformanceActivity;
 import cn.cjsj.im.utils.CleanCache;
@@ -83,6 +88,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     private Intent mIntent;
     private SharedPreferences.Editor editor;
     private PerformanceBean mPerformanceBean;
+    private Button mLogOutBtn;
+
+    private SubscriberOnNextErrorListener mLogOutSubscriber;//退出
 
     private Handler mHandler = new Handler() {
         @Override
@@ -93,7 +101,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                     try {
 
                         mUserName.setText(mOAUserBean.getSysUser().getFullname());
-                        mDepartment.setText(mOAUserBean.getSysUser().getOrgName());
+                        mDepartment.setText(mOAUserBean.getSysUser().getOrgName() + "-" + mOAUserBean.getSysUser().getPosName());
                         mDailyPaperTv.setText(mOAUserBean.getNormalDaily() + "");
                         mCheckTv.setText(mOAUserBean.getNormalCheck() + "");
 
@@ -185,12 +193,13 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     private void initData() {
         sp = getActivity().getSharedPreferences("config", Context.MODE_PRIVATE);
         updateUserInfo();
+
     }
 
     private void initViews(View mView) {
         imageView = (SelectableRoundedImageView) mView.findViewById(R.id.mine_header);
         mName = (TextView) mView.findViewById(R.id.mine_name);
-        LinearLayout mUserProfile = (LinearLayout) mView.findViewById(R.id.new_start_user_profile);
+        RelativeLayout mUserProfile = mView.findViewById(R.id.new_start_user_profile);
         LinearLayout mMineSetting = (LinearLayout) mView.findViewById(R.id.mine_setting);
         LinearLayout mCleanCache = (LinearLayout) mView.findViewById(R.id.clean_cache_button);
         LinearLayout mMineService = (LinearLayout) mView.findViewById(R.id.mine_service);
@@ -212,6 +221,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         mLocationLine = (LinearLayout) mView.findViewById(R.id.location_line);
         mDailyPaperTv = (TextView) mView.findViewById(R.id.mine_dailyPaper);
         mCheckTv = (TextView) mView.findViewById(R.id.mine_check);
+        mLogOutBtn = mView.findViewById(R.id.ac_set_exit);
         if (isDebug) {
             mMineXN.setVisibility(View.VISIBLE);
         } else {
@@ -230,6 +240,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         mDailyPaperLayout.setOnClickListener(this);
         mLocationTest.setOnClickListener(this);
         mCheckLayout.setOnClickListener(this);
+        mLogOutBtn.setOnClickListener(this);
         try {
             mCleanCacheBtn.setText("清除缓存 " + CleanCache.getTotalCacheSize(getActivity()));
         } catch (Exception e) {
@@ -278,6 +289,21 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         getUserInfo(mToken);
         getIntegral(mToken);
         getPerformance(mToken);
+
+        mLogOutSubscriber = new SubscriberOnNextErrorListener<Object>() {
+            @Override
+            public void onNext(Object o) {
+                Toast.makeText(getActivity(), "退出成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        };
     }
 
     @Override
@@ -337,6 +363,26 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 mIntent = new Intent(getActivity(), LocationTestActivity.class);
                 startActivity(mIntent);
                 break;
+
+            case R.id.ac_set_exit:
+                DialogWithYesOrNoUtils.getInstance().showDialog(getActivity(), "是否退出登录?", new DialogWithYesOrNoUtils.DialogCallBack() {
+                    @Override
+                    public void executeEvent() {
+//                        BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.EXIT);
+                        logOut();
+                    }
+
+                    @Override
+                    public void executeEditEvent(String editText) {
+
+                    }
+
+                    @Override
+                    public void updatePassword(String oldPassword, String newPassword) {
+
+                    }
+                });
+                break;
         }
     }
 
@@ -367,9 +413,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 //                    (new UserInfo(userId, username, Uri.parse(userPortrait)));
 ////            ImageLoader.getInstance().displayImage(portraitUri, imageView, App.getOptions());
 //            ImageLoader.getInstance().displayImage(portraitUri, mHeadImg, App.getOptions());
-            if (userPortrait == null || "".equals(userPortrait)){
+            if (userPortrait == null || "".equals(userPortrait)) {
                 mHeadImg.setImageResource(R.drawable.mine_head_default_img);
-            }else {
+            } else {
                 Glide.with(this)
                         .load(Uri.parse(userPortrait))
                         .into(mHeadImg);
@@ -420,5 +466,12 @@ public class MineFragment extends Fragment implements View.OnClickListener {
      */
     public void getPerformance(String token) {
         HttpMethods.getInstance().getPerformance(new ProgressSubscriber<PerformanceBean>(mGetPerformanceSubscriber, getActivity(), false), token);
+    }
+
+    /**
+     * 退出OA
+     */
+    public void logOut() {
+        HttpMethods.getInstance().logOut(new ProgressSubscriber<Object>(mLogOutSubscriber, getActivity(), false), mToken);
     }
 }

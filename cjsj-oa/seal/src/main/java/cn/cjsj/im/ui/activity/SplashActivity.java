@@ -16,6 +16,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -38,6 +39,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.File;
+import java.util.Random;
 
 import cn.cjsj.im.App;
 import cn.cjsj.im.R;
@@ -76,6 +78,29 @@ public class SplashActivity extends Activity implements ActivityCompat.OnRequest
     private ProgressBar mProgressBar;
     private TextView mPrecent;
     private DownloadManager mDownloadManager;
+    private Typeface mTypeface;
+
+    private TextView mHint1, mHint2, mHint3;
+
+    private static final String[] HINT_TEXT = {"人们在一起可以做出单独一个人所不能做出的事业；智慧、双手、力量结合在一起，几乎是万能的。"
+            , "真实是人生的命脉，是一切价值的根基。"
+            , "人生的最大快乐，是自己的劳动得到了成果。"
+            , "德行使心灵明晰，使人不仅更易了解德行，而且也更易了解科学的真理。"
+            , "我们活着不能与草木同腐，不能醉生梦死，枉度人生，要有所做为。"
+            , "书籍是思想的航船，在时代的波涛中破浪前进。它满载贵重的货物，运送给一代又一代。"
+            , "伟大的工作，并不是用力量而是用耐心去完成的。"
+            , "即使是世上最伟大、最壮丽的事业，兴许也常常需要瘦弱的手去扶掖。"
+            , "没有引发任何行动的思想都不是思想，而是梦想。"
+            , "在一个崇高的目标支持下，不停地工作，即使慢，也一定会获得成功。"
+            , "现实是此岸，成功是彼岸，中间隔着湍急的河流，兴趣便是河上的桥，只要行动就可以通过。"
+            , "知识是从劳动中得来的，任何成就都是刻苦劳动的结晶。"
+            , "伟大的成绩和辛勤劳动是成正比例的，有一分劳动就有一分收获，日积月累，从少到多，奇迹就可以创造出来。"
+            , "当劳动是种快乐时，生活是美的；当劳动是一种责任时，生活就是奴役。"
+            , "只有美的交流，才能使社会团结，因为它关系到一切人都共同拥有的东西。"};
+    private static final String [] HINT_TEXT_NAME = {"韦伯斯特","德莱塞","谢党哉","罗吉尔•培根","方志敏","培根","约翰逊","埃•斯宾塞"
+    ,"马丁","爱因斯坦","克雷洛夫","宋庆龄","鲁迅","高尔基","席勒"};
+    private String [] mHint;
+
 
     private PermissionUtils.PermissionGrant mPermissionGrant = new PermissionUtils.PermissionGrant() {
         @Override
@@ -123,11 +148,22 @@ public class SplashActivity extends Activity implements ActivityCompat.OnRequest
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
+        mHint = getString(HINT_TEXT,HINT_TEXT_NAME);
+        mHint1 = findViewById(R.id.splash_text1);
+        mHint2 = findViewById(R.id.splash_text2);
+        mHint3 = findViewById(R.id.splash_logo_right_hint_tv);
+        mHint1.setTypeface(mTypeface);
+        mHint2.setTypeface(mTypeface);
+        mHint3.setTypeface(mTypeface);
         context = this;
         dialogUtils = new DialogUtils(this);
+        mTypeface = Typeface.createFromAsset(getAssets(), "fonts/STSongti-SC-Bold-02.ttf");
         sp = getSharedPreferences("config", MODE_PRIVATE);
         editor = sp.edit();
         mOaToken = App.getInstance().getToken();
+
+        mHint1.setText(mHint[0]);
+        mHint2.setText("———" + mHint[1]);
 //        if (!TextUtils.isEmpty(mOaToken)) {
 //            RongIM.connect(mOaToken, SealAppContext.getInstance().getConnectCallback());
 //            handler.postDelayed(new Runnable() {
@@ -446,5 +482,11 @@ public class SplashActivity extends Activity implements ActivityCompat.OnRequest
         }
 
 
+    }
+
+    private String[] getString(String []arg1,String [] arg2){
+        int i =new Random().nextInt(15);
+        String []arg3 = {arg1[i],arg2[i]};
+        return arg3;
     }
 }

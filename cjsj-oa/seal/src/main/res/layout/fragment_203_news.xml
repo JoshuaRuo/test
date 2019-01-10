@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/news_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="消息"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_E5E8F3" />
+
+    <RelativeLayout
+        android:id="@+id/news_pending_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/news_pending_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/pending_list_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/news_pending_iv"
+            android:text="审批通知"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <TextView
+            android:id="@+id/news_pending_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/news_pending_iv"
+            android:text="审批通知"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxEms="10"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_15sp" />
+
+
+        <TextView
+            android:id="@+id/news_pending_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_12sp" />
+
+        <TextView
+            android:id="@+id/news_pending_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="11dp"
+            android:visibility="gone"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/notification_icon_bg" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="76dp"
+        android:background="@color/color_E5E8F3" />
+
+    <RelativeLayout
+        android:id="@+id/notice_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/notice_list_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/notice_list_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/notice_list_iv"
+            android:text="新闻公告"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <TextView
+            android:id="@+id/notice_list_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/notice_list_iv"
+            android:text="新闻公告"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxEms="10"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_15sp" />
+
+
+        <TextView
+            android:id="@+id/notice_list_iv_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_12sp" />
+
+        <TextView
+            android:id="@+id/notices_list_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="11dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone"
+            android:background="@drawable/notification_icon_bg" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="76dp"
+        android:background="@color/color_E5E8F3" />
+
+    <RelativeLayout
+        android:id="@+id/vote_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/vote_list_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/vote_list_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/vote_list_iv"
+            android:text="投票"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <TextView
+            android:id="@+id/vote_list_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/vote_list_iv"
+            android:text=""
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxEms="10"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_15sp" />
+
+
+        <TextView
+            android:id="@+id/vote_list_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_12sp" />
+
+        <TextView
+            android:id="@+id/vote_list_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="11dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone"
+            android:background="@drawable/notification_icon_bg" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="76dp"
+        android:background="@color/color_E5E8F3" />
+
+    <RelativeLayout
+        android:id="@+id/work_log_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/work_log_list_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/work_log_list_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/work_log_list_iv"
+            android:text="工作日志(评价)"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <TextView
+            android:id="@+id/word_log_list_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/work_log_list_iv"
+            android:text=""
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxEms="10"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_15sp" />
+
+
+        <TextView
+            android:id="@+id/work_log_list_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_12sp" />
+
+        <TextView
+            android:id="@+id/work_log_list_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="11dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone"
+            android:background="@drawable/notification_icon_bg" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="76dp"
+        android:background="@color/color_E5E8F3" />
+
+    <RelativeLayout
+        android:id="@+id/attendance_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/attendance_list_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/attendance_list_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/attendance_list_iv"
+            android:text="考勤打卡"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <TextView
+            android:id="@+id/attendance_list_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/attendance_list_iv"
+            android:text=""
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxEms="10"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_15sp" />
+
+
+        <TextView
+            android:id="@+id/attendance_list_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/font_size_12sp" />
+
+        <TextView
+            android:id="@+id/attendance_list_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="11dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone"
+            android:background="@drawable/notification_icon_bg" />
+
+    </RelativeLayout>
+</LinearLayout>

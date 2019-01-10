@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gty_page_bgcolor"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/log_dailypaper_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/class_dailypaper_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/class_daily_paper_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/class_dailypaper_iv"
+            android:text="日志"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="70dp"
+            android:background="@color/color_E5E8F3" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/log_week_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/class_weeklog_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/weekly_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/class_weeklog_iv"
+            android:text="周报"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="70dp"
+            android:background="@color/color_E5E8F3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/log_month_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/class_monthlog_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/monthly_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/class_monthlog_iv"
+            android:text="月报"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="70dp"
+            android:background="@color/color_E5E8F3" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/log_market_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/class_marketlog_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/market_resource_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/class_marketlog_iv"
+            android:text="市场信息"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="70dp"
+            android:background="@color/color_E5E8F3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/log_visit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/class_visitlog_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/visit_history_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/class_visitlog_iv"
+            android:text="拜访记录"
+            android:textColor="@color/main_title_color_code"
+            android:textSize="@dimen/font_size_18sp" />
+
+
+    </RelativeLayout>
+</LinearLayout>

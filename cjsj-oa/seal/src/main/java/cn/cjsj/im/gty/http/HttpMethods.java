@@ -23,7 +23,9 @@ import cn.cjsj.im.gty.bean.GroupDispatchDetailBean;
 import cn.cjsj.im.gty.bean.GroupDispatchResponseBean;
 import cn.cjsj.im.gty.bean.HttpResult;
 import cn.cjsj.im.gty.bean.IntegralBean;
+import cn.cjsj.im.gty.bean.NewsListResponse;
 import cn.cjsj.im.gty.bean.NewsResponse;
+import cn.cjsj.im.gty.bean.NewsStatisticsResponse;
 import cn.cjsj.im.gty.bean.NoticeAndIntegralBean;
 import cn.cjsj.im.gty.bean.NoticeDispatchSupport;
 import cn.cjsj.im.gty.bean.OAUserBean;
@@ -57,7 +59,7 @@ import rx.schedulers.Schedulers;
  */
 public class HttpMethods {
 
-//                        public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
+    //                        public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
 //    public static final String BASE_URL = "http://192.168.17.57:8080/"; //本地
     public static final String BASE_URL = "http://192.168.15.198:8082/"; // 詹
 //    public static final String BASE_URL = "http://192.168.15.140:8082/app/";  //内网测试环境
@@ -160,7 +162,7 @@ public class HttpMethods {
      *
      * @param subscriber
      * @param token
-     * @param type 0 待办 1已办结 2所有
+     * @param type       0 待办 1已办结 2所有
      */
     public void getMyRequest(Subscriber<AgendaResponse> subscriber, String token) {
         Observable observable = connectionService.getMyRequest(App.getInstance().getToken(), 0, 99, 1)
@@ -684,10 +686,11 @@ public class HttpMethods {
 
     /**
      * 提交补卡申请
+     *
      * @param subscriber
      * @param token
      */
-    public void postReAttendance(Subscriber<String> subscriber, String token,RequestBody body) {
+    public void postReAttendance(Subscriber<String> subscriber, String token, RequestBody body) {
         Observable observable = connectionService.postReAttendance(App.getInstance().getToken(), body)
                 .map(new HttpResultFunc<String>());
 
@@ -696,68 +699,116 @@ public class HttpMethods {
 
     /**
      * 获取项目详情
+     *
      * @param subscriber
      * @param token
      * @param id
      */
-    public void getProjectDetail (Subscriber<ProjectDetailResponse> subscriber, String token, long id){
-        Observable observable = connectionService.getProjectDetail(App.getInstance().getToken(),id)
+    public void getProjectDetail(Subscriber<ProjectDetailResponse> subscriber, String token, long id) {
+        Observable observable = connectionService.getProjectDetail(App.getInstance().getToken(), id)
                 .map(new HttpResultFunc<ProjectDetailResponse>());
 
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
     }
 
     /**
      * 关闭项目
+     *
      * @param subscriber
      * @param token
      * @param id
      */
-    public void closeProject(Subscriber<String> subscriber,String token,long id){
-        Observable observable = connectionService.closeProject(token,id)
+    public void closeProject(Subscriber<String> subscriber, String token, long id) {
+        Observable observable = connectionService.closeProject(token, id)
                 .map(new HttpResultFunc<String>());
 
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
     }
 
 
     /**
      * 修改项目进度
+     *
      * @param subscriber
      * @param token
      * @param id
      * @param progressPercent 项目进度百分比
      */
-    public void updateProgress(Subscriber<String>subscriber,String token,long id, double progressPercent){
-        Observable observable = connectionService.updateProgress(token,id,progressPercent)
+    public void updateProgress(Subscriber<String> subscriber, String token, long id, double progressPercent) {
+        Observable observable = connectionService.updateProgress(token, id, progressPercent)
                 .map(new HttpResultFunc<String>());
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
     }
 
     /**
      * 获取项目成员列表
+     *
      * @param subscriber
      * @param token
      * @param id
      */
-    public void getMemberList(Subscriber<ProjectDetailResponse> subscriber, String token, long id){
-        Observable observable = connectionService.getMemberList(token,id)
+    public void getMemberList(Subscriber<ProjectDetailResponse> subscriber, String token, long id) {
+        Observable observable = connectionService.getMemberList(token, id)
                 .map(new HttpResultFunc<ProjectDetailResponse>());
 
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
     }
 
     /**
      * 获取日志日历
+     *
      * @param subscriber
      * @param token
      * @param date
      */
-    public void getDailyCalendar(Subscriber<List<String>> subscriber,String token,String date){
-        Observable observable = connectionService.getDailyPaperDefault(token,date)
+    public void getDailyCalendar(Subscriber<List<String>> subscriber, String token, String date) {
+        Observable observable = connectionService.getDailyPaperDefault(token, date)
                 .map(new HttpResultFunc<List<String>>());
 
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
+    }
+
+
+    /**
+     * 获取消息外部信息
+     *
+     * @param subscriber
+     * @param token
+     */
+    public void getNewsOutValue(Subscriber<List<NewsStatisticsResponse>> subscriber, String token) {
+        Observable observable = connectionService.getNewsOutValue(token)
+                .map(new HttpResultFunc<List<NewsStatisticsResponse>>());
+
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取通知列表
+     *
+     * @param subscriber
+     * @param token
+     * @param type
+     * @param pageIndex
+     * @param pageSize
+     */
+    public void getNews203List(Subscriber<NewsListResponse> subscriber, String token, int type, int pageIndex, int pageSize) {
+        Observable observable = connectionService.getNews203List(token, type, pageIndex, pageSize)
+                .map(new HttpResultFunc<NewsListResponse>());
+
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取消息未读数
+     * @param subscriber
+     * @param token
+     */
+    public void getNews203Count(Subscriber<Integer> subscriber, String token) {
+        Observable observable = connectionService.getNews203Count(token)
+                .map(new HttpResultFunc<Integer>());
+
+        toSubscribe(observable, subscriber);
+
     }
 
     /************************************************************************************************************/
