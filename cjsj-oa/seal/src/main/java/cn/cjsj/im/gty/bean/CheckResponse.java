@@ -2,6 +2,8 @@ package cn.cjsj.im.gty.bean;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.List;
+
 /**
  * Created by LuoYang on 2018/5/15.
  */
@@ -12,7 +14,16 @@ public class CheckResponse {
     private JSONObject checkGroup;
     private long nowTime;
     private boolean inRange;
+    private List<JSONObject> checkAskLeaveList;
 
+
+    public List<JSONObject> getCheckAskLeaveList() {
+        return checkAskLeaveList;
+    }
+
+    public void setCheckAskLeaveList(List<JSONObject> checkAskLeaveList) {
+        this.checkAskLeaveList = checkAskLeaveList;
+    }
 
     public boolean isInRange() {
         return inRange;

@@ -33,11 +33,6 @@
         android:padding="5dp"
         android:textColor="@color/color_999999"
         android:visibility="gone"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/color_E5E8F3" />
     <cn.bingoogolapple.refreshlayout.BGARefreshLayout
         android:id="@+id/project_manager_refresh"
         android:layout_width="match_parent"

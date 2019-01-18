@@ -138,4 +138,28 @@
     <!-- tab -->
     <dimen name="tab_height">44dp</dimen>
     <dimen name="tab_icon_height">15dp</dimen>
+
+
+    <dimen name="margin_dp_11">11dp</dimen>
+    <dimen name="margin_dp_12">12dp</dimen>
+    <dimen name="margin_dp_13">13dp</dimen>
+    <dimen name="margin_dp_14">14dp</dimen>
+    <dimen name="margin_dp_15">15dp</dimen>
+    <dimen name="margin_dp_16">16dp</dimen>
+    <dimen name="margin_dp_17">17dp</dimen>
+    <dimen name="margin_dp_18">18dp</dimen>
+    <dimen name="margin_dp_19">19dp</dimen>
+    <dimen name="margin_dp_20">20dp</dimen>
+    <dimen name="margin_dp_21">21dp</dimen>
+    <dimen name="margin_dp_22">22dp</dimen>
+    <dimen name="margin_dp_23">23dp</dimen>
+    <dimen name="margin_dp_24">24dp</dimen>
+    <dimen name="margin_dp_25">25dp</dimen>
+    <dimen name="margin_dp_27">27dp</dimen>
+    <dimen name="margin_dp_28">28dp</dimen>
+    <dimen name="margin_dp_29">29dp</dimen>
+    <dimen name="margin_dp_30">30dp</dimen>
+    <dimen name="margin_dp_190">190dp</dimen>
+    <dimen name="margin_dp_195">195dp</dimen>
+    <dimen name="margin_dp_200">200dp</dimen>
 </resources>

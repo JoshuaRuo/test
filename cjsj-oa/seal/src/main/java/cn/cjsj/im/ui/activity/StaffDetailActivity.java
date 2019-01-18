@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -51,14 +52,14 @@ public class StaffDetailActivity extends BaseActivity {
     @Bind(R.id.staff_phone_num)
     TextView mPhoneTv;
 
-    @Bind(R.id.staff_nation)
-    TextView mNationTv;
+    @Bind(R.id.staff_work_years)
+    TextView mWorkYears;
 
-    @Bind(R.id.staff_university)
-    TextView mUniversityTv;
+    @Bind(R.id.staff_company_years)
+    TextView mCompanyYears;
 
-    @Bind(R.id.staff_major)
-    TextView majorTv;
+    @Bind(R.id.staff_politics_status)
+    TextView mPoliticsStatus;
 
     @Bind(R.id.staff_bottom_layout)
     LinearLayout mCallLayout;
@@ -66,8 +67,9 @@ public class StaffDetailActivity extends BaseActivity {
     @Bind(R.id.staff_detail_company_info)
     TextView mCompanyInfo;
 
-    @Bind(R.id.staff_detail_personage_title)
-    TextView mPersonageTitle;
+    @Bind(R.id.staff_sex_iv)
+    ImageView mSexIv;
+
 
     @Bind(R.id.staff_detail_img)
     CircleImageView mHeadImg;
@@ -84,8 +86,6 @@ public class StaffDetailActivity extends BaseActivity {
         mToken = App.getInstance().getToken();
         mBaseLineView.setVisibility(View.GONE);
 
-        mCompanyInfo.setTypeface(mTypeface);
-        mPersonageTitle.setTypeface(mTypeface);
 
         mDetailSub = new SubscriberOnNextErrorListener<SysUserBean>() {
             @Override
@@ -113,9 +113,15 @@ public class StaffDetailActivity extends BaseActivity {
                 mDepartmentName.setText(mDeName);
                 mJobNumTv.setText(sysUserBean.getStaffCode());
                 mPhoneTv.setText(sysUserBean.getMobile());
-                mNationTv.setText(sysUserBean.getNational());
-                majorTv.setText(sysUserBean.getMajor());
-                mUniversityTv.setText(sysUserBean.getSchool());
+//                mNationTv.setText(sysUserBean.getNational());
+//                majorTv.setText(sysUserBean.getMajor());
+//                mUniversityTv.setText(sysUserBean.getSchool());
+
+                if ("0".equals(sysUserBean.getSex())){
+                    mSexIv.setImageResource(R.mipmap.staff_female_icon);
+                }else {
+                    mSexIv.setImageResource(R.mipmap.staff_male_icon);
+                }
                 mCallLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

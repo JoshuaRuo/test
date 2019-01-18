@@ -47,12 +47,11 @@
         android:id="@+id/new_start_user_profile"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_border_152"
-        android:layout_marginBottom="35dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/mine_title_layout_bg"
-        android:elevation="10dp"
+        android:elevation="5dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -66,8 +65,8 @@
             android:scaleType="centerCrop"
             android:src="@drawable/mine_head_default_img"
             circleimageview:civ_border_color="@color/color_67B5FF"
-            circleimageview:civ_border_overlay="false"
-            circleimageview:civ_border_width="4dp"
+            circleimageview:civ_border_overlay="true"
+            circleimageview:civ_border_width="2dp"
 
             />
 
@@ -76,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
             android:text="小米"
             android:textColor="@color/main_title_color_code"
             android:textSize="@dimen/font_size_20sp"
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/mine_user_name_tv"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="成都市交通规划设计院"
             android:textColor="@color/color_999999"
             android:textSize="@dimen/font_size_14sp" />
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/mine_company_name"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="盖天亚-UI设计师"
             android:textColor="@color/color_999999"
             android:textSize="@dimen/font_size_14sp" />
@@ -108,8 +108,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:visibility="gone">
+            android:layout_alignParentBottom="true">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,7 +135,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
         android:background="@color/white"
         android:orientation="horizontal">
 
@@ -408,7 +407,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_E5E8F3">
+        android:background="@color/gray_bg">
 
 
         <Button

@@ -19,10 +19,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toLeftOf="@+id/home_air_txt"
-            android:text="21℃"
             android:textColor="@color/main_title_color_code"
-            android:textSize="@dimen/font_size_20sp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/font_size_25sp"/>
 
         <TextView
             android:id="@+id/home_air_txt"
@@ -44,7 +42,7 @@
             android:layout_marginLeft="15dp"
             android:text="@string/app_name"
             android:textColor="@color/main_title_color_code"
-            android:textSize="@dimen/font_size_18sp"
+            android:textSize="@dimen/font_size_20sp"
             android:textStyle="bold" />
 
 
@@ -73,7 +71,8 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
                 <com.youth.banner.Banner
                     android:id="@+id/home_203_banner"
@@ -81,26 +80,25 @@
                     android:layout_height="125dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:focusable="true"
                     android:background="@drawable/bg_aaaaaa" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="128dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="135dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/home_203_banner_bg" />
             </FrameLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:gravity="center_vertical"
-                android:padding="5dp">
+                android:paddingBottom="4dp">
 
 
                 <me.bakumon.library.view.BulletinView
@@ -137,9 +135,9 @@
 
 
                 <FrameLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="50dp">
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/home_wait_list_tv"
@@ -151,27 +149,41 @@
                         android:paddingTop="4dp"
                         android:text="待我审批"
                         android:textColor="@color/color_66"
-                        android:textSize="@dimen/font_size_12sp" />
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/font_size_14sp" />
 
                     <TextView
                         android:id="@+id/home_wait_list_icon_tv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center|top"
-                        android:layout_marginLeft="14dp"
-                        android:visibility="gone"
+                        android:layout_marginLeft="16dp"
                         android:background="@drawable/notification_icon_bg"
                         android:gravity="center"
                         android:padding="1dp"
-                        android:text="123"
+                        android:visibility="gone"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_size_10sp" />
+
+                    <TextView
+                        android:id="@+id/home_wait_list_rectangle_tv"
+                        android:layout_width="30dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center|top"
+                        android:layout_marginLeft="17dp"
+                        android:background="@drawable/home_rounded_rectangle"
+                        android:gravity="center"
+                        android:padding="1dp"
+                        android:text="99+"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_size_10sp" />
                 </FrameLayout>
 
                 <FrameLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="50dp">
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/home_my_send_list_tv"
@@ -179,18 +191,19 @@
                         android:layout_height="wrap_content"
                         android:clickable="true"
                         android:drawablePadding="10dp"
-                        android:drawableTop="@drawable/wait_me_check_icon"
+                        android:drawableTop="@drawable/my_sended_list_icon"
                         android:paddingTop="4dp"
                         android:text="我发起的"
+                        android:layout_gravity="center"
                         android:textColor="@color/color_66"
-                        android:textSize="@dimen/font_size_12sp" />
+                        android:textSize="@dimen/font_size_14sp" />
 
                     <TextView
                         android:id="@+id/home_my_send_icon_tv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center|top"
-                        android:layout_marginLeft="14dp"
+                        android:layout_marginLeft="16dp"
                         android:background="@drawable/notification_icon_bg"
                         android:gravity="center"
                         android:padding="1dp"
@@ -198,13 +211,25 @@
                         android:text="123"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_size_10sp" />
+                    <TextView
+                        android:id="@+id/home_my_send_rectangle_tv"
+                        android:layout_width="30dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center|top"
+                        android:layout_marginLeft="17dp"
+                        android:background="@drawable/home_rounded_rectangle"
+                        android:gravity="center"
+                        android:padding="1dp"
+                        android:text="99+"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_size_10sp" />
                 </FrameLayout>
 
 
                 <FrameLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="50dp">
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/home_my_dailypager_tv"
@@ -215,26 +240,40 @@
                         android:drawableTop="@drawable/my_daily_paper_icon"
                         android:paddingTop="4dp"
                         android:text="我的日志"
+                        android:layout_gravity="center"
                         android:textColor="@color/color_66"
-                        android:textSize="@dimen/font_size_12sp" />
+                        android:textSize="@dimen/font_size_14sp" />
 
                     <TextView
                         android:id="@+id/home_my_dailypager_icon_tv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center|top"
-                        android:layout_marginLeft="14dp"
+                        android:layout_marginLeft="16dp"
                         android:background="@drawable/my_daily_paper_icon_bg"
                         android:gravity="center"
                         android:padding="1dp"
                         android:text="1"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_size_10sp" />
+                    <TextView
+                        android:id="@+id/home_my_dailypager_rectangle_tv"
+                        android:layout_width="30dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center|top"
+                        android:layout_marginLeft="17dp"
+                        android:background="@drawable/home_rounded_rectangle_dalily"
+                        android:gravity="center"
+                        android:padding="1dp"
+                        android:text="99+"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_size_10sp" />
                 </FrameLayout>
 
                 <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/home_my_attendance_tv"
@@ -245,20 +284,34 @@
                         android:drawableTop="@drawable/my_attendance_days_icon"
                         android:paddingTop="4dp"
                         android:text="我的考勤"
+                        android:layout_gravity="center"
                         android:textColor="@color/color_66"
-                        android:textSize="@dimen/font_size_12sp" />
+                        android:textSize="@dimen/font_size_14sp" />
 
                     <TextView
                         android:id="@+id/home_my_attendance_icon_tv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center|top"
-                        android:layout_marginLeft="14dp"
+                        android:layout_marginLeft="16dp"
                         android:background="@drawable/my_daily_paper_icon_bg"
                         android:gravity="center"
                         android:padding="1dp"
                         android:visibility="gone"
                         android:text="123"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_size_10sp" />
+
+                    <TextView
+                        android:id="@+id/home_my_attendance_rectangle_tv"
+                        android:layout_width="30dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center|top"
+                        android:layout_marginLeft="17dp"
+                        android:background="@drawable/home_rounded_rectangle_dalily"
+                        android:gravity="center"
+                        android:padding="1dp"
+                        android:text="99+"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_size_10sp" />
                 </FrameLayout>
@@ -384,15 +437,14 @@
                     android:layout_centerVertical="true"
                     android:text="收起"
                     android:textColor="@color/color_999999"
-                    android:textSize="@dimen/font_size_15sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/font_size_15sp"/>
 
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/often_use_rv"
                 android:layout_width="match_parent"
-                android:layout_height="168dp"
+                android:layout_height="@dimen/margin_dp_195"
                 android:scrollbars="none"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -404,7 +456,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
                 android:background="@color/color_E5E8F3" />
 
 
@@ -432,15 +483,14 @@
                     android:layout_centerVertical="true"
                     android:text="展开"
                     android:textColor="@color/color_999999"
-                    android:textSize="@dimen/font_size_15sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/font_size_15sp"/>
 
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/other_use_rv"
                 android:layout_width="match_parent"
-                android:layout_height="168dp"
+                android:layout_height="@dimen/margin_dp_195"
                 android:visibility="gone"
                 android:scrollbars="none">
 

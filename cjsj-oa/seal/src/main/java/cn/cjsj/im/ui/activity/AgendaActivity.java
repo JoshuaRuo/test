@@ -100,7 +100,7 @@ public class AgendaActivity extends BaseActivity implements View.OnClickListener
         if (mIsMyQues == 0) {
             setTitle("我的待办");
         } else {
-            setTitle("我的申请");
+            setTitle("我发起的");
         }
         WebSettings webSettings = mWebView.getSettings();
         WebViewInitSetting.getInstance(this).webViewSetting(webSettings);
@@ -154,6 +154,18 @@ public class AgendaActivity extends BaseActivity implements View.OnClickListener
                     mIsApplyApproval = false;
                     mIsApplyHistory = false;
                     mHisIndex = 0;
+
+                    mIsIntegral = false;
+                    isReimburseDetail = false;
+                    isReimburseRelevance = false;
+                    isProductName = false;
+                    isVerify = false;
+                    isGatheringNo = false;
+                    isContact = false;
+                    isAddBankCard = false;
+                    isSelectSeal = false;
+                    mCloseBankCardIndex = 0;
+
                     mWebHistoryUtil.clearHis();
                     mWebView.loadUrl(BASE_WEEKLY_URL + "?token=" + mToken + "&myRequest=" + mIsMyQues);
                     mWebHistoryUtil.setUrl(BASE_WEEKLY_URL + "?token=" + mToken + "&myRequest=" + mIsMyQues);
@@ -170,6 +182,7 @@ public class AgendaActivity extends BaseActivity implements View.OnClickListener
                     isProductName = false;
                     isVerify = false;
                     isGatheringNo = false;
+                    isContact = false;
                     isAddBankCard = false;
                     isSelectSeal = false;
                     mCloseBankCardIndex = 0;
@@ -262,7 +275,12 @@ public class AgendaActivity extends BaseActivity implements View.OnClickListener
                         } else if (mWebView.getUrl().contains("reimbursement_detail.html") || mWebView.getUrl().contains("apply_reimbursement.html")
                                 || mWebView.getUrl().contains("loan_detail.html") || mWebView.getUrl().contains("pay_off_detail.html")
                                 || mWebView.getUrl().contains("integral_detail.html") || mWebView.getUrl().contains("apply_integral.html")
-                                || mWebView.getUrl().contains("matter_detail.html") || mWebView.getUrl().contains("add_matter.html")) {
+                                || mWebView.getUrl().contains("matter_detail.html") || mWebView.getUrl().contains("add_matter.html")
+                                || mWebView.getUrl().contains("leave_detail.html")
+                                || mWebView.getUrl().contains("trip_detail.html") || mWebView.getUrl().contains("supplement_detail.html") || mWebView.getUrl().contains("seal_detail.html")
+                                || mWebView.getUrl().contains("add_outsourcing_contract.html") || mWebView.getUrl().contains("goods_detail.html") || mWebView.getUrl().contains("goodsPurchase.html")
+                                || mWebView.getUrl().contains("vote_detail.html") || mWebView.getUrl().contains("view_detail.html") || mWebView.getUrl().contains("scan_details.html")
+                                || mWebView.getUrl().contains("performance_plan.html") || mWebView.getUrl().contains("performance_default.html")) {
                             mIsApplyApproval = true;
                             mHeadRightText.setText("审批进度");
                             mHeadRightText.setVisibility(View.VISIBLE);
@@ -350,7 +368,12 @@ public class AgendaActivity extends BaseActivity implements View.OnClickListener
                     } else if (mWebView.getUrl().contains("reimbursement_detail.html") || mWebView.getUrl().contains("apply_reimbursement.html")
                             || mWebView.getUrl().contains("loan_detail.html") || mWebView.getUrl().contains("pay_off_detail.html")
                             || mWebView.getUrl().contains("integral_detail.html") || mWebView.getUrl().contains("apply_integral.html")
-                            || mWebView.getUrl().contains("matter_detail.html") || mWebView.getUrl().contains("add_matter.html")) {
+                            || mWebView.getUrl().contains("matter_detail.html") || mWebView.getUrl().contains("add_matter.html")
+                            || mWebView.getUrl().contains("leave_detail.html")
+                            || mWebView.getUrl().contains("trip_detail.html") || mWebView.getUrl().contains("supplement_detail.html") || mWebView.getUrl().contains("seal_detail.html")
+                            || mWebView.getUrl().contains("add_outsourcing_contract.html") || mWebView.getUrl().contains("goods_detail.html") || mWebView.getUrl().contains("goodsPurchase.html")
+                            || mWebView.getUrl().contains("vote_detail.html") || mWebView.getUrl().contains("view_detail.html") || mWebView.getUrl().contains("scan_details.html")
+                            || mWebView.getUrl().contains("performance_plan.html") || mWebView.getUrl().contains("performance_default.html")) {
                         mIsApplyApproval = true;
                         mIsApplyHistory = false;
                         mHeadRightText.setText("审批进度");

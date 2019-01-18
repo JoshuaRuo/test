@@ -68,6 +68,8 @@ public class DailyPaperActivity extends BaseActivity implements View.OnClickList
 
     private boolean isProductName = false; //项目名称
 
+    private String mDailyDate;
+
     private UploadHandler mUploadHandler;
     private ValueCallback<Uri[]> mUploadMessageForAndroid5;
     public final static int FILECHOOSER_RESULTCODE_FOR_ANDROID_5 = 2;
@@ -80,6 +82,7 @@ public class DailyPaperActivity extends BaseActivity implements View.OnClickList
 
         mIntent = getIntent();
         mDailyPaper = mIntent.getIntExtra("dailyPaperType", 0);
+        mDailyDate = mIntent.getStringExtra("date");
 
         mHeadRightText.setVisibility(View.VISIBLE);
         mHeadRightText.setText("写日志");
@@ -97,11 +100,11 @@ public class DailyPaperActivity extends BaseActivity implements View.OnClickList
         mWebHistoryUtil = new WebHistoryUtil();
 
         mToken = App.getInstance().getToken();
-
+//"&date=" + ""
         if (mDailyPaper == 1) {
-            mWebView.loadUrl(ADD_URL + "?token=" + mToken);
+            mWebView.loadUrl(ADD_URL + "?token=" + mToken + "&dailyDate=" + mDailyDate);
             mWebHistoryUtil.setUrl(BASE_WEEKLY_URL + "?token=" + mToken + "&limits=" + mLimits);
-            mWebHistoryUtil.setUrl(ADD_URL + "?token=" + mToken);
+            mWebHistoryUtil.setUrl(ADD_URL + "?token=" + mToken + "&dailyDate=" + mDailyDate);
             mHisIndex++;
             mHeadRightText.setVisibility(View.INVISIBLE);
         } else {
@@ -187,8 +190,8 @@ public class DailyPaperActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.text_right:
-                mWebView.loadUrl(ADD_URL + "?token=" + mToken);
-                mWebHistoryUtil.setUrl(ADD_URL + "?token=" + mToken);
+                mWebView.loadUrl(ADD_URL + "?token=" + mToken + "&dailyDate=" + mDailyDate);
+                mWebHistoryUtil.setUrl(ADD_URL + "?token=" + mToken + "&dailyDate=" + mDailyDate);
                 mHisIndex++;
                 mHeadRightText.setVisibility(View.INVISIBLE);
                 break;

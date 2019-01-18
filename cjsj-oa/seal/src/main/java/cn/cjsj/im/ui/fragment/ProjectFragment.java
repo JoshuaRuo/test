@@ -121,9 +121,9 @@ public class ProjectFragment extends Fragment {
         mProjectAdapter.setOnRVItemClickListener(new BGAOnRVItemClickListener() {
             @Override
             public void onRVItemClick(ViewGroup parent, View itemView, int position) {
-                Intent intent = new Intent(getActivity(),ProjectDetailActivity.class);
-                intent.putExtra("id",mList.get(position).getId());
-                startActivityForResult(intent,LIST_RESULT);
+//                Intent intent = new Intent(getActivity(),ProjectDetailActivity.class);
+//                intent.putExtra("id",mList.get(position).getId());
+//                startActivityForResult(intent,LIST_RESULT);
             }
         });
         mProjectAdapter.setProjectAtt(new ProjectAdapter.ProjectAttention() {

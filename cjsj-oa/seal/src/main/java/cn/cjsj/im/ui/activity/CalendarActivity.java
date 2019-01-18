@@ -87,6 +87,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
     private int mToday;
     private int mThisYear;
     private int mThisMonth;
+    private String mDailyDate;
 
     public CalendarActivity() {
 
@@ -277,9 +278,25 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
 //                    Toast.makeText(CalendarActivity.this, scheduleYear + "-" + scheduleMonth + "-" + scheduleDay, Toast.LENGTH_SHORT).show();
                     // Toast.makeText(CalendarActivity.this, "点击了该条目",
                     // Toast.LENGTH_SHORT).show();
+
+                    String argMonth = null;
+                    String argToday = null;
+                    if (scheduleMonth.length() < 10){
+                        argMonth = "0" + scheduleMonth;
+                    }else {
+                        argMonth = scheduleMonth + "";
+                    }
+                    if (scheduleDay.length() < 10){
+                        argToday = "0" + scheduleDay;
+                    }else {
+                        argToday = scheduleDay +"";
+                    }
+                    mDailyDate = scheduleYear + "-" + argMonth + "-" + argToday;
+
                     if (mList.contains(Integer.parseInt(scheduleDay))) {
                         Intent intent = new Intent(CalendarActivity.this, DailyPaperActivity.class);
                         intent.putExtra("dailyPaperType", 1);
+                        intent.putExtra("date", mDailyDate);
                         startActivity(intent);
                     }
                 }
@@ -320,6 +337,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
         mThisYear = now.get(Calendar.YEAR);
         mThisMonth = now.get(Calendar.MONTH) + 1;
         mToday = now.get(Calendar.DAY_OF_MONTH);
+
     }
 
     private boolean getContains(int arg) {

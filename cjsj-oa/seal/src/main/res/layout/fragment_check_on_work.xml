@@ -2,29 +2,77 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/leave_layout"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="67dp">
+
+
+        <ImageView
+            android:id="@+id/leave_img_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:scaleType="center"
+            android:src="@drawable/leave_status_icon" />
+
+
+        <TextView
+            android:id="@+id/leave_type_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_dp_15"
+            android:layout_marginTop="@dimen/margin_dp_13"
+            android:layout_toRightOf="@+id/leave_img_tv"
+            android:textSize="@dimen/font_size_17sp"
+            android:textColor="@color/text_black_color"
+            android:text="请假" />
+
+        <TextView
+            android:id="@+id/leave_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_dp_15"
+            android:layout_marginLeft="@dimen/margin_dp_15"
+            android:layout_toRightOf="@+id/leave_img_tv"
+            android:textColor="@color/color_66"
+            android:textSize="@dimen/font_size_12sp"
+            android:text="2018-03-11 08:30至2018-03-11 17:30" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_E5E8F3"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/clock_on_top_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_999999"
-        android:textSize="@dimen/font_size_14sp"
-        android:text="像蜜蜂一样勤劳工作才能享受甜蜜生活"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
-        android:visibility="gone"/>
+        android:text="像蜜蜂一样勤劳工作才能享受甜蜜生活"
+        android:visibility="gone"
+        android:textColor="@color/color_999999"
+        android:textSize="@dimen/font_size_14sp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/check_work_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         android:cacheColorHint="#00000000"
         android:divider="#00000000"
         android:dividerHeight="0dp"
         android:scrollbars="none"
-        android:layout_marginTop="30dp"
         android:visibility="gone">
 
 
@@ -40,18 +88,18 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/pic_attendance_icon"
-            android:layout_gravity="center"/>
+            android:src="@drawable/pic_attendance_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="你还未加入到考勤组，请联系管理员！"
             android:textColor="@color/color_999999"
-            android:textSize="@dimen/font_size_14sp"
-            android:gravity="center"
-            android:layout_marginTop="10dp"/>
+            android:textSize="@dimen/font_size_14sp" />
     </LinearLayout>
 </LinearLayout>

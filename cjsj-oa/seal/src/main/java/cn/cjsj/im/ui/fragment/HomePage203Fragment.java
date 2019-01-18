@@ -71,7 +71,7 @@ import rx.functions.Action1;
 /**
  * Created by LuoYang on 2018/12/27 15:40
  */
-public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private Typeface mTypeface;
     @Bind(R.id.home_t_num)
@@ -119,14 +119,24 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
     @Bind(R.id.home_wait_list_icon_tv)
     TextView mAgendaCount;
 
+    @Bind(R.id.home_wait_list_rectangle_tv)
+    TextView mAgendaRectCount;
+
     @Bind(R.id.home_my_send_list_tv)
     TextView mGoMyRequest;
+
 
     @Bind(R.id.home_my_send_icon_tv)
     TextView myRequestCount;
 
+    @Bind(R.id.home_my_send_rectangle_tv)
+    TextView myRequestRectCount;
+
     @Bind(R.id.home_my_attendance_icon_tv)
     TextView mCheckCount;
+
+    @Bind(R.id.home_my_attendance_rectangle_tv)
+    TextView mCheckRectCount;
 
     @Bind(R.id.home_my_dailypager_tv)
     TextView myLog;
@@ -137,7 +147,7 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
     @Bind(R.id.home_203_scrollview)
     ScrollView mScrollView;
 
-    private int mViewHeight = 343;//组件高度
+    private int mViewHeight = 390;//组件高度
     private float mDensity;
     private boolean isFold = false;//是否是收起状态
     boolean isAnimating = false;//是否正在执行动画
@@ -150,6 +160,9 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
 
     @Bind(R.id.home_my_dailypager_icon_tv)
     TextView mDailyNormalCountTv;
+
+    @Bind(R.id.home_my_dailypager_rectangle_tv)
+    TextView mDailyNormalRectCountTv;
 
     private Home203RvAdapter mMainAdapter;
     private Home203RvAdapter mOtherAdapter;
@@ -170,9 +183,12 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
     private int mThisYear;
     private int mThisMonth;
     private int mToday;
+    private String mDailyDate;
     private AgendaResponse mAgendaResponse; //待办数据
     private AgendaResponse myRequestResponse; //我的请求数据
     private CheckStatisticsResponse mCheckStatisticsResponse; //出勤天数数据
+
+    private static int pageIndex = 0;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -249,6 +265,7 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
 
         mMainAdapter = new Home203RvAdapter(mOftenRv);
         mOftenRv.setLayoutManager(gridLayoutManager);
+        mOftenRv.setNestedScrollingEnabled(false);
         mOftenRv.setAdapter(mMainAdapter.getHeaderAndFooterAdapter());
         mMainAdapter.setData(mFavList);
         mMainAdapter.notifyDataSetChanged();
@@ -273,6 +290,7 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
         otherGridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
         mOtherAdapter = new Home203RvAdapter(mOtherRv);
         mOtherRv.setLayoutManager(otherGridLayoutManager);
+        mOtherRv.setNestedScrollingEnabled(false);
         mOtherRv.setAdapter(mOtherAdapter.getHeaderAndFooterAdapter());
         mOtherAdapter.setData(mOtherList);
         mOtherAdapter.notifyDataSetChanged();
@@ -318,13 +336,20 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
         mGetUserInfoSubscriber = new SubscriberOnNextErrorListener<OAUserBean>() {
             @Override
             public void onNext(OAUserBean oaUserBean) {
-               if (oaUserBean.getNormalDaily() != 0){
-                   mDailyNormalCountTv.setVisibility(View.VISIBLE);
-                   mDailyNormalCountTv.setText(oaUserBean.getNormalDaily() + "");
-
-               }else {
-                   mDailyNormalCountTv.setVisibility(View.GONE);
-               }
+                if (oaUserBean.getNormalDaily() != 0) {
+                    if (oaUserBean.getNormalDaily() >= 100){
+                        mDailyNormalCountTv.setVisibility(View.GONE);
+                        mDailyNormalRectCountTv.setVisibility(View.VISIBLE);
+                        mDailyNormalRectCountTv.setText(oaUserBean.getNormalDaily() + "");
+                    }else {
+                        mDailyNormalCountTv.setVisibility(View.VISIBLE);
+                        mDailyNormalCountTv.setText(oaUserBean.getNormalDaily() + "");
+                        mDailyNormalRectCountTv.setVisibility(View.GONE);
+                    }
+                } else {
+                    mDailyNormalCountTv.setVisibility(View.GONE);
+                    mDailyNormalRectCountTv.setVisibility(View.GONE);
+                }
 
                 if (mSwipeLayout.isRefreshing()) {
                     mSwipeLayout.setRefreshing(false);
@@ -378,6 +403,7 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
                                     public void call(Void aVoid) {
                                         Intent intent = new Intent(getActivity(), DailyPaperActivity.class);
                                         intent.putExtra("dailyPaperType", 1);
+                                        intent.putExtra("date",mDailyDate);
                                         startActivity(intent);
                                     }
                                 });
@@ -400,10 +426,19 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
             public void onNext(AgendaResponse model) {
                 mAgendaResponse = model;
                 if (mAgendaResponse.getProcessFinishList().size() > 0) {
-                    mAgendaCount.setText(mAgendaResponse.getProcessFinishList().size() + "");
-                    mAgendaCount.setVisibility(View.VISIBLE);
+                    if (mAgendaResponse.getProcessFinishList().size() >= 100) {
+                        mAgendaCount.setVisibility(View.GONE);
+                        mAgendaRectCount.setVisibility(View.VISIBLE);
+                        mAgendaRectCount.setText(mAgendaResponse.getProcessFinishList().size() + "");
+                    } else {
+                        mAgendaCount.setText(mAgendaResponse.getProcessFinishList().size() + "");
+                        mAgendaCount.setVisibility(View.VISIBLE);
+                        mAgendaRectCount.setVisibility(View.GONE);
+                    }
+
                 } else {
                     mAgendaCount.setVisibility(View.GONE);
+                    mAgendaRectCount.setVisibility(View.GONE);
                 }
             }
 
@@ -425,11 +460,18 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
                     }
                 }
                 if (count > 0) {
-
-                    myRequestCount.setText(count + "");
-                    myRequestCount.setVisibility(View.VISIBLE);
+                    if (count >= 100) {
+                        myRequestCount.setVisibility(View.GONE);
+                        myRequestRectCount.setVisibility(View.VISIBLE);
+                        myRequestRectCount.setText(count + "");
+                    } else {
+                        myRequestCount.setText(count + "");
+                        myRequestCount.setVisibility(View.VISIBLE);
+                        myRequestRectCount.setVisibility(View.GONE);
+                    }
                 } else {
                     myRequestCount.setVisibility(View.GONE);
+                    myRequestRectCount.setVisibility(View.GONE);
                 }
             }
 
@@ -444,11 +486,18 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
             public void onNext(CheckStatisticsResponse model) {
                 mCheckStatisticsResponse = model;
                 if (mCheckStatisticsResponse.getCheckInDaysList().size() != 0) {
-
-                    mCheckCount.setText(mCheckStatisticsResponse.getCheckInDaysList().size() + "");
-                    mCheckCount.setVisibility(View.VISIBLE);
+                    if (mCheckStatisticsResponse.getCheckInDaysList().size() >= 100) {
+                        mCheckCount.setVisibility(View.GONE);
+                        mCheckRectCount.setVisibility(View.VISIBLE);
+                        mCheckRectCount.setText(mCheckStatisticsResponse.getCheckInDaysList().size() + "");
+                    } else {
+                        mCheckCount.setText(mCheckStatisticsResponse.getCheckInDaysList().size() + "");
+                        mCheckCount.setVisibility(View.VISIBLE);
+                        mCheckRectCount.setVisibility(View.GONE);
+                    }
                 } else {
                     mCheckCount.setVisibility(View.GONE);
+                    mCheckRectCount.setVisibility(View.GONE);
                 }
             }
 
@@ -547,12 +596,15 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
                             @Override
                             public void onError(Throwable e) {
                                 Log.i("Log", "onError: ", e);
+                                mTNum.setVisibility(View.GONE);
+                                mHomeAirTxt.setVisibility(View.GONE);
                             }
 
                             @Override
                             public void onSuccess(List<Now> list) {
                                 Log.i("Log", "onSuccess: " + new Gson().toJson(list));
-
+                                mTNum.setVisibility(View.VISIBLE);
+                                mHomeAirTxt.setVisibility(View.VISIBLE);
                                 mTNum.setText(list.get(0).getNow().getFl() + "°");
                                 mHomeAirTxt.setText(list.get(0).getNow().getCond_txt() + "\n" + list.get(0).getNow().getWind_dir());
                             }
@@ -560,25 +612,29 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
             }
         });
         mHandler.sendEmptyMessage(REFRESH_COMPLETE);
-        mScrollView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mScrollView.fullScroll(View.FOCUS_UP);
-            }
-        },1000);
+        if (pageIndex ==0) {
+            pageIndex =1;
+            mScrollView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mScrollView.fullScroll(View.FOCUS_UP);
+                }
+            }, 1000);
+        }
+
     }
 
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        Log.v("LY__hidden",hidden+"");
+        Log.v("LY__hidden", hidden + "");
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.v("LY__hidden","onAttach");
+        Log.v("LY__hidden", "onAttach");
     }
 
     private void animateOpen(RecyclerView view) {
@@ -712,6 +768,19 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
         mThisYear = now.get(Calendar.YEAR);
         mThisMonth = now.get(Calendar.MONTH) + 1;
         mToday = now.get(Calendar.DAY_OF_MONTH);
+        String argMonth = null;
+        String argToday = null;
+        if (mThisMonth < 10){
+            argMonth = "0" + mThisMonth;
+        }else {
+            argMonth = mThisMonth + "";
+        }
+        if (mToday < 10){
+            argToday = "0" + mToday;
+        }else {
+            argToday = mToday +"";
+        }
+        mDailyDate = mThisYear + "-" + argMonth + "-" + argToday;
     }
 
     @Override

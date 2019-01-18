@@ -177,7 +177,7 @@
 
                     <FrameLayout
                         android:id="@+id/tab_layout_news"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true">
 
@@ -186,6 +186,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#ffffff"
+                            android:src="@drawable/news_press_icon"
+                            android:layout_gravity="center"
                             android:focusable="false"/>
 
                         <TextView
@@ -193,14 +195,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center|top"
-                            android:layout_marginLeft="4dp"
+                            android:layout_marginLeft="12dp"
                             android:background="@drawable/home_news_icon_bg"
                             android:gravity="center"
                             android:padding="1dp"
                             android:visibility="gone"
-                            android:text="1"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/font_size_5sp" />
+                            android:textSize="@dimen/font_size_10sp" />
                     </FrameLayout>
 
                     <TextView

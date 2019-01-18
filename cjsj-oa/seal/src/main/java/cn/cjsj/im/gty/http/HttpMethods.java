@@ -59,10 +59,10 @@ import rx.schedulers.Schedulers;
  */
 public class HttpMethods {
 
-    //                        public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
+//                            public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
 //    public static final String BASE_URL = "http://192.168.17.57:8080/"; //本地
-    public static final String BASE_URL = "http://192.168.15.198:8082/"; // 詹
-//    public static final String BASE_URL = "http://192.168.15.140:8082/app/";  //内网测试环境
+//    public static final String BASE_URL = "http://192.168.15.198:8082/"; // 詹
+    public static final String BASE_URL = "http://192.168.15.140:8082/app/";  //内网测试环境
 
     private static final int DEFAULT_TIMEOUT = 30;
 

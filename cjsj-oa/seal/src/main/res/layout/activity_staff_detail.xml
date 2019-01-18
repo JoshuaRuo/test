@@ -21,278 +21,290 @@
                 android:layout_height="149dp"
                 android:gravity="center"
                 android:orientation="vertical">
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:id="@+id/staff_detail_headimg"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:scaleType="center"
-                        android:textSize="@dimen/font_size_18sp"
-                        android:textColor="@color/white"
-                        android:background="@drawable/home_backlog_head_bg"
-                        android:text=""
-                        android:gravity="center"
                         android:layout_marginTop="5dp"
-                        android:visibility="gone"/>
+                        android:background="@drawable/home_backlog_head_bg"
+                        android:gravity="center"
+                        android:scaleType="center"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_size_18sp"
+                        android:visibility="gone" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:circleimageview="http://schemas.android.com/apk/res-auto"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:circleimageview="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/staff_detail_img"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:scaleType="centerCrop"
                         android:layout_alignParentLeft="true"
                         android:layout_centerInParent="true"
+                        android:scaleType="centerCrop"
+                        android:elevation="20dp"
+                        android:src="@drawable/mine_head_default_img"
+                        android:visibility="gone"
                         circleimageview:civ_border_color="@color/de_transparent"
                         circleimageview:civ_border_overlay="false"
                         circleimageview:civ_border_width="0dp"
-                        android:src="@drawable/mine_head_default_img"
-                        android:visibility="gone"
 
                         />
 
                 </FrameLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/margin_dp_11"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/staff_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_marginTop="10dp"
-                android:textColor="@color/main_title_color_code"
-                android:textSize="@dimen/font_size_18sp"
-                />
+                    <TextView
+                        android:id="@+id/staff_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/main_title_color_code"
+                        android:textSize="@dimen/font_size_18sp" />
 
-            <TextView
-                android:id="@+id/staff_head_department_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_marginTop="10dp"
-                android:textColor="@color/color_999999"
-                android:textSize="@dimen/font_size_14sp"
-                />
+                    <ImageView
+                        android:id="@+id/staff_sex_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:scaleType="center" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/staff_head_department_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/font_size_14sp" />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:background="@color/gty_page_bgcolor"
-                android:layout_marginTop="17dp"
-                />
+
             <TextView
                 android:id="@+id/staff_detail_company_info"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                android:text="企业信息"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:textSize="@dimen/font_size_16sp"
-                android:textColor="@color/text_black_color"/>
-          <View
-              android:layout_width="match_parent"
-              android:layout_height="1px"
-              android:background="@color/color_E5E8F3"/>
-            
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="部门"
-                    android:textColor="@color/text_tips_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_centerVertical="true"/>
+                android:gravity="center_vertical"
+                android:text="基本信息"
+                android:textColor="@color/text_black_color"
+                android:textSize="@dimen/font_size_20sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/staff_department_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/text_black_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:layout_centerVertical="true"/>
-
-            </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/color_E5E8F3"
-                android:layout_marginLeft="15dp"/>
+                android:background="@color/color_E5E8F3" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="44dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="工号"
-                    android:textColor="@color/text_tips_color"
-                    android:textSize="@dimen/font_size_16sp"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
-                    android:layout_centerVertical="true"/>
+                    android:text="员工编号"
+                    android:textColor="@color/text_tips_color"
+                    android:textSize="@dimen/font_size_16sp" />
 
                 <TextView
                     android:id="@+id/staff_job_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:text=""
                     android:textColor="@color/text_black_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="@dimen/font_size_16sp" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/color_E5E8F3"
-                android:layout_marginLeft="15dp"/>
+                android:layout_marginLeft="15dp"
+                android:background="@color/color_E5E8F3" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="44dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="部门职位"
+                    android:textColor="@color/text_tips_color"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/staff_department_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text=""
+                    android:textColor="@color/text_black_color"
+                    android:textSize="@dimen/font_size_16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="15dp"
+                android:background="@color/color_E5E8F3" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
                     android:text="联系电话"
                     android:textColor="@color/text_tips_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="@dimen/font_size_16sp" />
 
                 <TextView
                     android:id="@+id/staff_phone_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:text=""
                     android:textColor="@color/text_black_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="@dimen/font_size_16sp" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:background="@color/gty_page_bgcolor"
-                />
-            <TextView
-                android:id="@+id/staff_detail_personage_title"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:text="个人信息"
-                android:gravity="center_vertical"
+                android:layout_height="1px"
                 android:layout_marginLeft="15dp"
-                android:textSize="@dimen/font_size_16sp"
-                android:textColor="@color/text_black_color"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/color_E5E8F3"/>
+                android:background="@color/gty_page_bgcolor" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="44dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="民族"
-                    android:textColor="@color/text_tips_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_centerVertical="true"/>
 
                 <TextView
-                    android:id="@+id/staff_nation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="政治面貌"
+                    android:textColor="@color/text_tips_color"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/staff_politics_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:text=""
                     android:textColor="@color/text_black_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="@dimen/font_size_16sp" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/color_E5E8F3"
-                android:layout_marginLeft="15dp"/>
+                android:layout_marginLeft="15dp"
+                android:background="@color/color_E5E8F3" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="44dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="毕业学校"
-                    android:textColor="@color/text_tips_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_centerVertical="true"/>
 
                 <TextView
-                    android:id="@+id/staff_university"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="院龄"
+                    android:textColor="@color/text_tips_color"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/staff_company_years"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:text=""
                     android:textColor="@color/text_black_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="@dimen/font_size_16sp" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/color_E5E8F3"
-                android:layout_marginLeft="15dp"/>
+                android:layout_marginLeft="15dp"
+                android:background="@color/color_E5E8F3" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="44dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="专业"
-                    android:textColor="@color/text_tips_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_centerVertical="true"/>
 
                 <TextView
-                    android:id="@+id/staff_major"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="工龄"
+                    android:textColor="@color/text_tips_color"
+                    android:textSize="@dimen/font_size_16sp" />
+
+                <TextView
+                    android:id="@+id/staff_work_years"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:text=""
                     android:textColor="@color/text_black_color"
-                    android:textSize="@dimen/font_size_16sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="@dimen/font_size_16sp" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/color_E5E8F3"
-                android:layout_marginLeft="15dp"/>
+                android:layout_marginLeft="15dp"
+                android:background="@color/color_E5E8F3" />
 
         </LinearLayout>
 
@@ -310,21 +322,21 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/call_icon"/>
+            android:src="@mipmap/call_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/font_size_16sp"
-            android:textColor="@color/color_66"
             android:layout_marginLeft="15dp"
-            android:text="拨打电话"/>
+            android:text="拨打电话"
+            android:textColor="@color/color_66"
+            android:textSize="@dimen/font_size_16sp" />
 
     </LinearLayout>
 

@@ -59,7 +59,7 @@ public abstract class BaseActivity extends FragmentActivity implements OnDataLis
         mBtnLeft = (Button) super.findViewById(R.id.btn_left);
         mBtnRight = (Button) super.findViewById(R.id.btn_right);
         mTitle = (TextView) super.findViewById(R.id.tv_title);
-        mTitle.setTypeface(mTypeface);
+//        mTitle.setTypeface(mTypeface);
         mBtnBackDrawable = getResources().getDrawable(R.drawable.ac_back_icon);
         mBtnBackDrawable.setBounds(0, 0, mBtnBackDrawable.getMinimumWidth(),
                                    mBtnBackDrawable.getMinimumHeight());

@@ -1,6 +1,8 @@
 package cn.cjsj.im.gty.bean;
 
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * Created by LuoYang on 2018/11/29 10:38
  * 补卡历史数据
@@ -8,7 +10,7 @@ package cn.cjsj.im.gty.bean;
 public class ReWorkHistoryResponse {
     private long id;
     private int type;
-    private String time;
+    private JSONObject time;
     private String reason;
     private String photoUrl;
     private long creatorId;
@@ -16,12 +18,12 @@ public class ReWorkHistoryResponse {
     private String copyPersonID;
     private String copyPerson;
     private int approvals;
-    private String createTime;
+    private JSONObject createTime;
     private String recipientName;
     private String creator;
     private String timeStr;
     private String createTimeStr;
-    private String timeEnd;
+    private JSONObject timeEnd;
     private String timeEndStr;
     private String typeStr;
 
@@ -41,11 +43,11 @@ public class ReWorkHistoryResponse {
         this.type = type;
     }
 
-    public String getTime() {
+    public JSONObject getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(JSONObject time) {
         this.time = time;
     }
 
@@ -105,11 +107,11 @@ public class ReWorkHistoryResponse {
         this.approvals = approvals;
     }
 
-    public String getCreateTime() {
+    public JSONObject getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(JSONObject createTime) {
         this.createTime = createTime;
     }
 
@@ -145,11 +147,11 @@ public class ReWorkHistoryResponse {
         this.createTimeStr = createTimeStr;
     }
 
-    public String getTimeEnd() {
+    public JSONObject getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(String timeEnd) {
+    public void setTimeEnd(JSONObject timeEnd) {
         this.timeEnd = timeEnd;
     }
 

@@ -120,7 +120,7 @@ public class AgendaDetailActivity extends BaseActivity implements View.OnClickLi
             setTitle("我的申请");
         }
 
-        mWebView.loadUrl(BASE_WEEKLY_URL + "?token=" + mToken + "&actDefId=" + mActDefId + "&businessKey=" + mBusinessKey + "&type=" + myRequest + "&runId=" + mRunId + "&status=" + mStatus );
+        mWebView.loadUrl(BASE_WEEKLY_URL + "?token=" + mToken + "&actDefId=" + mActDefId + "&businessKey=" + mBusinessKey + "&type=" + myRequest + "&runId=" + mRunId + "&status=" + mStatus);
         mWebHistoryUtil.setUrl(BASE_WEEKLY_URL + "?token=" + mToken + "&actDefId=" + mActDefId + "&businessKey=" + mBusinessKey + "&type=" + myRequest + "&runId=" + mRunId + "&status=" + mStatus);
 
         mWebView.setWebViewClient(new WebViewClient() {
@@ -278,7 +278,12 @@ public class AgendaDetailActivity extends BaseActivity implements View.OnClickLi
                         } else if (mWebView.getUrl().contains("reimbursement_detail.html") || mWebView.getUrl().contains("apply_reimbursement.html")
                                 || mWebView.getUrl().contains("loan_detail.html") || mWebView.getUrl().contains("pay_off_detail.html")
                                 || mWebView.getUrl().contains("integral_detail.html") || mWebView.getUrl().contains("apply_integral.html")
-                                || mWebView.getUrl().contains("matter_detail.html") || mWebView.getUrl().contains("add_matter.html")) {
+                                || mWebView.getUrl().contains("matter_detail.html") || mWebView.getUrl().contains("add_matter.html")
+                                || mWebView.getUrl().contains("leave_detail.html")
+                                || mWebView.getUrl().contains("trip_detail.html") || mWebView.getUrl().contains("supplement_detail.html") || mWebView.getUrl().contains("seal_detail.html")
+                                || mWebView.getUrl().contains("add_outsourcing_contract.html") || mWebView.getUrl().contains("goods_detail.html") || mWebView.getUrl().contains("goodsPurchase.html")
+                                || mWebView.getUrl().contains("vote_detail.html") || mWebView.getUrl().contains("view_detail.html") || mWebView.getUrl().contains("scan_details.html")
+                                || mWebView.getUrl().contains("performance_plan.html") || mWebView.getUrl().contains("performance_default.html")) {
                             mIsApplyApproval = true;
                             mHeadRightText.setText("审批进度");
                             mHeadRightText.setVisibility(View.VISIBLE);
@@ -368,7 +373,12 @@ public class AgendaDetailActivity extends BaseActivity implements View.OnClickLi
                     } else if (mWebView.getUrl().contains("reimbursement_detail.html") || mWebView.getUrl().contains("apply_reimbursement.html")
                             || mWebView.getUrl().contains("loan_detail.html") || mWebView.getUrl().contains("pay_off_detail.html")
                             || mWebView.getUrl().contains("integral_detail.html") || mWebView.getUrl().contains("apply_integral.html")
-                            || mWebView.getUrl().contains("matter_detail.html") || mWebView.getUrl().contains("add_matter.html")) {
+                            || mWebView.getUrl().contains("matter_detail.html") || mWebView.getUrl().contains("add_matter.html")
+                            || mWebView.getUrl().contains("leave_detail.html")
+                            || mWebView.getUrl().contains("trip_detail.html") || mWebView.getUrl().contains("supplement_detail.html") || mWebView.getUrl().contains("seal_detail.html")
+                            || mWebView.getUrl().contains("add_outsourcing_contract.html") || mWebView.getUrl().contains("goods_detail.html") || mWebView.getUrl().contains("goodsPurchase.html")
+                            || mWebView.getUrl().contains("vote_detail.html") || mWebView.getUrl().contains("view_detail.html") || mWebView.getUrl().contains("scan_details.html")
+                            || mWebView.getUrl().contains("performance_plan.html") || mWebView.getUrl().contains("performance_default.html")) {
                         mIsApplyApproval = true;
                         mIsApplyHistory = false;
                         mHeadRightText.setText("审批进度");

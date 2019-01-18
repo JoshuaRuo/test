@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,6 +72,10 @@ public class CheckOnWorkFragment extends Fragment {
     private DialogUtils dialogUtils;
 
     private CheckResponse mCheckResponse;
+
+    private RelativeLayout mLeaveLayout;
+    private TextView mLeaveType;
+    private TextView mLeaveTime;
 
 
     //检查考勤组
@@ -140,6 +145,19 @@ public class CheckOnWorkFragment extends Fragment {
                     mRv.setLayoutManager(layoutManager);
                     mRv.setAdapter(mCheckWorkAdapter);
                     mCheckWorkAdapter.notifyDataSetChanged();
+
+                    if (mCheckResponse.getCheckAskLeaveList() != null){
+                        if (mCheckResponse.getCheckAskLeaveList().size() > 0){
+                            mLeaveLayout.setVisibility(View.VISIBLE);
+                            mLeaveType.setText("请假");
+                            mLeaveTime.setText(mCheckResponse.getCheckAskLeaveList().get(mCheckResponse.getCheckAskLeaveList().size() - 1).getString("startTime") + "至" +
+                                    mCheckResponse.getCheckAskLeaveList().get(mCheckResponse.getCheckAskLeaveList().size() - 1).getString("endTime"));
+                        }else {
+                            mLeaveLayout.setVisibility(View.GONE);
+                        }
+                    }else {
+                        mLeaveLayout.setVisibility(View.GONE);
+                    }
                     break;
             }
         }
@@ -176,6 +194,9 @@ public class CheckOnWorkFragment extends Fragment {
         mRv = rootView.findViewById(R.id.check_work_recycler);
         mDefaultLayout = rootView.findViewById(R.id.check_default_layout_bg);
         mTopHint = rootView.findViewById(R.id.clock_on_top_hint);
+        mLeaveLayout = rootView.findViewById(R.id.leave_layout);
+        mLeaveType = rootView.findViewById(R.id.leave_type_tv);
+        mLeaveTime = rootView.findViewById(R.id.leave_time_tv);
 
 
         mSubscriberIsJoinWorking = new SubscriberOnNextErrorListener<Integer>() {

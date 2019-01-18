@@ -15,7 +15,7 @@
         android:paddingRight="9dp"
         android:text="昨天 08:20"
         android:textColor="@color/color_999999"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:textSize="@dimen/font_size_12sp" />
 
     <LinearLayout
@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/news_203_list_item_value_bg"
         android:orientation="vertical">
 
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="20dp">
             <TextView
                 android:id="@+id/news_list_title_tv"
                 android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
                 android:ellipsize="end"
                 android:lines="1"
                 android:maxEms="18"
-                android:text="[审批通知]"
+                android:text="【审批通知】"
                 android:textStyle="bold"
                 android:textColor="@color/main_title_color_code"
                 android:textSize="@dimen/font_size_18sp" />
@@ -50,11 +51,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:lines="1"
+                android:lines="2"
                 android:maxEms="18"
-                android:text="你的印章申请已通过"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/news_list_title_tv"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="11dp"
+                android:text="你的印章申请已通过你的印章申请已通过"
+                android:layout_below="@+id/news_list_title_tv"
                 android:textColor="@color/main_title_color_code"
                 android:textSize="@dimen/font_size_18sp" />
 
@@ -65,10 +67,10 @@
             android:id="@+id/news_list_value_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="4dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:text="审批通知: 你的请假已通过"
             android:textColor="@color/color_66"
             android:textSize="@dimen/font_size_16sp" />

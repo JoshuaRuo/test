@@ -48,7 +48,7 @@ public class MainActivity extends FragmentActivity implements
     public static ViewPager mViewPager;
     private List<Fragment> mFragment = new ArrayList<>();
     private ImageView mImageChats, mImageContact, mImageFind, mImageMe, mMineRed, mImgNews;
-    private TextView mTextChats, mTextContact, mTextFind, mTextMe, mFilter, mNewsTv;
+    private TextView mTextChats, mTextContact, mTextFind, mTextMe, mFilter, mNewsTv, mNewsTitle;
     private ImageView mSearchImageView;
     private ImageView mNews;
     private TextView mTitle;
@@ -73,7 +73,7 @@ public class MainActivity extends FragmentActivity implements
         mContext = this;
         mToken = App.getInstance().getToken();
         isDebug = getSharedPreferences("config", MODE_PRIVATE).getBoolean("isDebug", false);
-        mTypeface = Typeface.createFromAsset(getAssets(), "fonts/STSongti-SC-Bold-02.ttf");
+//        mTypeface = Typeface.createFromAsset(getAssets(), "fonts/STSongti-SC-Bold-02.ttf");
         initViews();
         changeTextViewColor();
         changeSelectedTabState(2);
@@ -127,6 +127,7 @@ public class MainActivity extends FragmentActivity implements
         mNewsCount = findViewById(R.id.home_wait_list_icon_tv);
         mNewsTv = findViewById(R.id.home_wait_list_icon_tv);
         mImgNews = findViewById(R.id.tab_img_news);
+        mNewsTitle = findViewById(R.id.tab_text_news);
 
         chatRLayout.setOnClickListener(this);
         contactRLayout.setOnClickListener(this);
@@ -142,7 +143,7 @@ public class MainActivity extends FragmentActivity implements
 //                mMineRed.setVisibility(View.VISIBLE);
 //            }
 //        });
-        mTitle.setTypeface(mTypeface);
+//        mTitle.setTypeface(mTypeface);
     }
 
 
@@ -220,7 +221,7 @@ public class MainActivity extends FragmentActivity implements
         mTextContact.setTextColor(Color.parseColor("#666666"));
         mTextFind.setTextColor(Color.parseColor("#666666"));
         mTextMe.setTextColor(Color.parseColor("#666666"));
-        mNewsTv.setTextColor(Color.parseColor("#666666"));
+        mNewsTitle.setTextColor(Color.parseColor("#666666"));
     }
 
 
@@ -263,7 +264,7 @@ public class MainActivity extends FragmentActivity implements
                 mNews.setVisibility(View.VISIBLE);
                 break;
             case 3:
-                mNewsTv.setTextColor(Color.parseColor("#0099ff"));
+                mNewsTitle.setTextColor(Color.parseColor("#0099ff"));
                 mImgNews.setBackgroundDrawable(getResources().getDrawable(R.drawable.news_press_icon));
                 mBottomLine.setVisibility(View.VISIBLE);
                 mTopLayout.setVisibility(View.GONE);

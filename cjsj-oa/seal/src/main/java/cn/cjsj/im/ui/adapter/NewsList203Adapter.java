@@ -40,7 +40,7 @@ public class NewsList203Adapter extends BGARecyclerViewAdapter<NewsListGenericit
                     && (mToday - model.getCreateTime().getInteger("dayOfMonth") == 1)) {
                 helper.setText(R.id.new_list_time_tv, "昨天" + model.getCreateTime().getInteger("hour") + ":" + model.getCreateTime().getInteger("minute"));
             } else {
-                helper.setText(R.id.new_list_time_tv, model.getCreateTime().getInteger("monthValue") + "月" + model.getCreateTime().getInteger("dayOfMonth") + "日");
+                helper.setText(R.id.new_list_time_tv, model.getCreateTime().getInteger("year") + "年" +model.getCreateTime().getInteger("monthValue") + "月" + model.getCreateTime().getInteger("dayOfMonth") + "日");
             }
         }
         mSb = new StringBuilder();
