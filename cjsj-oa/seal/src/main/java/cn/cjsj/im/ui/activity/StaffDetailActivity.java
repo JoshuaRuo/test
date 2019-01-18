@@ -113,6 +113,9 @@ public class StaffDetailActivity extends BaseActivity {
                 mDepartmentName.setText(mDeName);
                 mJobNumTv.setText(sysUserBean.getStaffCode());
                 mPhoneTv.setText(sysUserBean.getMobile());
+                mWorkYears.setText(sysUserBean.getStanding());
+                mCompanyYears.setText(sysUserBean.getSchoolAge());
+                mPoliticsStatus.setText(sysUserBean.getPoliticalOutlook());
 //                mNationTv.setText(sysUserBean.getNational());
 //                majorTv.setText(sysUserBean.getMajor());
 //                mUniversityTv.setText(sysUserBean.getSchool());

@@ -147,7 +147,7 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
     @Bind(R.id.home_203_scrollview)
     ScrollView mScrollView;
 
-    private int mViewHeight = 390;//组件高度
+    private float mViewHeight = 390;//组件高度
     private float mDensity;
     private boolean isFold = false;//是否是收起状态
     boolean isAnimating = false;//是否正在执行动画
@@ -224,6 +224,7 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
     }
 
     private void initData() {
+        mViewHeight = getActivity().getResources().getDimension(R.dimen.margin_dp_195);//组件高度
         if (mFavList != null) {
             mFavList.clear();
         } else {
@@ -639,7 +640,7 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
 
     private void animateOpen(RecyclerView view) {
         view.setVisibility(View.VISIBLE);
-        ValueAnimator animator = createDropAnimator(view, 0, mViewHeight);
+        ValueAnimator animator = createDropAnimator(view, 0, (int)mViewHeight);
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {

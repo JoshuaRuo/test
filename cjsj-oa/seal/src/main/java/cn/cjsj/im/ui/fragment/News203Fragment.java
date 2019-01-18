@@ -317,7 +317,7 @@ public class News203Fragment extends Fragment {
                     public void call(Void aVoid) {
                         Intent intent = new Intent(getActivity(), NewsList203Activity.class);
                         intent.putExtra("type", 4);
-                        intent.putExtra("titleName", "工作日志(评价)");
+                        intent.putExtra("titleName", "工作日志");
                         startActivity(intent);
                     }
                 });

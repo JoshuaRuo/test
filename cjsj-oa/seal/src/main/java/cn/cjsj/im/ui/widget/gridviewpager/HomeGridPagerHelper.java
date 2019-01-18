@@ -32,7 +32,7 @@ public class HomeGridPagerHelper {
     /**
      * 是否已经进行过初始化的字段名
      */
-    private static final String PREFERENCE_HAS_EVER_INIT = "has_init190103";
+    private static final String PREFERENCE_HAS_EVER_INIT = "has_init190118";
 
     private int itemCounter = 0;//用于统计共有多少个子item,依次给每个item设置独立的id
 

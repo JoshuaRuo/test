@@ -177,7 +177,7 @@ public class CheckWorkTabActivity extends AppCompatActivity implements ViewPager
                 mRightTv.setVisibility(View.GONE);
                 break;
             case 1:
-                mCheckOnStatisticsImg.setImageDrawable(getResources().getDrawable(R.drawable.count_p));
+                mCheckOnStatisticsImg.setImageDrawable(getResources().getDrawable(R.drawable.count_s));
                 mCheckOnStatisticsTitle.setTextColor(ContextCompat.getColor(this, R.color.color_2293ff));
                 mRightTv.setVisibility(View.VISIBLE);
 

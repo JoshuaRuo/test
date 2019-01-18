@@ -40,6 +40,9 @@ public class SysUserBean implements Serializable{
     private String roles;
     private String username;
     private String national;
+    private String standing;//工龄
+    private String schoolAge; //院龄
+    private String politicalOutlook; //政治面貌
 
     /**
      * 毕业学校
@@ -321,5 +324,29 @@ public class SysUserBean implements Serializable{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getStanding() {
+        return standing;
+    }
+
+    public void setStanding(String standing) {
+        this.standing = standing;
+    }
+
+    public String getSchoolAge() {
+        return schoolAge;
+    }
+
+    public void setSchoolAge(String schoolAge) {
+        this.schoolAge = schoolAge;
+    }
+
+    public String getPoliticalOutlook() {
+        return politicalOutlook;
+    }
+
+    public void setPoliticalOutlook(String politicalOutlook) {
+        this.politicalOutlook = politicalOutlook;
     }
 }
