@@ -27,10 +27,11 @@ public class CheckWorkAdapter extends RecyclerView.Adapter {
     private CheckResponse mCheckResponse;
     private boolean isShowDown = false;
     private String mType;
-
-    public CheckWorkAdapter(Context context, CheckResponse checkResponse) {
+    private String mAddress;
+    public CheckWorkAdapter(Context context, CheckResponse checkResponse,String address) {
         this.mContext = context;
         this.mCheckResponse = checkResponse;
+        this.mAddress = address;
     }
 
     @NonNull
@@ -168,7 +169,7 @@ public class CheckWorkAdapter extends RecyclerView.Adapter {
                         viewHolder.layoutButton.setVisibility(View.VISIBLE);
                         viewHolder.checkTypeTv.setText("外勤打卡");
                         viewHolder.checkLocationIn.setVisibility(View.VISIBLE);
-                        viewHolder.checkLocationIn.setText("当前位置:" + mCheckResponse.getCheckGroup().getString("address"));
+                        viewHolder.checkLocationIn.setText("当前位置:" + mAddress);
                         mType = "FIELD_CLOCK";
                         if ("外勤".equals(mCheckResponse.getCheckLogResult().getOffStatus())) {
                             viewHolder.statusOutside.setVisibility(View.VISIBLE);
@@ -242,7 +243,7 @@ public class CheckWorkAdapter extends RecyclerView.Adapter {
                         viewHolder.layoutButton.setBackgroundResource(R.drawable.check_work_button_outsite);
                         viewHolder.checkTypeTv.setText("外勤打卡");
                         viewHolder.checkLocationIn.setVisibility(View.VISIBLE);
-                        viewHolder.checkLocationIn.setText("当前位置:" + mCheckResponse.getCheckGroup().getString("address"));
+                        viewHolder.checkLocationIn.setText("当前位置:" + mAddress);
                         mType = "FIELD_CLOCK";
                         if ("外勤".equals(mCheckResponse.getCheckLogResult().getOffStatus())) {
                             viewHolder.statusOutside.setVisibility(View.VISIBLE);

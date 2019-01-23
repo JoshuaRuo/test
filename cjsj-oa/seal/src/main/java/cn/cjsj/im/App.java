@@ -20,6 +20,8 @@ import com.facebook.stetho.inspector.protocol.ChromeDevtoolsDomain;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.Callable;
 
 import cn.cjsj.im.gty.LogUtils;
@@ -34,6 +36,7 @@ import cn.cjsj.im.utils.BaiduLocationUtil;
 import cn.cjsj.im.utils.LimitsLoadUtils;
 import cn.cjsj.im.utils.LocalLoadUtils;
 import cn.cjsj.im.utils.TokenCacheLoad;
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * @author LuoYang 2017.12.15
@@ -103,14 +106,14 @@ public class App extends MultiDexApplication {
 
 
         //JPUSH初始化
-//        JPushInterface.setDebugMode(false);// 设置开启日志,发布时请关闭日志
-//        JPushInterface.init(getApplicationContext());// 初始化 JPush
-//
-//        ConstantValue.JPUSH_REGISTER_ID = JPushInterface.getRegistrationID(getApplicationContext());
-//        Set<String> tags = new HashSet<>();
-//        tags.add(ConstantValue.JPUSH_RYT_CUSTOMER_TAG);
-//        JPushInterface.setTags(getApplicationContext(), tags, null);
-//        LogUtils.debug("The JPUSH registerId is :" + ConstantValue.JPUSH_REGISTER_ID);
+        JPushInterface.setDebugMode(true);// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);// 初始化 JPush
+
+        ConstantValue.JPUSH_REGISTER_ID = JPushInterface.getRegistrationID(getApplicationContext());
+        Set<String> tags = new HashSet<>();
+        tags.add(ConstantValue.JPUSH_RYT_CUSTOMER_TAG);
+        JPushInterface.setTags(getApplicationContext(), tags, null);
+        LogUtils.debug("The JPUSH registerId is :" + ConstantValue.JPUSH_REGISTER_ID);
 
 
         //百度

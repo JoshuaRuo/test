@@ -114,7 +114,7 @@ public class CheckOnWorkFragment extends Fragment {
                     break;
 
                 case SET_DATA:
-                    mCheckWorkAdapter = new CheckWorkAdapter(getActivity(), mCheckResponse);
+                    mCheckWorkAdapter = new CheckWorkAdapter(getActivity(), mCheckResponse,mAddress);
                     mCheckWorkAdapter.setPostCheckData(new CheckWorkAdapter.PostCheckData() {
                         @Override
                         public void postData(String type, int operation) {

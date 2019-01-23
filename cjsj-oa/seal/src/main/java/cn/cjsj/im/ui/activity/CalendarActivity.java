@@ -155,8 +155,14 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
 
             }
         };
-        getDailyCalendar(mToken, mThisYear + "-" + mThisMonth);
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getDailyCalendar(mToken, mThisYear + "-" + mThisMonth);
     }
 
     private class MyGestureListener extends SimpleOnGestureListener {
@@ -281,12 +287,12 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
 
                     String argMonth = null;
                     String argToday = null;
-                    if (scheduleMonth.length() < 10){
+                    if (scheduleMonth.length() < 2){
                         argMonth = "0" + scheduleMonth;
                     }else {
                         argMonth = scheduleMonth + "";
                     }
-                    if (scheduleDay.length() < 10){
+                    if (scheduleDay.length() < 2){
                         argToday = "0" + scheduleDay;
                     }else {
                         argToday = scheduleDay +"";

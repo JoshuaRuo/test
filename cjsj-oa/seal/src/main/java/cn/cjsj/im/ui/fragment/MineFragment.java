@@ -101,7 +101,13 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                     try {
 
                         mUserName.setText(mOAUserBean.getSysUser().getFullname());
-                        mDepartment.setText(mOAUserBean.getSysUser().getOrgName() + "-" + mOAUserBean.getSysUser().getPosName());
+
+                        if (mOAUserBean.getSysUser().getPosName() != null){
+                            mDepartment.setText(mOAUserBean.getSysUser().getOrgName() + "-" + mOAUserBean.getSysUser().getPosName());
+                        }else {
+                            mDepartment.setText(mOAUserBean.getSysUser().getOrgName());
+                        }
+
                         mDailyPaperTv.setText(mOAUserBean.getNormalDaily() + "");
                         mCheckTv.setText(mOAUserBean.getNormalCheck() + "");
 
