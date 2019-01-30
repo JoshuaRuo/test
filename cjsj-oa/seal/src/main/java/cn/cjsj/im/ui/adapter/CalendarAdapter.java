@@ -67,7 +67,8 @@ public class CalendarAdapter extends BaseAdapter {
     private String sys_day = "";
 
     //日志
-    private List<Integer> mList;
+    private List<Map<String, Integer>> mList;
+    private HashMap<String, Integer> mHashMap;
     private Map<Integer, Boolean> map;
     private int arg = 0;
 
@@ -80,19 +81,19 @@ public class CalendarAdapter extends BaseAdapter {
 
     }
 
-    public CalendarAdapter(Context context, List<Integer> list, Resources rs, int jumpMonth, int jumpYear, int year_c, int month_c, int day_c) {
+    public CalendarAdapter(Context context, HashMap<String, Integer> map, Resources rs, int jumpMonth, int jumpYear, int year_c, int month_c, int day_c) {
         this();
         this.context = context;
         sc = new SpecialCalendar();
         lc = new LunarCalendar();
         this.res = rs;
-        map = new HashMap<>();
-        if (mList != null) {
-            mList.clear();
+//        map = new HashMap<>();
+        if (mHashMap != null) {
+            mHashMap.clear();
         }
-        this.mList = list;
-        if (mList != null) {
-            Log.v("LY__adapter", mList.toString());
+        this.mHashMap = map;
+        if (mHashMap != null) {
+            Log.v("LY__adapter", mHashMap.toString());
         }
 
         int stepYear = year_c + jumpYear;
@@ -124,19 +125,19 @@ public class CalendarAdapter extends BaseAdapter {
 
 
         /****test****/
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Integer.parseInt(currentYear), Integer.parseInt(currentMonth), 0);
-        int t = calendar.get(Calendar.DAY_OF_MONTH);
-        if (mList != null) {
-            if (mList.size() != 0) {
-                for (int j = 1; j < t + 1; j++) {
-                    map.put(j, false);
-                }
-                for (int i = 0; i < mList.size(); i++) {
-                    map.put(mList.get(i), true);
-                }
-            }
-        }
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Integer.parseInt(currentYear), Integer.parseInt(currentMonth), 0);
+//        int t = calendar.get(Calendar.DAY_OF_MONTH);
+//        if (mList != null) {
+//            if (mList.size() != 0) {
+//                for (int j = 1; j < t + 1; j++) {
+//                    map.put(j, false);
+//                }
+//                for (int i = 0; i < mList.size(); i++) {
+//                    map.put(mList.get(i), true);
+//                }
+//            }
+//        }
         /****test****/
 
     }
@@ -195,25 +196,46 @@ public class CalendarAdapter extends BaseAdapter {
         textView.setTextColor(ContextCompat.getColor(context, R.color.de_transparent));
         defaultYes.setVisibility(View.GONE);
         noLog.setVisibility(View.GONE);
-
+//1 节假日  2 已写  3 未写
         if (position < daysOfMonth + dayOfWeek && position >= dayOfWeek) {
             arg++;
 
             // 当前月信息显示
             textView.setTextColor(ContextCompat.getColor(context, R.color.main_title_color_code));// 当月字体设黑
-            if (mList != null) {
-                if (mList.size() != 0) {
-                    try {
-                        if (map.get(arg)) {
-                            noLog.setVisibility(View.VISIBLE);
-                        } else {
+//            if (mList != null) {
+//                if (mList.size() != 0) {
+//                    try {
+//                        if (map.get(arg)) {
+//                            noLog.setVisibility(View.VISIBLE);
+//                        } else {
+//                            defaultYes.setVisibility(View.VISIBLE);
+//                        }
+//                    } catch (NullPointerException ex) {
+//
+//                    }
+//                }
+//            }
+            try {
+                if (mHashMap != null) {
+                    if (mHashMap.size() != 0) {
+                        if (mHashMap.get(arg+"") == 1) {
+                            noLog.setVisibility(View.GONE);
+                            defaultYes.setVisibility(View.GONE);
+                        } else if (mHashMap.get(arg+"") == 2) {
                             defaultYes.setVisibility(View.VISIBLE);
+                            noLog.setVisibility(View.GONE);
+                        } else if (mHashMap.get(arg+"") == 3) {
+                            defaultYes.setVisibility(View.GONE);
+                            noLog.setVisibility(View.VISIBLE);
                         }
-                    } catch (NullPointerException ex) {
-
                     }
                 }
+            } catch (NullPointerException ex) {
+                noLog.setVisibility(View.GONE);
+                defaultYes.setVisibility(View.GONE);
             }
+
+
 //            defaultYes.setVisibility(View.VISIBLE);
 //			drawable = res.getDrawable(R.drawable.calendar_item_selected_bg);
             drawable = new ColorDrawable(ContextCompat.getColor(context, R.color.mine_head_color));
@@ -222,15 +244,15 @@ public class CalendarAdapter extends BaseAdapter {
                 textView.setTextColor(ContextCompat.getColor(context, R.color.mine_head_color));// 当月字体设黑
 //				drawable = res.getDrawable(R.drawable.calendar_item_selected_bg);
                 drawable = new ColorDrawable(ContextCompat.getColor(context, R.color.mine_head_color));
-                defaultYes.setVisibility(View.GONE);
-                noLog.setVisibility(View.GONE);
+//                defaultYes.setVisibility(View.GONE);
+//                noLog.setVisibility(View.GONE);
             }
         }
 
-		if (position >= currentFlag && currentFlag != -1){
-			defaultYes.setVisibility(View.GONE);
-			noLog.setVisibility(View.GONE);
-		}
+        if (position >= currentFlag && currentFlag != -1) {
+            defaultYes.setVisibility(View.GONE);
+            noLog.setVisibility(View.GONE);
+        }
 
         if (currentFlag == position) {
             // 设置当天的背景

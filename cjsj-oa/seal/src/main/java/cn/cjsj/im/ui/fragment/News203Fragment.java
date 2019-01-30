@@ -268,7 +268,7 @@ public class News203Fragment extends Fragment {
 
             }
         };
-        getNewsOutValue(mToken);
+//        getNewsOutValue(mToken);
 
     }
 
@@ -333,6 +333,12 @@ public class News203Fragment extends Fragment {
                         startActivity(intent);
                     }
                 });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getNewsOutValue(mToken);
     }
 
     private void getNews203List(String token) {

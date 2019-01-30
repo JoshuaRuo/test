@@ -1,11 +1,481 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gty_page_bgcolor"
     android:orientation="vertical">
 
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/new_home_swipe_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/home_203_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:focusable="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingTop="50dp"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/home_banner_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/home_203_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="125dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_aaaaaa"
+                        android:focusable="true" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="135dp"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginRight="11dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/home_203_banner_bg" />
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="4dp">
+
+
+                    <me.bakumon.library.view.BulletinView
+                        android:id="@+id/bulletin_view_sale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="50dp"
+                        app:bulletinInterval="2000" />
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/home_right_icon" />
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/color_E5E8F3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="horizontal">
+
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/home_wait_list_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:drawablePadding="10dp"
+                            android:drawableTop="@drawable/wait_me_check_icon"
+                            android:paddingTop="4dp"
+                            android:text="待我审批"
+                            android:textColor="@color/color_66"
+                            android:textSize="@dimen/font_size_14sp" />
+
+                        <TextView
+                            android:id="@+id/home_wait_list_icon_tv"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="16dp"
+                            android:background="@drawable/notification_icon_bg"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_10sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/home_wait_list_rectangle_tv"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="17dp"
+                            android:background="@drawable/home_rounded_rectangle"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="99+"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_10sp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/home_my_send_list_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:drawablePadding="10dp"
+                            android:drawableTop="@drawable/my_sended_list_icon"
+                            android:paddingTop="4dp"
+                            android:text="我发起的"
+                            android:textColor="@color/color_66"
+                            android:textSize="@dimen/font_size_14sp" />
+
+                        <TextView
+                            android:id="@+id/home_my_send_icon_tv"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="16dp"
+                            android:background="@drawable/notification_icon_bg"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="123"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_10sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/home_my_send_rectangle_tv"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="17dp"
+                            android:background="@drawable/home_rounded_rectangle"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="99+"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_10sp" />
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/home_my_dailypager_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:drawablePadding="10dp"
+                            android:drawableTop="@drawable/my_daily_paper_icon"
+                            android:paddingTop="4dp"
+                            android:text="我的日志"
+                            android:textColor="@color/color_66"
+                            android:textSize="@dimen/font_size_14sp" />
+
+                        <TextView
+                            android:id="@+id/home_my_dailypager_icon_tv"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="16dp"
+                            android:background="@drawable/my_daily_paper_icon_bg"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_10sp" />
+
+                        <TextView
+                            android:id="@+id/home_my_dailypager_rectangle_tv"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="17dp"
+                            android:background="@drawable/home_rounded_rectangle_dalily"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="99+"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_10sp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/home_my_attendance_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:drawablePadding="10dp"
+                            android:drawableTop="@drawable/my_attendance_days_icon"
+                            android:paddingTop="4dp"
+                            android:text="我的考勤"
+                            android:textColor="@color/color_66"
+                            android:textSize="@dimen/font_size_14sp" />
+
+                        <TextView
+                            android:id="@+id/home_my_attendance_icon_tv"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="16dp"
+                            android:background="@drawable/my_daily_paper_icon_bg"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="123"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_10sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/home_my_attendance_rectangle_tv"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginLeft="17dp"
+                            android:background="@drawable/home_rounded_rectangle_dalily"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="99+"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_10sp" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
+                        android:id="@+id/home_to_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_dp_5"
+                        android:layout_marginLeft="@dimen/margin_dp_10"
+                        android:background="@drawable/home_check_status_bg">
+
+                        <TextView
+                            android:id="@+id/home_check_status_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="考勤打卡"
+                            android:textColor="@color/main_title_color_code"
+                            android:textSize="@dimen/font_size_16sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/home_check_status_time_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/home_check_status_tv"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="3dp"
+                            android:text="08:30 未打卡"
+
+                            android:textSize="@dimen/font_size_12sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@+id/home_check_status_tv"
+                            android:src="@drawable/attendance_status_icon" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/home_to_write_dailypaper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_dp_10"
+                        android:layout_marginLeft="@dimen/margin_dp_5"
+                        android:background="@drawable/home_daily_status_bg">
+
+                        <TextView
+                            android:id="@+id/home_dailypaper_status_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="写日志"
+                            android:textColor="@color/main_title_color_code"
+                            android:textSize="@dimen/font_size_16sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/home_dailypaper_status_time_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/home_dailypaper_status_tv"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="3dp"
+                            android:text="12月18日日志"
+
+                            android:textSize="@dimen/font_size_12sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@+id/home_dailypaper_status_tv"
+                            android:src="@drawable/home_dailypaper_status_icon" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/color_E5E8F3" />
+
+
+                <RelativeLayout
+                    android:id="@+id/often_use_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:text="常用"
+                        android:textColor="@color/main_title_color_code"
+                        android:textSize="@dimen/font_size_17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/often_status_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:text="收起"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/font_size_15sp" />
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/often_use_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_dp_195"
+                    android:focusable="false"
+                    android:visibility="gone"
+                    android:focusableInTouchMode="false"
+                    android:scrollbars="none">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/color_E5E8F3" />
+
+
+                <RelativeLayout
+                    android:id="@+id/other_use_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:text="其它"
+                        android:textColor="@color/main_title_color_code"
+                        android:textSize="@dimen/font_size_17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/other_use_status_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:text="展开"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/font_size_15sp" />
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/other_use_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_dp_195"
+                    android:scrollbars="none"
+                    android:visibility="gone">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="66dp"
+                    android:background="@color/gty_page_bgcolor"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/slogan" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
     <RelativeLayout
         android:id="@+id/home_new_titlebar"
         android:layout_width="match_parent"
@@ -20,7 +490,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toLeftOf="@+id/home_air_txt"
             android:textColor="@color/main_title_color_code"
-            android:textSize="@dimen/font_size_25sp"/>
+            android:textSize="@dimen/font_size_25sp" />
 
         <TextView
             android:id="@+id/home_air_txt"
@@ -52,464 +522,4 @@
             android:layout_height="1px"
             android:layout_alignParentBottom="true" />
     </RelativeLayout>
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/new_home_swipe_ly"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <ScrollView
-        android:id="@+id/home_203_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <com.youth.banner.Banner
-                    android:id="@+id/home_203_banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="125dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="8dp"
-                    android:focusable="true"
-                    android:background="@drawable/bg_aaaaaa" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="135dp"
-                    android:layout_marginLeft="11dp"
-                    android:layout_marginRight="11dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@drawable/home_203_banner_bg" />
-            </FrameLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:paddingBottom="4dp">
-
-
-                <me.bakumon.library.view.BulletinView
-                    android:id="@+id/bulletin_view_sale"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:paddingRight="50dp"
-                    app:bulletinInterval="2000" />
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/home_right_icon" />
-
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="15dp"
-                android:background="@color/color_E5E8F3" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:orientation="horizontal">
-
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/home_wait_list_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@drawable/wait_me_check_icon"
-                        android:paddingTop="4dp"
-                        android:text="待我审批"
-                        android:textColor="@color/color_66"
-                        android:layout_gravity="center"
-                        android:textSize="@dimen/font_size_14sp" />
-
-                    <TextView
-                        android:id="@+id/home_wait_list_icon_tv"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|top"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/notification_icon_bg"
-                        android:gravity="center"
-                        android:padding="1dp"
-                        android:visibility="gone"
-                        android:text="1"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_10sp" />
-
-                    <TextView
-                        android:id="@+id/home_wait_list_rectangle_tv"
-                        android:layout_width="30dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|top"
-                        android:layout_marginLeft="17dp"
-                        android:background="@drawable/home_rounded_rectangle"
-                        android:gravity="center"
-                        android:padding="1dp"
-                        android:text="99+"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_10sp" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/home_my_send_list_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@drawable/my_sended_list_icon"
-                        android:paddingTop="4dp"
-                        android:text="我发起的"
-                        android:layout_gravity="center"
-                        android:textColor="@color/color_66"
-                        android:textSize="@dimen/font_size_14sp" />
-
-                    <TextView
-                        android:id="@+id/home_my_send_icon_tv"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|top"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/notification_icon_bg"
-                        android:gravity="center"
-                        android:padding="1dp"
-                        android:visibility="gone"
-                        android:text="123"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_10sp" />
-                    <TextView
-                        android:id="@+id/home_my_send_rectangle_tv"
-                        android:layout_width="30dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|top"
-                        android:layout_marginLeft="17dp"
-                        android:background="@drawable/home_rounded_rectangle"
-                        android:gravity="center"
-                        android:padding="1dp"
-                        android:text="99+"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_10sp" />
-                </FrameLayout>
-
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/home_my_dailypager_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@drawable/my_daily_paper_icon"
-                        android:paddingTop="4dp"
-                        android:text="我的日志"
-                        android:layout_gravity="center"
-                        android:textColor="@color/color_66"
-                        android:textSize="@dimen/font_size_14sp" />
-
-                    <TextView
-                        android:id="@+id/home_my_dailypager_icon_tv"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|top"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/my_daily_paper_icon_bg"
-                        android:gravity="center"
-                        android:padding="1dp"
-                        android:text="1"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_10sp" />
-                    <TextView
-                        android:id="@+id/home_my_dailypager_rectangle_tv"
-                        android:layout_width="30dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|top"
-                        android:layout_marginLeft="17dp"
-                        android:background="@drawable/home_rounded_rectangle_dalily"
-                        android:gravity="center"
-                        android:padding="1dp"
-                        android:text="99+"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_10sp" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/home_my_attendance_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@drawable/my_attendance_days_icon"
-                        android:paddingTop="4dp"
-                        android:text="我的考勤"
-                        android:layout_gravity="center"
-                        android:textColor="@color/color_66"
-                        android:textSize="@dimen/font_size_14sp" />
-
-                    <TextView
-                        android:id="@+id/home_my_attendance_icon_tv"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|top"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/my_daily_paper_icon_bg"
-                        android:gravity="center"
-                        android:padding="1dp"
-                        android:visibility="gone"
-                        android:text="123"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_10sp" />
-
-                    <TextView
-                        android:id="@+id/home_my_attendance_rectangle_tv"
-                        android:layout_width="30dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|top"
-                        android:layout_marginLeft="17dp"
-                        android:background="@drawable/home_rounded_rectangle_dalily"
-                        android:gravity="center"
-                        android:padding="1dp"
-                        android:text="99+"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_10sp" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-
-                <RelativeLayout
-                    android:id="@+id/home_to_check"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/home_check_status_bg">
-
-                    <TextView
-                        android:id="@+id/home_check_status_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
-                        android:text="考勤打卡"
-                        android:textColor="@color/main_title_color_code"
-                        android:textSize="@dimen/font_size_16sp"
-                        android:textStyle="bold" />
-
-
-                    <TextView
-                        android:id="@+id/home_check_status_time_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/home_check_status_tv"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="3dp"
-                        android:text="08:30 未打卡"
-
-                        android:textSize="@dimen/font_size_12sp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_toRightOf="@+id/home_check_status_tv"
-                        android:src="@drawable/attendance_status_icon" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/home_to_write_dailypaper"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/home_daily_status_bg">
-
-                    <TextView
-                        android:id="@+id/home_dailypaper_status_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
-                        android:text="写日志"
-                        android:textColor="@color/main_title_color_code"
-                        android:textSize="@dimen/font_size_16sp"
-                        android:textStyle="bold" />
-
-
-                    <TextView
-                        android:id="@+id/home_dailypaper_status_time_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/home_dailypaper_status_tv"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="3dp"
-                        android:text="12月18日日志"
-
-                        android:textSize="@dimen/font_size_12sp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_toRightOf="@+id/home_dailypaper_status_tv"
-                        android:src="@drawable/home_dailypaper_status_icon" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="25dp"
-                android:background="@color/color_E5E8F3" />
-
-
-            <RelativeLayout
-                android:id="@+id/often_use_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="常用"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/main_title_color_code"
-                    android:textSize="@dimen/font_size_17sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/often_status_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:layout_centerVertical="true"
-                    android:text="收起"
-                    android:textColor="@color/color_999999"
-                    android:textSize="@dimen/font_size_15sp"/>
-
-            </RelativeLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/often_use_rv"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_dp_195"
-                android:scrollbars="none"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                >
-
-            </android.support.v7.widget.RecyclerView>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="15dp"
-                android:background="@color/color_E5E8F3" />
-
-
-            <RelativeLayout
-                android:id="@+id/other_use_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_centerVertical="true"
-                    android:text="其它"
-                    android:textColor="@color/main_title_color_code"
-                    android:textSize="@dimen/font_size_17sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/other_use_status_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:layout_centerVertical="true"
-                    android:text="展开"
-                    android:textColor="@color/color_999999"
-                    android:textSize="@dimen/font_size_15sp"/>
-
-            </RelativeLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/other_use_rv"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_dp_195"
-                android:visibility="gone"
-                android:scrollbars="none">
-
-            </android.support.v7.widget.RecyclerView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="66dp"
-                android:gravity="center"
-                android:background="@color/gty_page_bgcolor">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/slogan"
-                    android:scaleType="fitXY"/>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-</LinearLayout>
+</FrameLayout>

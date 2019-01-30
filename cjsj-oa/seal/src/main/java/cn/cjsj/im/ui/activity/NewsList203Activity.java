@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -33,6 +35,9 @@ public class NewsList203Activity extends BaseActivity {
 
     @Bind(R.id.news_203_rv)
     RecyclerView mRv;
+
+    @Bind(R.id.news_203_default_layout)
+    RelativeLayout mDefaultLayout;
 
     private NewsList203Adapter mAdapter;
     private String mToken;
@@ -76,12 +81,12 @@ public class NewsList203Activity extends BaseActivity {
                 if (mList != null) {
                     switch (mList.get(position).getType()) {
                         case 1:
-                            mIntent = new Intent(NewsList203Activity.this, AgendaDetailActivity.class);
-                            mIntent.putExtra("actDefId", mList.get(position).getActDefId());
-                            mIntent.putExtra("businessKey", mList.get(position).getBusinessKey() + "");
-                            mIntent.putExtra("status", mList.get(position).getPushType() + "");
-                            mIntent.putExtra("runId", mList.get(position).getBusinessKey() + "");
-                            startActivity(mIntent);
+//                            mIntent = new Intent(NewsList203Activity.this, AgendaDetailActivity.class);
+//                            mIntent.putExtra("actDefId", mList.get(position).getActDefId());
+//                            mIntent.putExtra("businessKey", mList.get(position).getBusinessKey() + "");
+//                            mIntent.putExtra("status", mList.get(position).getPushType() + "");
+//                            mIntent.putExtra("runId", mList.get(position).getBusinessKey() + "");
+//                            startActivity(mIntent);
                             break;
 
                         case 2:
@@ -114,7 +119,14 @@ public class NewsList203Activity extends BaseActivity {
             @Override
             public void onNext(NewsListResponse model) {
                 mList = model.getList();
-                mHandler.sendEmptyMessage(UPLOAD_UI);
+                if (mList.size() != 0) {
+                    mHandler.sendEmptyMessage(UPLOAD_UI);
+                    mRv.setVisibility(View.VISIBLE);
+                    mDefaultLayout.setVisibility(View.GONE);
+                } else {
+                    mRv.setVisibility(View.GONE);
+                    mDefaultLayout.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

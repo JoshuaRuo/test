@@ -3,14 +3,20 @@ package cn.cjsj.im.ui.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +27,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Adapter;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -60,6 +67,7 @@ import cn.cjsj.im.ui.adapter.Home203RvAdapter;
 import cn.cjsj.im.ui.adapter.ImageBannerLoader;
 import cn.cjsj.im.ui.adapter.NoticesAdapter;
 import cn.cjsj.im.ui.widget.gridviewpager.HomeGridPagerHelper;
+import cn.cjsj.im.utils.ColorAnimator;
 import interfaces.heweather.com.interfacesmodule.bean.Lang;
 import interfaces.heweather.com.interfacesmodule.bean.Unit;
 import interfaces.heweather.com.interfacesmodule.bean.weather.now.Now;
@@ -145,8 +153,11 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
     SwipeRefreshLayout mSwipeLayout;
 
     @Bind(R.id.home_203_scrollview)
-    ScrollView mScrollView;
+    NestedScrollView mScrollView;
 
+    @Bind(R.id.main_base_newline_view)
+    View mLine;
+    private int lastColor = Color.TRANSPARENT;
     private float mViewHeight = 390;//组件高度
     private float mDensity;
     private boolean isFold = false;//是否是收起状态
@@ -163,6 +174,9 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
 
     @Bind(R.id.home_my_dailypager_rectangle_tv)
     TextView mDailyNormalRectCountTv;
+
+    @Bind(R.id.home_banner_frame)
+    FrameLayout mBannerLayout;
 
     private Home203RvAdapter mMainAdapter;
     private Home203RvAdapter mOtherAdapter;
@@ -242,11 +256,12 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
         getToday();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     private void initDefaultView() {
         mSwipeLayout.setOnRefreshListener(this);
         mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
                 android.R.color.holo_orange_light, android.R.color.holo_red_light);
-
+        animateOpen(mOftenRv);//默认打开常用
         /***banner*/
         mBanner.setIndicatorGravity(BannerConfig.RIGHT);
         List<Integer> list = new ArrayList<>();
@@ -260,6 +275,25 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
 
 
         /****模块****/
+
+
+        /**ScrollView**/
+        final ColorAnimator mColorAnimator = new ColorAnimator(Color.TRANSPARENT, Color.WHITE);
+        final ColorAnimator mColorAnimatorLine = new ColorAnimator(Color.TRANSPARENT, ContextCompat.getColor(getActivity(), R.color.color_E5E8F3));
+        mScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                float fraction = (float) 2 * scrollY / (mBannerLayout.getHeight());
+                int color = mColorAnimator.getFractionColor(fraction);
+                int colorLine = mColorAnimatorLine.getFractionColor(fraction);
+                if (color != lastColor) {
+                    lastColor = color;
+                    mLine.setBackgroundColor(colorLine);
+                }
+            }
+        });
+
+        /****/
         //常用
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);
         gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
@@ -613,15 +647,15 @@ public class HomePage203Fragment extends Fragment implements SwipeRefreshLayout.
             }
         });
         mHandler.sendEmptyMessage(REFRESH_COMPLETE);
-        if (pageIndex ==0) {
-            pageIndex =1;
-            mScrollView.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mScrollView.fullScroll(View.FOCUS_UP);
-                }
-            }, 1000);
-        }
+//        if (pageIndex ==0) {
+//            pageIndex =1;
+//            mScrollView.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    mScrollView.fullScroll(View.FOCUS_UP);
+//                }
+//            }, 2000);
+//        }
 
     }
 

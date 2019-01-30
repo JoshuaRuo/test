@@ -311,7 +311,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="15dp"
             android:background="@color/gray_bg" />
     </LinearLayout>
 
@@ -345,8 +345,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/color_E5E8F3" />
+            android:layout_height="15dp"
+            android:background="@color/gray_bg" />
     </LinearLayout>
 
     <LinearLayout
@@ -379,8 +379,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/color_E5E8F3" />
+            android:layout_height="15dp"
+            android:background="@color/gray_bg" />
     </LinearLayout>
 
     <LinearLayout

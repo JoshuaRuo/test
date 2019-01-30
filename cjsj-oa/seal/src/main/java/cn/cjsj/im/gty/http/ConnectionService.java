@@ -3,7 +3,9 @@ package cn.cjsj.im.gty.http;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.cjsj.im.gty.bean.AgendaResponse;
 import cn.cjsj.im.gty.bean.ApprovalPlanModel;
@@ -238,7 +240,7 @@ public interface ConnectionService {
 
     //日历日报
     @GET("dailyPaper/checkDailyPaper/{date}")
-    Observable<HttpResult<List<String>>> getDailyPaperDefault(@Header("token")String token,@Path("date") String date);
+    Observable<HttpResult<HashMap<String,Integer>>> getDailyPaperDefault(@Header("token")String token, @Path("date") String date);
 
     //新通知未读条数
     @GET("message/unreadCount")

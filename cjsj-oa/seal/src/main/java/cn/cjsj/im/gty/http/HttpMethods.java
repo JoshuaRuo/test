@@ -3,7 +3,9 @@ package cn.cjsj.im.gty.http;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import cn.cjsj.im.App;
@@ -59,10 +61,10 @@ import rx.schedulers.Schedulers;
  */
 public class HttpMethods {
 
-//                            public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
-//    public static final String BASE_URL = "http://192.168.17.57:8080/"; //本地
+                            public static final String BASE_URL = "http://47.97.26.127:8080/app/";  //公网环境
+//    public static final String BASE_URL = "http://192.168.15.157:8082/"; //本地
 //    public static final String BASE_URL = "http://192.168.15.198:8082/"; // 詹
-    public static final String BASE_URL = "http://192.168.15.140:8082/app/";  //内网测试环境
+//    public static final String BASE_URL = "http://192.168.15.140:8082/app/";  //内网测试环境
 
     private static final int DEFAULT_TIMEOUT = 30;
 
@@ -761,9 +763,9 @@ public class HttpMethods {
      * @param token
      * @param date
      */
-    public void getDailyCalendar(Subscriber<List<String>> subscriber, String token, String date) {
+    public void getDailyCalendar(Subscriber<HashMap<String,Integer>> subscriber, String token, String date) {
         Observable observable = connectionService.getDailyPaperDefault(token, date)
-                .map(new HttpResultFunc<List<String>>());
+                .map(new HttpResultFunc<HashMap<String,Integer>>());
 
         toSubscribe(observable, subscriber);
     }

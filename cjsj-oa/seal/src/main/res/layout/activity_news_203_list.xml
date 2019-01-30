@@ -8,8 +8,37 @@
         android:id="@+id/news_203_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gty_page_bgcolor">
+        android:background="@color/gty_page_bgcolor"
+        android:visibility="gone">
 
     </android.support.v7.widget.RecyclerView>
+
+
+<RelativeLayout
+    android:id="@+id/news_203_default_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/news_203_nodata_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_dp_150"
+        android:src="@drawable/no_pic_message_icon"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="太低调了,一条消息都没有~"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="@color/color_999999"
+        android:textSize="@dimen/font_size_14sp"
+        android:layout_below="@+id/news_203_nodata_default"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>
+
 
 </LinearLayout>

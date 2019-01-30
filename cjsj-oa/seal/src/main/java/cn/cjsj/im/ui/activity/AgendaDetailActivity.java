@@ -140,7 +140,7 @@ public class AgendaDetailActivity extends BaseActivity implements View.OnClickLi
                         || url.contains("trip_detail.html") || url.contains("supplement_detail.html") || url.contains("seal_detail.html")
                         || url.contains("add_outsourcing_contract.html") || url.contains("goods_detail.html") || url.contains("goodsPurchase.html")
                         || url.contains("vote_detail.html") || url.contains("view_detail.html") || url.contains("scan_details.html")
-                        || url.contains("performance_plan.html") || url.contains("performance_default.html")) {
+                        || url.contains("performance_plan.html") || url.contains("performance_default.html")|| url.contains("apply_leave.html")) {
                     mIsApplyApproval = true;
                     mHeadRightText.setText("审批进度");
                     mHeadRightText.setVisibility(View.VISIBLE);
@@ -283,7 +283,7 @@ public class AgendaDetailActivity extends BaseActivity implements View.OnClickLi
                                 || mWebView.getUrl().contains("trip_detail.html") || mWebView.getUrl().contains("supplement_detail.html") || mWebView.getUrl().contains("seal_detail.html")
                                 || mWebView.getUrl().contains("add_outsourcing_contract.html") || mWebView.getUrl().contains("goods_detail.html") || mWebView.getUrl().contains("goodsPurchase.html")
                                 || mWebView.getUrl().contains("vote_detail.html") || mWebView.getUrl().contains("view_detail.html") || mWebView.getUrl().contains("scan_details.html")
-                                || mWebView.getUrl().contains("performance_plan.html") || mWebView.getUrl().contains("performance_default.html")) {
+                                || mWebView.getUrl().contains("performance_plan.html") || mWebView.getUrl().contains("performance_default.html")|| mWebView.getUrl().contains("apply_leave.html")) {
                             mIsApplyApproval = true;
                             mHeadRightText.setText("审批进度");
                             mHeadRightText.setVisibility(View.VISIBLE);
@@ -378,7 +378,7 @@ public class AgendaDetailActivity extends BaseActivity implements View.OnClickLi
                             || mWebView.getUrl().contains("trip_detail.html") || mWebView.getUrl().contains("supplement_detail.html") || mWebView.getUrl().contains("seal_detail.html")
                             || mWebView.getUrl().contains("add_outsourcing_contract.html") || mWebView.getUrl().contains("goods_detail.html") || mWebView.getUrl().contains("goodsPurchase.html")
                             || mWebView.getUrl().contains("vote_detail.html") || mWebView.getUrl().contains("view_detail.html") || mWebView.getUrl().contains("scan_details.html")
-                            || mWebView.getUrl().contains("performance_plan.html") || mWebView.getUrl().contains("performance_default.html")) {
+                            || mWebView.getUrl().contains("performance_plan.html") || mWebView.getUrl().contains("performance_default.html")|| mWebView.getUrl().contains("apply_leave.html")) {
                         mIsApplyApproval = true;
                         mIsApplyHistory = false;
                         mHeadRightText.setText("审批进度");

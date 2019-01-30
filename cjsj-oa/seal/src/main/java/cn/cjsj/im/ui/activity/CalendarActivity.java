@@ -83,7 +83,8 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
 
     private SubscriberOnNextErrorListener mSubscriber;
     private String mToken;
-    private List<Integer> mList;
+    private List<Map<String, Integer>> mList;
+    private HashMap<String, Integer> mHashMap;
     private int mToday;
     private int mThisYear;
     private int mThisMonth;
@@ -117,34 +118,34 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
         gestureDetector = new GestureDetector(this, new MyGestureListener());
         flipper = (ViewFlipper) findViewById(R.id.flipper);
         flipper.removeAllViews();
-        calV = new CalendarAdapter(this, mList, getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
+        calV = new CalendarAdapter(this, mHashMap, getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
         addGridView();
         gridView.setAdapter(calV);
         gridView.setVerticalSpacing(20);
         flipper.addView(gridView, 0);
         addTextToTopTextView(currentMonth);
 
-        mSubscriber = new SubscriberOnNextErrorListener<List<String>>() {
+        mSubscriber = new SubscriberOnNextErrorListener<HashMap<String, Integer>>() {
             @Override
-            public void onNext(List<String> list) {
+            public void onNext(HashMap<String, Integer> map) {
                 mList = new ArrayList<>();
-                map = new HashMap<>();
+//                map = new HashMap<>();
+                mHashMap = map;
+                if (mHashMap != null) {
+//                    for (int i = 0; i < list.size(); i++) {
+//                        int arg1 = Integer.parseInt(list.get(i).split("-")[2]);
+//                        mList.add(arg1);
+//                    }
 
-                if (list != null) {
-                    for (int i = 0; i < list.size(); i++) {
-                        int arg1 = Integer.parseInt(list.get(i).split("-")[2]);
-                        mList.add(arg1);
-                    }
-
-                    Collections.sort(mList);
+//                    Collections.sort(mList);
 
 
-                    Log.v("LY__test", mList.toString());
+                    Log.v("LY__test", mHashMap.toString());
 
 //                    calV = new CalendarAdapter(CalendarActivity.this, mList, getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
 //                    gridView.setAdapter(calV);
 //                    flipper.addView(gridView, gvFlag);
-                    calV = new CalendarAdapter(CalendarActivity.this, mList, getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
+                    calV = new CalendarAdapter(CalendarActivity.this, mHashMap, getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
                     gridView.setAdapter(calV);
                     calV.notifyDataSetChanged();
                 }
@@ -191,7 +192,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
         addGridView(); // 添加一个gridView
         jumpMonth++; // 下一个月
 
-        calV = new CalendarAdapter(this, mList, this.getResources(), jumpMonth, mThisYear, year_c, month_c, day_c);
+        calV = new CalendarAdapter(this, mHashMap, this.getResources(), jumpMonth, mThisYear, year_c, month_c, day_c);
         gridView.setAdapter(calV);
         addTextToTopTextView(currentMonth); // 移动到下一月后，将当月显示在头标题中
         gvFlag++;
@@ -211,7 +212,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
         addGridView(); // 添加一个gridView
         jumpMonth--; // 上一个月
 
-        calV = new CalendarAdapter(this, mList, this.getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
+        calV = new CalendarAdapter(this, mHashMap, this.getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
         gridView.setAdapter(calV);
         gvFlag++;
         addTextToTopTextView(currentMonth); // 移动到上一月后，将当月显示在头标题中
@@ -287,23 +288,26 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
 
                     String argMonth = null;
                     String argToday = null;
-                    if (scheduleMonth.length() < 2){
+                    if (scheduleMonth.length() < 2) {
                         argMonth = "0" + scheduleMonth;
-                    }else {
+                    } else {
                         argMonth = scheduleMonth + "";
                     }
-                    if (scheduleDay.length() < 2){
+                    if (scheduleDay.length() < 2) {
                         argToday = "0" + scheduleDay;
-                    }else {
-                        argToday = scheduleDay +"";
+                    } else {
+                        argToday = scheduleDay + "";
                     }
                     mDailyDate = scheduleYear + "-" + argMonth + "-" + argToday;
-
-                    if (mList.contains(Integer.parseInt(scheduleDay))) {
-                        Intent intent = new Intent(CalendarActivity.this, DailyPaperActivity.class);
-                        intent.putExtra("dailyPaperType", 1);
-                        intent.putExtra("date", mDailyDate);
-                        startActivity(intent);
+                    try {
+                        if (mHashMap.get(scheduleDay) == 3) {
+                            Intent intent = new Intent(CalendarActivity.this, DailyPaperActivity.class);
+                            intent.putExtra("dailyPaperType", 1);
+                            intent.putExtra("date", mDailyDate);
+                            startActivity(intent);
+                        }
+                    } catch (NullPointerException ex) {
+                        ex.printStackTrace();
                     }
                 }
 
@@ -335,7 +339,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
 
 
     private void getDailyCalendar(String token, String date) {
-        HttpMethods.getInstance().getDailyCalendar(new ProgressSubscriber<List<String>>(mSubscriber, this, false), token, date);
+        HttpMethods.getInstance().getDailyCalendar(new ProgressSubscriber<HashMap<String, Integer>>(mSubscriber, this, false), token, date);
     }
 
     public void getToday() {
@@ -348,7 +352,7 @@ public class CalendarActivity extends BaseActivity implements View.OnClickListen
 
     private boolean getContains(int arg) {
         for (int i = 0; i < mList.size(); i++) {
-            if (mList.get(i) == arg) {
+            if (mHashMap.get(i) == arg) {
                 return true;
             } else {
                 return false;
