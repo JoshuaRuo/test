@@ -190,7 +190,7 @@ public class MainActivity extends FragmentActivity implements
     protected void onResume() {
         super.onResume();
         LogUtils.debug("LY__onResume");
-        getNewsUnreadCount(mToken);
+        getNewsUnreadCount(App.getInstance().getToken());
     }
 
     @Override

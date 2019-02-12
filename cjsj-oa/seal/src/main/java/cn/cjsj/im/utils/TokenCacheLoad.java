@@ -10,7 +10,6 @@ public class TokenCacheLoad {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor editor;
     private static final String TOKEN_CACHE_TAG = "config";
-    private static final String TOKEN_CACHE = "oaLoginToken";
     private String mToken;
     private static TokenCacheLoad mTokenCache;
 
@@ -39,12 +38,18 @@ public class TokenCacheLoad {
     }
 
     public void setToken(String token){
+        editor.clear();
         editor.putString("TOKEN_CACHE",token);
-        editor.apply();
+        editor.commit();
     }
 
     public String getToken() {
         mToken = mSharedPreferences.getString("TOKEN_CACHE", "");
         return mToken;
+    }
+
+    public void clearToken(){
+        editor.remove("TOKEN_CACHE");
+        editor.apply();
     }
 }

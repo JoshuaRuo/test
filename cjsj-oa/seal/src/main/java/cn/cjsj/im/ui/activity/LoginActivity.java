@@ -48,7 +48,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private SubscriberOnNextErrorListener mPostTokenSubscriber;
     private SubscriberOnNextErrorListener mLoginSubscriber;
 
-    private String mCookie;
     private String mOaToken;
     private Button mConfirm;
     private static final int TO_MAIN = 201;

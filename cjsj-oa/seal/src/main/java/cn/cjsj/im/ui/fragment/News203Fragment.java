@@ -338,7 +338,7 @@ public class News203Fragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        getNewsOutValue(mToken);
+        getNewsOutValue(App.getInstance().getToken());
     }
 
     private void getNews203List(String token) {

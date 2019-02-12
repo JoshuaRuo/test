@@ -29,7 +29,7 @@ public enum ErrorCode implements Serializable {
     ERROR_NO_DELETE_DEFAULT_PLATE_NUMBER(ErrorType.USER,"默认车牌不能删除"),
     NULL_PARAMETER(ErrorType.USER,"参数不能为空"),
     ERROR_PARAMETER_FORMAT(ErrorType.USER,"参数格式错误"),
-    NO_LOGIN(ErrorType.USER,"用户未登陆"),
+    NO_LOGIN(ErrorType.USER,"登录信息失效"),
     NO_ACCOUNT(ErrorType.USER,"账号不存在"),
     NO_AUTH(ErrorType.USER,"用户无权限"),
     NO_ORDER(ErrorType.USER,"没有订单"),

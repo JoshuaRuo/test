@@ -102,9 +102,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
                         mUserName.setText(mOAUserBean.getSysUser().getFullname());
 
-                        if (mOAUserBean.getSysUser().getPosName() != null){
+                        if (mOAUserBean.getSysUser().getPosName() != null) {
                             mDepartment.setText(mOAUserBean.getSysUser().getOrgName() + "-" + mOAUserBean.getSysUser().getPosName());
-                        }else {
+                        } else {
                             mDepartment.setText(mOAUserBean.getSysUser().getOrgName());
                         }
 
@@ -299,6 +299,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         mLogOutSubscriber = new SubscriberOnNextErrorListener<Object>() {
             @Override
             public void onNext(Object o) {
+                App.getInstance().clearToken();
                 Toast.makeText(getActivity(), "退出成功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

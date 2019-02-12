@@ -216,6 +216,11 @@ public class App extends MultiDexApplication {
         TokenCacheLoad.getInstance().setToken(token);
     }
 
+    //清楚缓存token
+    public void clearToken(){
+        TokenCacheLoad.getInstance().clearToken();
+    }
+
 
 //    private void initManService() {
 //        MANService manService = MANServiceProvider.getService();
